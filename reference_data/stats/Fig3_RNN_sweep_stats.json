@@ -1,0 +1,1276 @@
+{
+  "description": "Figure 3 RNN sweep analysis: speed-coded parameter sweep overview plus a selected RNN example visualized with the same behavior-style panels as Figures 1 and 2. Sweep matches refer only to the directional pattern of the human motor-stage coefficients, not numerical equality to human behavior. Panel E and G tests are selection-conditioned summaries rather than independent confirmatory inference.",
+  "sweep_stats_source": "code/figures/manuscript/ParamSweep_rnn_behavior_summary_stats.json",
+  "selected_parameters": {
+    "time_code": "speedcoded",
+    "input_overlap": -0.8,
+    "rank": null,
+    "rank_label": "Full",
+    "readout": "free",
+    "representative_rep": 15
+  },
+  "representative_selection_rule": "Canonical cross-figure representative selected for recurrent-trajectory closure and human motor-stage directional matching.",
+  "selected_configuration_inference_scope": "Panels E and G reuse the repetitions whose configuration was selected partly from the human-like coefficient pattern. Their P values are therefore selection-conditioned and exploratory, not an independent confirmation of that selection criterion.",
+  "selected_config_summary": {
+    "n_reps": 20,
+    "motor_direction_match_by_mean": true,
+    "motor_direction_match_rep_fraction": 0.85,
+    "mean_matrix": [
+      [
+        0.8256223131789756,
+        0.25777447690690747
+      ],
+      [
+        0.02112736867371128,
+        0.9827137202624913
+      ]
+    ],
+    "sem_matrix": [
+      [
+        0.00859674798985095,
+        0.012844821706670645
+      ],
+      [
+        0.009365472701918783,
+        0.01949187916320882
+      ]
+    ]
+  },
+  "human_motor_stage_reference_mean_matrix": [
+    [
+      0.7852689235044222,
+      0.1577953191084023
+    ],
+    [
+      0.0424429018316019,
+      1.011705860862094
+    ]
+  ],
+  "human_motor_stage_reference_subjects": [
+    "sub-01_clean.allData_clean",
+    "sub-02_clean.allData_clean",
+    "sub-03_clean.allData_clean",
+    "sub-04_clean.allData_clean",
+    "sub-05_clean.allData_clean",
+    "sub-06_clean.allData_clean",
+    "sub-07_clean.allData_clean",
+    "sub-08_clean.allData_clean",
+    "sub-09_clean.allData_clean",
+    "sub-10_clean.allData_clean",
+    "sub-11_clean.allData_clean",
+    "sub-12_clean.allData_clean",
+    "sub-13_clean.allData_clean",
+    "sub-14_clean.allData_clean",
+    "sub-15_clean.allData_clean",
+    "sub-16_clean.allData_clean",
+    "sub-17_clean.allData_clean",
+    "sub-18_clean.allData_clean",
+    "sub-19_clean.allData_clean",
+    "sub-20_clean.allData_clean",
+    "sub-21_clean.allData_clean",
+    "sub-22_clean.allData_clean",
+    "sub-23_clean.allData_clean",
+    "sub-24_clean.allData_clean"
+  ],
+  "human_reference_scope": "External motor-stage directional reference only; the RNN is not fitted to human coefficient magnitudes.",
+  "rnn_cross_rep_mean_matrix": [
+    [
+      0.8256223131789755,
+      0.25777447690690747
+    ],
+    [
+      0.02112736867371128,
+      0.9827137202624915
+    ]
+  ],
+  "representative_rep": {
+    "intercept_R": -0.14678316724700297,
+    "beta_RR": 0.8070471373081227,
+    "beta_RT": 0.2931167346876232,
+    "intercept_T": -0.020246888536767867,
+    "beta_TR": 0.011882068460191797,
+    "beta_TT": 0.9956462928938867,
+    "n_conditions": 81,
+    "condition_number": 1.5491933531732787,
+    "actual_input_overlap": -0.8000000206204353,
+    "initial_input_overlap": -0.8000000253162692,
+    "actual_rank": 200.0,
+    "readout_initial_cos_mean": 0.9723435583445426,
+    "readout_initial_rel_change": 0.24390686578642495,
+    "output_vector_overlap": -0.03071615423666616,
+    "initial_output_vector_overlap": 0.019370613156523928,
+    "rank": null,
+    "rank_label": "Full",
+    "input_overlap": -0.8,
+    "readout_mode": "free",
+    "rep": 15,
+    "file": "Rank_full_Overlap_m080_Readout_free_Time_speedcoded_rep15_eval_narrow0408_fulltarget_train_interp_extra_13x13_NoRates.pt",
+    "path": "code/results/motorTraj_circle/Rank_full_Overlap_m080_Readout_free_Time_speedcoded_rep15_eval_narrow0408_fulltarget_train_interp_extra_13x13_NoRates.pt",
+    "time_code": "speedcoded"
+  },
+  "panel_B_output_examples": {
+    "loaded": true,
+    "selection": "All training conditions, arranged by target radius and target duration as a complete condition grid.",
+    "grid_shape": [
+      5,
+      5
+    ],
+    "target_radius_levels": [
+      0.44999998807907104,
+      0.7250000238418579,
+      1.0,
+      1.274999976158142,
+      1.5499999523162842
+    ],
+    "target_duration_levels": [
+      0.699999988079071,
+      1.2999999523162842,
+      1.899999976158142,
+      2.5,
+      3.0999999046325684
+    ],
+    "conditions": [
+      {
+        "condition_index": 36,
+        "label": "R 0.4, T 0.7s",
+        "produced_r": 0.4779632440563237,
+        "produced_t": 0.7623892012935679
+      },
+      {
+        "condition_index": 34,
+        "label": "R 0.4, T 1.3s",
+        "produced_r": 0.4078069812905137,
+        "produced_t": 1.049428865397382
+      },
+      {
+        "condition_index": 32,
+        "label": "R 0.4, T 1.9s",
+        "produced_r": 0.47312069904576626,
+        "produced_t": 1.8988217215613095
+      },
+      {
+        "condition_index": 30,
+        "label": "R 0.4, T 2.5s",
+        "produced_r": 0.5110941193957178,
+        "produced_t": 2.6242069883724892
+      },
+      {
+        "condition_index": 28,
+        "label": "R 0.4, T 3.1s",
+        "produced_r": 0.5655758502753198,
+        "produced_t": 2.851124104494114
+      },
+      {
+        "condition_index": 62,
+        "label": "R 0.7, T 0.7s",
+        "produced_r": 0.5985049624181419,
+        "produced_t": 0.798660915670124
+      },
+      {
+        "condition_index": 60,
+        "label": "R 0.7, T 1.3s",
+        "produced_r": 0.593653352917158,
+        "produced_t": 1.104247603105705
+      },
+      {
+        "condition_index": 58,
+        "label": "R 0.7, T 1.9s",
+        "produced_r": 0.7451219452259178,
+        "produced_t": 1.841685413269348
+      },
+      {
+        "condition_index": 56,
+        "label": "R 0.7, T 2.5s",
+        "produced_r": 0.7436266830236379,
+        "produced_t": 2.614587378814815
+      },
+      {
+        "condition_index": 54,
+        "label": "R 0.7, T 3.1s",
+        "produced_r": 0.7955359942579182,
+        "produced_t": 3.1522998791894064
+      },
+      {
+        "condition_index": 88,
+        "label": "R 1.0, T 0.7s",
+        "produced_r": 0.7653037011051674,
+        "produced_t": 0.8344398962370048
+      },
+      {
+        "condition_index": 86,
+        "label": "R 1.0, T 1.3s",
+        "produced_r": 0.7933591879010891,
+        "produced_t": 1.158366418667575
+      },
+      {
+        "condition_index": 84,
+        "label": "R 1.0, T 1.9s",
+        "produced_r": 1.010632571433428,
+        "produced_t": 1.7586732945254604
+      },
+      {
+        "condition_index": 82,
+        "label": "R 1.0, T 2.5s",
+        "produced_r": 1.01267818755134,
+        "produced_t": 2.485947490175373
+      },
+      {
+        "condition_index": 80,
+        "label": "R 1.0, T 3.1s",
+        "produced_r": 1.048074385153003,
+        "produced_t": 3.201726634511842
+      },
+      {
+        "condition_index": 114,
+        "label": "R 1.3, T 0.7s",
+        "produced_r": 0.8932498159333907,
+        "produced_t": 0.8610714045084616
+      },
+      {
+        "condition_index": 112,
+        "label": "R 1.3, T 1.3s",
+        "produced_r": 1.0291094492020063,
+        "produced_t": 1.2288402227883843
+      },
+      {
+        "condition_index": 110,
+        "label": "R 1.3, T 1.9s",
+        "produced_r": 1.2481082267805095,
+        "produced_t": 1.764905044837456
+      },
+      {
+        "condition_index": 108,
+        "label": "R 1.3, T 2.5s",
+        "produced_r": 1.258993215742876,
+        "produced_t": 2.449078184963268
+      },
+      {
+        "condition_index": 106,
+        "label": "R 1.3, T 3.1s",
+        "produced_r": 1.283235227824042,
+        "produced_t": 3.134498154099777
+      },
+      {
+        "condition_index": 140,
+        "label": "R 1.5, T 0.7s",
+        "produced_r": 1.0392432711715283,
+        "produced_t": 0.8977197372096357
+      },
+      {
+        "condition_index": 138,
+        "label": "R 1.5, T 1.3s",
+        "produced_r": 1.2364192934007268,
+        "produced_t": 1.312444009911694
+      },
+      {
+        "condition_index": 136,
+        "label": "R 1.5, T 1.9s",
+        "produced_r": 1.4377605903666648,
+        "produced_t": 1.841952807295396
+      },
+      {
+        "condition_index": 134,
+        "label": "R 1.5, T 2.5s",
+        "produced_r": 1.4874928376325596,
+        "produced_t": 2.472572970474447
+      },
+      {
+        "condition_index": 132,
+        "label": "R 1.5, T 3.1s",
+        "produced_r": 1.5002966435222809,
+        "produced_t": 3.0811312942605498
+      }
+    ]
+  },
+  "panel_C_sweep_speedcoded": {
+    "fixed": {
+      "fixed_2_-0.8": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": -0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 18,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_4_-0.8": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": -0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_8_-0.8": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": -0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_16_-0.8": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": -0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_Full_-0.8": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": -0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.75
+      },
+      "fixed_2_-0.4": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": -0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_4_-0.4": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": -0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_8_-0.4": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": -0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.95
+      },
+      "fixed_16_-0.4": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": -0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_Full_-0.4": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": -0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.95
+      },
+      "fixed_2_0": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.0,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_4_0": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.0,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.95
+      },
+      "fixed_8_0": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.0,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "fixed_16_0": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.0,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 1.0
+      },
+      "fixed_Full_0": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.0,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.85
+      },
+      "fixed_2_0.4": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.8
+      },
+      "fixed_4_0.4": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.85
+      },
+      "fixed_8_0.4": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "fixed_16_0.4": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "fixed_Full_0.4": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.4,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "fixed_2_0.8": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.55
+      },
+      "fixed_4_0.8": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "fixed_8_0.8": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.8
+      },
+      "fixed_16_0.8": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.7
+      },
+      "fixed_Full_0.8": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.8,
+        "readout_mode": "fixed",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.85
+      }
+    },
+    "free": {
+      "free_2_-0.8": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": -0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 19,
+        "motor_direction_match_rep_fraction": 0.15789473684210525
+      },
+      "free_4_-0.8": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": -0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_8_-0.8": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": -0.8,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.45
+      },
+      "free_16_-0.8": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": -0.8,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.75
+      },
+      "free_Full_-0.8": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": -0.8,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.85
+      },
+      "free_2_-0.4": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": -0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.2
+      },
+      "free_4_-0.4": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": -0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.15
+      },
+      "free_8_-0.4": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": -0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.2
+      },
+      "free_16_-0.4": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": -0.4,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.45
+      },
+      "free_Full_-0.4": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": -0.4,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.85
+      },
+      "free_2_0": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.0,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_4_0": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.0,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.15
+      },
+      "free_8_0": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.0,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_16_0": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.0,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_Full_0": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.0,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.95
+      },
+      "free_2_0.4": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_4_0.4": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.15
+      },
+      "free_8_0.4": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.15
+      },
+      "free_16_0.4": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.4,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_Full_0.4": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.4,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.9
+      },
+      "free_2_0.8": {
+        "available": true,
+        "rank": 2,
+        "rank_label": "2",
+        "input_overlap": 0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.3
+      },
+      "free_4_0.8": {
+        "available": true,
+        "rank": 4,
+        "rank_label": "4",
+        "input_overlap": 0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.2
+      },
+      "free_8_0.8": {
+        "available": true,
+        "rank": 8,
+        "rank_label": "8",
+        "input_overlap": 0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.2
+      },
+      "free_16_0.8": {
+        "available": true,
+        "rank": 16,
+        "rank_label": "16",
+        "input_overlap": 0.8,
+        "readout_mode": "free",
+        "match_type": "interaction_only",
+        "direct_control_match_by_mean": false,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": false,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.2
+      },
+      "free_Full_0.8": {
+        "available": true,
+        "rank": null,
+        "rank_label": "Full",
+        "input_overlap": 0.8,
+        "readout_mode": "free",
+        "match_type": "both",
+        "direct_control_match_by_mean": true,
+        "interaction_match_by_mean": true,
+        "motor_direction_match_by_mean": true,
+        "n_reps": 20,
+        "motor_direction_match_rep_fraction": 0.7
+      }
+    }
+  },
+  "partial_relation_panels": {
+    "D_direct": {
+      "beta_RR_panel": {
+        "n_condition_means": 1620,
+        "r_descriptive": 0.9769862141547863,
+        "slope_descriptive": 0.8256223131789754,
+        "identity_line": true,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "input_level_fit_markers": {
+          "train": {
+            "n_input_levels": 5,
+            "normalized_input_levels": [
+              -1.0,
+              -0.4999999187,
+              5.42e-08,
+              0.5000000271,
+              1.0
+            ],
+            "fitted_values": [
+              -0.8256223131789758,
+              -0.4128110894663941,
+              4.474872888882712e-08,
+              0.4128111789638519,
+              0.8256223131789749
+            ],
+            "marker": "Large filled circles"
+          },
+          "interpolation": {
+            "n_input_levels": 4,
+            "normalized_input_levels": [
+              -0.7500000339,
+              -0.2499999323,
+              0.2499998916,
+              0.7500000135
+            ],
+            "fitted_values": [
+              -0.6192167628728285,
+              -0.20640552240011373,
+              0.20640548879728463,
+              0.6192167460301323
+            ],
+            "marker": "Large open circles"
+          }
+        },
+        "input_level_classification": "Train versus interpolation is classified independently for the input dimension shown on the x-axis; markers show the pooled linear-fit value at each unique input level, not individual conditions."
+      },
+      "beta_TT_panel": {
+        "n_condition_means": 1620,
+        "r_descriptive": 0.9902418945188485,
+        "slope_descriptive": 0.9827137202624913,
+        "identity_line": true,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "input_level_fit_markers": {
+          "train": {
+            "n_input_levels": 5,
+            "normalized_input_levels": [
+              -1.0,
+              -0.5000000124,
+              2.48e-08,
+              0.5000000621,
+              1.0
+            ],
+            "fitted_values": [
+              -0.9827137202624932,
+              -0.49135687231689773,
+              2.4371298320616403e-08,
+              0.49135692115776575,
+              0.9827137202624894
+            ],
+            "marker": "Large filled circles"
+          },
+          "interpolation": {
+            "n_input_levels": 4,
+            "normalized_input_levels": [
+              -0.7500000062,
+              -0.2499998448,
+              0.2500000435,
+              0.7500001055
+            ],
+            "fitted_values": [
+              -0.7370352962896953,
+              -0.2456782775484554,
+              0.2456784728136677,
+              0.737035393873164
+            ],
+            "marker": "Large open circles"
+          }
+        },
+        "input_level_classification": "Train versus interpolation is classified independently for the input dimension shown on the x-axis; markers show the pooled linear-fit value at each unique input level, not individual conditions."
+      }
+    },
+    "F_interaction": {
+      "beta_RT_panel": {
+        "n_condition_means": 1620,
+        "r_descriptive": 0.812435761221652,
+        "slope_descriptive": 0.25777447690690763,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "input_level_fit_markers": {
+          "train": {
+            "n_input_levels": 5,
+            "normalized_input_levels": [
+              -1.0,
+              -0.5000000124,
+              2.48e-08,
+              0.5000000621,
+              1.0
+            ],
+            "fitted_values": [
+              -0.25777447690690813,
+              -0.12888724164985785,
+              6.392806519750994e-09,
+              0.12888725446124835,
+              0.25777447690690714
+            ],
+            "marker": "Large filled circles"
+          },
+          "interpolation": {
+            "n_input_levels": 4,
+            "normalized_input_levels": [
+              -0.7500000062,
+              -0.2499998448,
+              0.2500000435,
+              0.7500001055
+            ],
+            "fitted_values": [
+              -0.19333085927838298,
+              -0.06444357922012861,
+              0.06444363043991613,
+              0.19333088487538752
+            ],
+            "marker": "Large open circles"
+          }
+        },
+        "input_level_classification": "Train versus interpolation is classified independently for the input dimension shown on the x-axis; markers show the pooled linear-fit value at each unique input level, not individual conditions."
+      },
+      "beta_TR_panel": {
+        "n_condition_means": 1620,
+        "r_descriptive": 0.17842518567455093,
+        "slope_descriptive": 0.02112736867371143,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "input_level_fit_markers": {
+          "train": {
+            "n_input_levels": 5,
+            "normalized_input_levels": [
+              -1.0,
+              -0.4999999187,
+              5.42e-08,
+              0.5000000271,
+              1.0
+            ],
+            "fitted_values": [
+              -0.02112736867371343,
+              -0.010563682619202638,
+              1.145101385054352e-09,
+              0.01056368490940541,
+              0.021127368673709433
+            ],
+            "marker": "Large filled circles"
+          },
+          "interpolation": {
+            "n_input_levels": 4,
+            "normalized_input_levels": [
+              -0.7500000339,
+              -0.2499999323,
+              0.2499998916,
+              0.7500000135
+            ],
+            "fitted_values": [
+              -0.01584552722150337,
+              -0.005281840738106995,
+              0.005281839878219096,
+              0.015845526790501052
+            ],
+            "marker": "Large open circles"
+          }
+        },
+        "input_level_classification": "Train versus interpolation is classified independently for the input dimension shown on the x-axis; markers show the pooled linear-fit value at each unique input level, not individual conditions."
+      }
+    }
+  },
+  "coefficient_panels": {
+    "E_rnn_direct": {
+      "$\\beta_{RR}$": {
+        "n": 20,
+        "mean": 0.8256223131789755,
+        "median": 0.8147277202434025,
+        "bootstrap_95_ci_median": [
+          0.8084142901161075,
+          0.843197162860112
+        ],
+        "positive": 20,
+        "negative": 0,
+        "zero": 0
+      },
+      "$\\beta_{TT}$": {
+        "n": 20,
+        "mean": 0.9827137202624915,
+        "median": 0.9906455108998798,
+        "bootstrap_95_ci_median": [
+          0.9571587748886408,
+          1.0527898769670336
+        ],
+        "positive": 20,
+        "negative": 0,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RR}$_vs_1": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 0.0,
+          "p_raw": 1.9073486328125e-06,
+          "reference": 1.0,
+          "median_difference": -0.18527227975659755,
+          "direction": "negative",
+          "p_bh": 5.7220458984375e-06
+        },
+        "$\\beta_{TT}$_vs_1": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 95.0,
+          "p_raw": 0.7285060882568359,
+          "reference": 1.0,
+          "median_difference": -0.009354489100120156,
+          "direction": "negative",
+          "p_bh": 0.7285060882568359
+        },
+        "$\\beta_{RR}$_vs_$\\beta_{TT}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 6.0,
+          "p_raw": 2.6702880859375e-05,
+          "reference": null,
+          "median_difference": -0.18876905934987714,
+          "direction": "negative",
+          "p_bh": 4.00543212890625e-05
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    },
+    "G_rnn_interaction": {
+      "$\\beta_{RT}$": {
+        "n": 20,
+        "mean": 0.25777447690690747,
+        "median": 0.2596555687166672,
+        "bootstrap_95_ci_median": [
+          0.24744639265280283,
+          0.2865158654322393
+        ],
+        "positive": 20,
+        "negative": 0,
+        "zero": 0
+      },
+      "$\\beta_{TR}$": {
+        "n": 20,
+        "mean": 0.02112736867371128,
+        "median": 0.018798387097213043,
+        "bootstrap_95_ci_median": [
+          -0.004205756010684847,
+          0.042599543371327264
+        ],
+        "positive": 12,
+        "negative": 8,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RT}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 0.0,
+          "p_raw": 1.9073486328125e-06,
+          "reference": 0.0,
+          "median_difference": 0.2596555687166672,
+          "direction": "positive",
+          "p_bh": 2.86102294921875e-06
+        },
+        "$\\beta_{TR}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 53.0,
+          "p_raw": 0.05316925048828125,
+          "reference": 0.0,
+          "median_difference": 0.018798387097213043,
+          "direction": "positive",
+          "p_bh": 0.05316925048828125
+        },
+        "$\\beta_{RT}$_vs_$\\beta_{TR}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 20,
+          "statistic": 0.0,
+          "p_raw": 1.9073486328125e-06,
+          "reference": null,
+          "median_difference": 0.2430691485180027,
+          "direction": "positive",
+          "p_bh": 2.86102294921875e-06
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    }
+  },
+  "loaded_repetition_count_for_partials": 20,
+  "load_errors": [],
+  "sweep_overview": {
+    "time_code": "speedcoded",
+    "grid_shape_per_readout": {
+      "ranks": 5,
+      "input_overlaps": 5
+    },
+    "input_overlaps": [
+      -0.8,
+      -0.4,
+      0.0,
+      0.4,
+      0.8
+    ],
+    "ranks": [
+      2,
+      4,
+      8,
+      16,
+      null
+    ],
+    "readout_modes": [
+      "fixed",
+      "free"
+    ],
+    "selected_time_code_configurations": 50,
+    "selected_time_code_motor_direction_match_configurations": 33
+  }
+}

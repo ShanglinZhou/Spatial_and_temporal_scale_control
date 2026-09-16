@@ -1,0 +1,65 @@
+{
+  "normalization": {
+    "formula": "X_star = (X - center) / half_range; the designed stimulus range maps to [-1, 1].",
+    "constants": {
+      "R": {
+        "min": 39.0,
+        "max": 136.0,
+        "center": 87.5,
+        "half_range": 48.5
+      },
+      "T": {
+        "min": 0.7,
+        "max": 3.1,
+        "center": 1.9,
+        "half_range": 1.2000000000000002
+      }
+    },
+    "clipping": false
+  },
+  "n_subjects": 24,
+  "inference": "Two-sided exact Wilcoxon signed-rank tests on subject-level coefficients. Multiple comparisons are controlled with Benjamini-Hochberg FDR within each coefficient-comparison panel (3 tests per panel), not pooled across panels; both raw p (p_raw) and BH-adjusted p (p_bh) are reported.",
+  "display_policy": {
+    "relationship_panels": "Pooled Pearson r and fitted lines are descriptive only; no inferential p values are displayed.",
+    "coefficient_panels": "Subject-specific coefficient distributions carry the group inference and display BH-FDR-adjusted significance symbols (* p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001; n.s. otherwise)."
+  },
+  "description": "Raw probe and normal direct relations in a 2 x 2 layout. Panels A-D are the former SuppFig1 panels A, B, F, and G.",
+  "panels": {
+    "A": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.9454389507262911,
+      "slope_descriptive": 0.9555093968968462,
+      "intercept_descriptive": 0.15381390771533468,
+      "identity_line": true,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel."
+    },
+    "B": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.846606206835554,
+      "slope_descriptive": 0.5784182725964415,
+      "intercept_descriptive": -0.2704584206823684,
+      "identity_line": true,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel."
+    },
+    "C": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.8735875414631626,
+      "slope_descriptive": 0.7596810568751114,
+      "intercept_descriptive": 0.23241778811032138,
+      "identity_line": true,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel."
+    },
+    "D": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.6622117750896499,
+      "slope_descriptive": 0.5906906166760522,
+      "intercept_descriptive": 0.11670300708194037,
+      "identity_line": true,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel."
+    }
+  }
+}

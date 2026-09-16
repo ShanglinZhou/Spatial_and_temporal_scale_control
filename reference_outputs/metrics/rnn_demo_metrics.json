@@ -1,0 +1,61 @@
+{
+  "description": "Lightweight functional test; not a replacement for the 20-seed manuscript inference.",
+  "seed": 20260641,
+  "participant_files": 24,
+  "human_condition_rows": 1200,
+  "checkpoint": "models/representative_rnn_rep15.pt",
+  "checkpoint_step": 902,
+  "checkpoint_best_metric": 0.08706103414297103,
+  "conditions": [
+    {
+      "size_level": 0.4000000059604645,
+      "speed_level": 0.4000000059604645,
+      "target_radius": 0.44999998807907104,
+      "target_duration": 3.0999999046325684,
+      "rmse": 0.0721674645047538,
+      "model_loss": 0.0645485445857048
+    },
+    {
+      "size_level": 0.5,
+      "speed_level": 0.5,
+      "target_radius": 0.7250000238418579,
+      "target_duration": 2.5,
+      "rmse": 0.08534614071243908,
+      "model_loss": 0.06983616203069687
+    },
+    {
+      "size_level": 0.6000000238418579,
+      "speed_level": 0.6000000238418579,
+      "target_radius": 1.0,
+      "target_duration": 1.899999976158142,
+      "rmse": 0.10028474611031932,
+      "model_loss": 0.07363457977771759
+    },
+    {
+      "size_level": 0.699999988079071,
+      "speed_level": 0.699999988079071,
+      "target_radius": 1.274999976158142,
+      "target_duration": 1.2999999523162842,
+      "rmse": 0.18046370999774516,
+      "model_loss": 0.11536920815706253
+    },
+    {
+      "size_level": 0.800000011920929,
+      "speed_level": 0.800000011920929,
+      "target_radius": 1.5499999523162842,
+      "target_duration": 0.699999988079071,
+      "rmse": 0.30937999518180953,
+      "model_loss": 0.1631993055343628
+    }
+  ],
+  "mean_demo_rmse": 0.1495284113014134,
+  "runtime_seconds": 4.0612952709198,
+  "versions": {
+    "python": "3.7.4",
+    "numpy": "1.16.5",
+    "scipy": "1.3.1",
+    "pandas": "0.25.1",
+    "torch": "1.13.1+cpu",
+    "matplotlib": "3.1.1"
+  }
+}

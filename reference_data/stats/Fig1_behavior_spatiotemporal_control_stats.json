@@ -1,0 +1,1960 @@
+{
+  "normalization": {
+    "formula": "X_star = (X - center) / half_range; the designed stimulus range maps to [-1, 1].",
+    "constants": {
+      "R": {
+        "min": 39.0,
+        "max": 136.0,
+        "center": 87.5,
+        "half_range": 48.5
+      },
+      "T": {
+        "min": 0.7,
+        "max": 3.1,
+        "center": 1.9,
+        "half_range": 1.2000000000000002
+      }
+    },
+    "clipping": false
+  },
+  "n_subjects": 24,
+  "inference": "Two-sided exact Wilcoxon signed-rank tests on subject-level coefficients. Multiple comparisons are controlled with Benjamini-Hochberg FDR within each coefficient-comparison panel (3 tests per panel), not pooled across panels; both raw p (p_raw) and BH-adjusted p (p_bh) are reported.",
+  "display_policy": {
+    "relationship_panels": "Pooled Pearson r and fitted lines are descriptive only; no inferential p values are displayed.",
+    "coefficient_panels": "Subject-specific coefficient distributions carry the group inference and display BH-FDR-adjusted significance symbols (* p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001; n.s. otherwise)."
+  },
+  "description": "Unified Figure 1: task and direct-control analyses (A-I), followed by the matched cross-dimensional analyses (J-Q).",
+  "panel_mapping": {
+    "direct_control": "A-I: C-D perceptual relations, E perceptual gains, F-G motor relations, H motor gains, and I the between-stage direct-gain contrast.",
+    "cross_dimensional_control": "J-Q (former Figure 2 A-H)"
+  },
+  "direct_control": {
+    "normalization": {
+      "formula": "X_star = (X - center) / half_range; the designed stimulus range maps to [-1, 1].",
+      "constants": {
+        "R": {
+          "min": 39.0,
+          "max": 136.0,
+          "center": 87.5,
+          "half_range": 48.5
+        },
+        "T": {
+          "min": 0.7,
+          "max": 3.1,
+          "center": 1.9,
+          "half_range": 1.2000000000000002
+        }
+      },
+      "clipping": false
+    },
+    "n_subjects": 24,
+    "inference": "Two-sided exact Wilcoxon signed-rank tests on subject-level coefficients. Multiple comparisons are controlled with Benjamini-Hochberg FDR within each coefficient-comparison panel (3 tests per panel), not pooled across panels; both raw p (p_raw) and BH-adjusted p (p_bh) are reported.",
+    "display_policy": {
+      "relationship_panels": "Pooled Pearson r and fitted lines are descriptive only; no inferential p values are displayed.",
+      "coefficient_panels": "Subject-specific coefficient distributions carry the group inference and display BH-FDR-adjusted significance symbols (* p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001; n.s. otherwise)."
+    },
+    "description": "Task, perceptual direct relations, perception-corrected motor direct relations, and their double dissociation.",
+    "human_radius_metric": {
+      "produced_R": "Normal-trial produced radius is recomputed from all finite samples of the drawing trajectory with the algebraic circle fit. Every retained trajectory has at least three unique, non-collinear positions, and no fallback radius is used.",
+      "perceived_R": "Probe-trial perceived radius is read from the cleaned MAT data because probe trials have no drawing trajectory.",
+      "produced_R_fit_vs_stored": {
+        "normal_trials_using_fit": 17637,
+        "normal_trials_stored_fallback": 0,
+        "max_abs_fit_minus_stored": 0.0,
+        "mean_abs_fit_minus_stored": 0.0,
+        "n_abs_diff_gt_1e-9": 0,
+        "fallback_examples": [],
+        "fit_min_points": 3
+      }
+    },
+    "n_condition_means_per_task": 600,
+    "direct_control_schematic": {
+      "nodes": [
+        "Input R",
+        "Input T",
+        "Perceived R",
+        "Perceived T",
+        "Produced R",
+        "Produced T"
+      ],
+      "emphasized_paths": [
+        "beta_RR_P",
+        "beta_TT_P",
+        "beta_RR_M",
+        "beta_TT_M"
+      ],
+      "deemphasized_paths": [
+        "beta_RT_P",
+        "beta_TR_P",
+        "beta_RT_M",
+        "beta_TR_M"
+      ]
+    },
+    "behavior_example_traces": [
+      {
+        "role": "R1T1",
+        "condition": "R1T1",
+        "target_r": 39.0,
+        "target_t": 0.7,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "365.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 47.4346639943539,
+        "produced_r_csv": 47.4346639943539,
+        "produced_r_fit": 47.4346639943539,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 0.7002081999671645,
+        "fitted_circle_center": [
+          5.563361692333155,
+          -31.11911462604592
+        ],
+        "fitted_circle_radius": 47.4346639943539,
+        "subject_condition_mean_r": 48.27906611934035,
+        "subject_condition_mean_t": 0.7404814166686264,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R1T2",
+        "condition": "R1T2",
+        "target_r": 39.0,
+        "target_t": 1.3,
+        "n_candidate_trials": 28,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "216.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 49.8167798784981,
+        "produced_r_csv": 49.8167798784981,
+        "produced_r_fit": 49.8167798784981,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.0173409000017273,
+        "fitted_circle_center": [
+          16.253323615943646,
+          -42.24408651691614
+        ],
+        "fitted_circle_radius": 49.8167798784981,
+        "subject_condition_mean_r": 50.64036190591218,
+        "subject_condition_mean_t": 1.0745572571374526,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R1T3",
+        "condition": "R1T3",
+        "target_r": 39.0,
+        "target_t": 1.9,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "483.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 56.68340439472837,
+        "produced_r_csv": 56.68340439472837,
+        "produced_r_fit": 56.68340439472837,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.3996935000177473,
+        "fitted_circle_center": [
+          13.344173367951951,
+          -39.96118124515354
+        ],
+        "fitted_circle_radius": 56.68340439472837,
+        "subject_condition_mean_r": 58.16628643197227,
+        "subject_condition_mean_t": 1.4358992866680638,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R1T4",
+        "condition": "R1T4",
+        "target_r": 39.0,
+        "target_t": 2.5,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "1.0",
+        "selected_trial_number": "6.0",
+        "selection_rank_zero_based": 6,
+        "produced_r": 44.0802794027578,
+        "produced_r_csv": 44.0802794027578,
+        "produced_r_fit": 44.0802794027578,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 2.034795400002622,
+        "fitted_circle_center": [
+          0.516763147470058,
+          -37.01004169910232
+        ],
+        "fitted_circle_radius": 44.0802794027578,
+        "subject_condition_mean_r": 48.64439936196625,
+        "subject_condition_mean_t": 2.0174441931013805,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R1T5",
+        "condition": "R1T5",
+        "target_r": 39.0,
+        "target_t": 3.1,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "285.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 53.68229678483074,
+        "produced_r_csv": 53.68229678483074,
+        "produced_r_fit": 53.68229678483074,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.9679193000010855,
+        "fitted_circle_center": [
+          4.789919373532185,
+          -46.62614907034684
+        ],
+        "fitted_circle_radius": 53.68229678483074,
+        "subject_condition_mean_r": 52.43816640034963,
+        "subject_condition_mean_t": 2.107890893104421,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R2T1",
+        "condition": "R2T1",
+        "target_r": 63.0,
+        "target_t": 0.7,
+        "n_candidate_trials": 28,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "388.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 66.40997609662337,
+        "produced_r_csv": 66.40997609662337,
+        "produced_r_fit": 66.40997609662337,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 0.8508624999667518,
+        "fitted_circle_center": [
+          11.387927760972437,
+          -49.64588016140207
+        ],
+        "fitted_circle_radius": 66.40997609662337,
+        "subject_condition_mean_r": 67.883447471197,
+        "subject_condition_mean_t": 0.8046125714247735,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R2T2",
+        "condition": "R2T2",
+        "target_r": 63.0,
+        "target_t": 1.3,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "8.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 74.34675887250617,
+        "produced_r_csv": 74.34675887250617,
+        "produced_r_fit": 74.34675887250617,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.0338674999948125,
+        "fitted_circle_center": [
+          11.721698227595036,
+          -69.16817944253665
+        ],
+        "fitted_circle_radius": 74.34675887250617,
+        "subject_condition_mean_r": 71.28369678737913,
+        "subject_condition_mean_t": 1.0679847133344689,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R2T3",
+        "condition": "R2T3",
+        "target_r": 63.0,
+        "target_t": 1.9,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "295.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 70.22465975289501,
+        "produced_r_csv": 70.22465975289501,
+        "produced_r_fit": 70.22465975289501,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.4182852000230923,
+        "fitted_circle_center": [
+          3.3748013849956835,
+          -54.70076811246833
+        ],
+        "fitted_circle_radius": 70.22465975289501,
+        "subject_condition_mean_r": 71.5031964064402,
+        "subject_condition_mean_t": 1.4084459413822734,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R2T4",
+        "condition": "R2T4",
+        "target_r": 63.0,
+        "target_t": 2.5,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "1.0",
+        "selected_trial_number": "311.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 71.6076420475001,
+        "produced_r_csv": 71.6076420475001,
+        "produced_r_fit": 71.6076420475001,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.7172314999916125,
+        "fitted_circle_center": [
+          13.128248831875434,
+          -66.81263352572111
+        ],
+        "fitted_circle_radius": 71.6076420475001,
+        "subject_condition_mean_r": 72.20112622941475,
+        "subject_condition_mean_t": 1.7438876700004282,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R2T5",
+        "condition": "R2T5",
+        "target_r": 63.0,
+        "target_t": 3.1,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "187.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 71.29464916737284,
+        "produced_r_csv": 71.29464916737284,
+        "produced_r_fit": 71.29464916737284,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 2.2016708999981347,
+        "fitted_circle_center": [
+          23.784987415673285,
+          -58.844026744018834
+        ],
+        "fitted_circle_radius": 71.29464916737284,
+        "subject_condition_mean_r": 73.37038684492097,
+        "subject_condition_mean_t": 2.175681137931829,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R3T1",
+        "condition": "R3T1",
+        "target_r": 87.0,
+        "target_t": 0.7,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "150.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 79.75984496015585,
+        "produced_r_csv": 79.75984496015585,
+        "produced_r_fit": 79.75984496015585,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 0.7503006999977515,
+        "fitted_circle_center": [
+          27.394871278876426,
+          -64.69844818549421
+        ],
+        "fitted_circle_radius": 79.75984496015585,
+        "subject_condition_mean_r": 81.22943759565625,
+        "subject_condition_mean_t": 0.8572535689645207,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R3T2",
+        "condition": "R3T2",
+        "target_r": 87.0,
+        "target_t": 1.3,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "68.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 85.0642170416692,
+        "produced_r_csv": 85.0642170416692,
+        "produced_r_fit": 85.0642170416692,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.2007548999972641,
+        "fitted_circle_center": [
+          20.784454582038535,
+          -75.15267041405836
+        ],
+        "fitted_circle_radius": 85.0642170416692,
+        "subject_condition_mean_r": 84.69653894229073,
+        "subject_condition_mean_t": 1.2495628241346728,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R3T3",
+        "condition": "R3T3",
+        "target_r": 87.0,
+        "target_t": 1.9,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "214.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 84.43607266750979,
+        "produced_r_csv": 84.43607266750979,
+        "produced_r_fit": 84.43607266750979,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.4508790000109002,
+        "fitted_circle_center": [
+          20.02655790355268,
+          -64.62824694425842
+        ],
+        "fitted_circle_radius": 84.43607266750979,
+        "subject_condition_mean_r": 85.363909503656,
+        "subject_condition_mean_t": 1.4244503896539942,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R3T4",
+        "condition": "R3T4",
+        "target_r": 87.0,
+        "target_t": 2.5,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "326.0",
+        "selection_rank_zero_based": 13,
+        "produced_r": 83.56701957091668,
+        "produced_r_csv": 83.56701957091668,
+        "produced_r_fit": 83.56701957091668,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 2.084957300001406,
+        "fitted_circle_center": [
+          27.716180012857393,
+          -84.34488124797704
+        ],
+        "fitted_circle_radius": 83.56701957091668,
+        "subject_condition_mean_r": 88.31467970717172,
+        "subject_condition_mean_t": 1.7852444433323398,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R3T5",
+        "condition": "R3T5",
+        "target_r": 87.0,
+        "target_t": 3.1,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "471.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 88.65887284193478,
+        "produced_r_csv": 88.65887284193478,
+        "produced_r_fit": 88.65887284193478,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.9007123999981559,
+        "fitted_circle_center": [
+          20.730462883220184,
+          -85.18703511500811
+        ],
+        "fitted_circle_radius": 88.65887284193478,
+        "subject_condition_mean_r": 87.95662343395466,
+        "subject_condition_mean_t": 1.9285868600003595,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R4T1",
+        "condition": "R4T1",
+        "target_r": 112.0,
+        "target_t": 0.7,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "388.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 94.56913423146726,
+        "produced_r_csv": 94.56913423146726,
+        "produced_r_fit": 94.56913423146726,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 0.800296099998377,
+        "fitted_circle_center": [
+          36.841387858469524,
+          -80.47169147644522
+        ],
+        "fitted_circle_radius": 94.56913423146726,
+        "subject_condition_mean_r": 95.91050189548513,
+        "subject_condition_mean_t": 0.8306242299999819,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R4T2",
+        "condition": "R4T2",
+        "target_r": 112.0,
+        "target_t": 1.3,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "164.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 102.21082046746372,
+        "produced_r_csv": 102.21082046746372,
+        "produced_r_fit": 102.21082046746372,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.067488200002117,
+        "fitted_circle_center": [
+          20.710031781072924,
+          -88.99683100920328
+        ],
+        "fitted_circle_radius": 102.21082046746372,
+        "subject_condition_mean_r": 104.54381517058516,
+        "subject_condition_mean_t": 1.1363523724138413,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R4T3",
+        "condition": "R4T3",
+        "target_r": 112.0,
+        "target_t": 1.9,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "497.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 105.5409283746683,
+        "produced_r_csv": 105.5409283746683,
+        "produced_r_fit": 105.5409283746683,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.6004678000026615,
+        "fitted_circle_center": [
+          8.495198123893795,
+          -94.81654321626739
+        ],
+        "fitted_circle_radius": 105.5409283746683,
+        "subject_condition_mean_r": 102.80129401247518,
+        "subject_condition_mean_t": 1.4521578766648113,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R4T4",
+        "condition": "R4T4",
+        "target_r": 112.0,
+        "target_t": 2.5,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "1.0",
+        "selected_trial_number": "22.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 103.93974745930272,
+        "produced_r_csv": 103.93974745930272,
+        "produced_r_fit": 103.93974745930272,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.8016147000016645,
+        "fitted_circle_center": [
+          34.00131509465586,
+          -92.56532735106089
+        ],
+        "fitted_circle_radius": 103.93974745930272,
+        "subject_condition_mean_r": 103.51186853891771,
+        "subject_condition_mean_t": 1.773717468964229,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R4T5",
+        "condition": "R4T5",
+        "target_r": 112.0,
+        "target_t": 3.1,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "247.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 106.00842223004817,
+        "produced_r_csv": 106.00842223004817,
+        "produced_r_fit": 106.00842223004817,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.9354228000011062,
+        "fitted_circle_center": [
+          33.54730062918489,
+          -85.1883746900323
+        ],
+        "fitted_circle_radius": 106.00842223004817,
+        "subject_condition_mean_r": 105.13517635847163,
+        "subject_condition_mean_t": 1.9611854172416598,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R5T1",
+        "condition": "R5T1",
+        "target_r": 136.0,
+        "target_t": 0.7,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "2.0",
+        "selected_trial_number": "49.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 125.19408468440449,
+        "produced_r_csv": 125.19408468440449,
+        "produced_r_fit": 125.19408468440449,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 0.7337323999963701,
+        "fitted_circle_center": [
+          29.109261338507665,
+          -89.25642741798232
+        ],
+        "fitted_circle_radius": 125.19408468440449,
+        "subject_condition_mean_r": 119.13824532869587,
+        "subject_condition_mean_t": 0.7559694800004461,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R5T2",
+        "condition": "R5T2",
+        "target_r": 136.0,
+        "target_t": 1.3,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "145.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 118.57379097996166,
+        "produced_r_csv": 118.57379097996166,
+        "produced_r_fit": 118.57379097996166,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.1181531000001996,
+        "fitted_circle_center": [
+          6.080347336749109,
+          -96.24633032906262
+        ],
+        "fitted_circle_radius": 118.57379097996166,
+        "subject_condition_mean_r": 123.29340766991331,
+        "subject_condition_mean_t": 1.1259613068945453,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R5T3",
+        "condition": "R5T3",
+        "target_r": 136.0,
+        "target_t": 1.9,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "210.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 111.88665427533726,
+        "produced_r_csv": 111.88665427533726,
+        "produced_r_fit": 111.88665427533726,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.3515189999998256,
+        "fitted_circle_center": [
+          17.12941245960238,
+          -84.50242194732922
+        ],
+        "fitted_circle_radius": 111.88665427533726,
+        "subject_condition_mean_r": 111.1460321952013,
+        "subject_condition_mean_t": 1.3494224000003607,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R5T4",
+        "condition": "R5T4",
+        "target_r": 136.0,
+        "target_t": 2.5,
+        "n_candidate_trials": 30,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "321.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 128.44772503417266,
+        "produced_r_csv": 128.44772503417266,
+        "produced_r_fit": 128.44772503417266,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.7848449000011897,
+        "fitted_circle_center": [
+          51.56755556750355,
+          -108.90250769074132
+        ],
+        "fitted_circle_radius": 128.44772503417266,
+        "subject_condition_mean_r": 124.52339582651842,
+        "subject_condition_mean_t": 1.7983618333295452,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      },
+      {
+        "role": "R5T5",
+        "condition": "R5T5",
+        "target_r": 136.0,
+        "target_t": 3.1,
+        "n_candidate_trials": 29,
+        "selected_subject": "sub-03_clean.allData_clean",
+        "selected_day": "3.0",
+        "selected_trial_number": "491.0",
+        "selection_rank_zero_based": 0,
+        "produced_r": 121.43515869897516,
+        "produced_r_csv": 121.43515869897516,
+        "produced_r_fit": 121.43515869897516,
+        "produced_r_source": "fit_circle_draw",
+        "produced_t": 1.9006518000023789,
+        "fitted_circle_center": [
+          20.02343720542949,
+          -97.87496715573508
+        ],
+        "fitted_circle_radius": 121.43515869897516,
+        "subject_condition_mean_r": 118.79177071354148,
+        "subject_condition_mean_t": 1.8988371896548728,
+        "selection_rule": "Locked to the current real handwritten trial, originally selected as the trace closest to the example subject's condition mean in robustly scaled produced-R/produced-T space."
+      }
+    ],
+    "behavior_example_design": {
+      "example_subject": "sub-03_clean.allData_clean",
+      "subject_selection_rule": "All displayed traces are locked real trials from the same subject. The subject was selected because its raw spatial regression-to-the-mean slope was closest to the median among subjects that overestimated the smallest target R and underestimated the largest target R.",
+      "layout": "5 x 5",
+      "columns_left_to_right": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "rows_top_to_bottom": [
+        "R5",
+        "R4",
+        "R3",
+        "R2",
+        "R1"
+      ],
+      "unique_real_trial_count": 25,
+      "displayed_cell_count": 25,
+      "spatial_axes": "All 25 displayed cells share one spatial range.",
+      "spatial_regression_to_mean": {
+        "target_R_values": [
+          39.0,
+          63.0,
+          87.0,
+          112.0,
+          136.0
+        ],
+        "mean_produced_R_by_target": [
+          51.63365604390814,
+          71.24837074787041,
+          85.51223783654586,
+          102.38053119518698,
+          119.37857034677408
+        ],
+        "slope": 0.6856034498995817,
+        "intercept": 26.108931712833606,
+        "smallest_target_bias": 12.63365604390814,
+        "largest_target_bias": -16.621429653225917,
+        "canonical_subject_count": 14,
+        "canonical_subject_median_slope": 0.6909973138354183,
+        "selection": "Closest slope to the canonical-subject median among subjects with positive smallest-target bias and negative largest-target bias."
+      },
+      "trace_color": "Jet colormap encodes absolute elapsed time in seconds; all 25 displayed cells share one fixed color range.",
+      "trace_color_range_s": [
+        0.0,
+        3.1
+      ],
+      "circle_fit": "Algebraic least-squares circle fit; produced R is the fitted-circle radius."
+    },
+    "probe_model": {
+      "model": "Perceived R_star ~ 1 + input R_star + input T_star; perceived T_star ~ 1 + input R_star + input T_star.",
+      "cross_terms": true,
+      "cross_terms_role": "Estimated as nuisance effects so the displayed direct relationships remove the other input dimension.",
+      "subject_coefficients": [
+        {
+          "subject": "sub-01_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.42006399672096983,
+          "beta_RR": 0.9188289588401941,
+          "beta_RT": -0.021544341558561362,
+          "intercept_T": -0.07530270609023287,
+          "beta_TR": -0.04650000276046726,
+          "beta_TT": 0.5945593443487038,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-02_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.40519916128970757,
+          "beta_RR": 1.2353388923573014,
+          "beta_RT": 0.046900644588522306,
+          "intercept_T": 0.03811661585221596,
+          "beta_TR": 0.02771367646991234,
+          "beta_TT": 0.6912545294766669,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-03_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.19216579753571006,
+          "beta_RR": 0.9150259263300488,
+          "beta_RT": -0.025291689942951938,
+          "intercept_T": -0.3176213923251337,
+          "beta_TR": 0.02022076965469305,
+          "beta_TT": 0.47059661878185954,
+          "condition_number": 1.41421959971212
+        },
+        {
+          "subject": "sub-04_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.20545380485107156,
+          "beta_RR": 0.9034204759224209,
+          "beta_RT": -0.04882569024765962,
+          "intercept_T": -0.3890685542453882,
+          "beta_TR": -0.02696600958040259,
+          "beta_TT": 0.6385570146550044,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-05_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.1063192940472167,
+          "beta_RR": 0.9859413567424977,
+          "beta_RT": 0.003483012543801718,
+          "intercept_T": -0.28544908563681165,
+          "beta_TR": 0.0063367533981300034,
+          "beta_TT": 0.6948512442391358,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-06_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.022111193133166826,
+          "beta_RR": 0.9650452541507774,
+          "beta_RT": -0.026658541127080115,
+          "intercept_T": -0.37824479543241546,
+          "beta_TR": -0.10692988159524013,
+          "beta_TT": 0.6271281272905607,
+          "condition_number": 1.41421959971212
+        },
+        {
+          "subject": "sub-07_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.11288452051466949,
+          "beta_RR": 0.9937215136541038,
+          "beta_RT": -0.10221874629695471,
+          "intercept_T": 0.29466719785232953,
+          "beta_TR": -0.006716133938217383,
+          "beta_TT": 0.5755429539255991,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-08_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.537764201981464,
+          "beta_RR": 0.8850632483663337,
+          "beta_RT": 0.025587865860883942,
+          "intercept_T": -0.5924182629950056,
+          "beta_TR": -0.030405631889973958,
+          "beta_TT": 0.3180483202559837,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-09_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.20341910969464566,
+          "beta_RR": 1.026806789752084,
+          "beta_RT": -0.040172396864896,
+          "intercept_T": -0.4454549083752758,
+          "beta_TR": -0.02204997034713725,
+          "beta_TT": 0.44136879560908626,
+          "condition_number": 1.41421959971212
+        },
+        {
+          "subject": "sub-10_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": -0.061683732590451984,
+          "beta_RR": 0.6750700439318539,
+          "beta_RT": 0.04670515012498656,
+          "intercept_T": -0.5040667985966945,
+          "beta_TR": -0.016353524643168048,
+          "beta_TT": 0.21735347857159096,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-11_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.2852857662078279,
+          "beta_RR": 1.1179480065272138,
+          "beta_RT": 0.007965195605437353,
+          "intercept_T": -0.09949499652482652,
+          "beta_TR": 0.007507808767406926,
+          "beta_TT": 0.9250129178269536,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-12_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": -0.04172748562940176,
+          "beta_RR": 0.9581629015956218,
+          "beta_RT": -0.018698220845394704,
+          "intercept_T": -0.24615880760450196,
+          "beta_TR": -0.030506011169147335,
+          "beta_TT": 0.5940265476588882,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-13_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.13036490024577027,
+          "beta_RR": 0.9350882776550397,
+          "beta_RT": -0.042106004435190345,
+          "intercept_T": -0.04647758414528885,
+          "beta_TR": -0.003411110945078322,
+          "beta_TT": 0.8884088969309776,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-14_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.11908416760139029,
+          "beta_RR": 0.970993700467385,
+          "beta_RT": -0.015220760753643769,
+          "intercept_T": -0.3494117242583983,
+          "beta_TR": -0.01702669471827063,
+          "beta_TT": 0.46417564918270166,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-15_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.09906884186897236,
+          "beta_RR": 1.0701288647438512,
+          "beta_RT": -0.015127858751036794,
+          "intercept_T": -0.12863973658336278,
+          "beta_TR": 0.0004939339810722541,
+          "beta_TT": 0.9097604584034132,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-16_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.05682784832521957,
+          "beta_RR": 1.055299541179759,
+          "beta_RT": 0.006819223672405452,
+          "intercept_T": -0.1950342475896707,
+          "beta_TR": 0.009593306007184072,
+          "beta_TT": 0.838342674052787,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-17_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.22672198385877365,
+          "beta_RR": 0.8506712027038709,
+          "beta_RT": -0.03528705161410462,
+          "intercept_T": -0.20986378698543706,
+          "beta_TR": -0.0517833963097883,
+          "beta_TT": 0.4342186359873744,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-18_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.05036620404913155,
+          "beta_RR": 0.9815005894445878,
+          "beta_RT": 0.0006309481489005044,
+          "intercept_T": -0.3515451447806772,
+          "beta_TR": 0.0010671533678777668,
+          "beta_TT": 0.5386690647161151,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-19_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.44185545369310875,
+          "beta_RR": 1.0903055501888792,
+          "beta_RT": -0.03608308364227315,
+          "intercept_T": -0.41939249433221,
+          "beta_TR": 0.0026202487973184733,
+          "beta_TT": 0.19140558949099948,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-20_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.2288980173470818,
+          "beta_RR": 1.021252699048914,
+          "beta_RT": -0.034759704094933445,
+          "intercept_T": -0.4556035219844898,
+          "beta_TR": -0.0270913597427243,
+          "beta_TT": 0.5326907102936286,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-21_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": -0.35371238489777834,
+          "beta_RR": 0.5478184477302962,
+          "beta_RT": 0.02100492610837436,
+          "intercept_T": -0.5157202931949312,
+          "beta_TR": 0.00783738384591499,
+          "beta_TT": 0.24438359120968486,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-22_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.06432866946024177,
+          "beta_RR": 0.9564490231926063,
+          "beta_RT": 0.00579174919167815,
+          "intercept_T": -0.2105442539391893,
+          "beta_TR": 0.022122911535827683,
+          "beta_TT": 0.8291065643504293,
+          "condition_number": 1.4142195997121203
+        },
+        {
+          "subject": "sub-23_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": 0.29655798203630634,
+          "beta_RR": 1.090851172666055,
+          "beta_RT": 0.023523166251925586,
+          "intercept_T": -0.2760959185797893,
+          "beta_TR": 0.007045605816696313,
+          "beta_TT": 0.7228005606032146,
+          "condition_number": 1.41421959971212
+        },
+        {
+          "subject": "sub-24_clean.allData_clean",
+          "n_conditions": 25,
+          "intercept_R": -0.05608352617678283,
+          "beta_RR": 0.7814930883326009,
+          "beta_RT": -0.03645374367308247,
+          "intercept_T": -0.3327888842984339,
+          "beta_TR": -0.0236342061406529,
+          "beta_TT": 0.4997762544532315,
+          "condition_number": 1.4142195997121203
+        }
+      ],
+      "component_plus_residual_panels": {
+        "C": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.9808894918041102,
+          "slope_descriptive": 0.9555093968968462,
+          "identity_line": true,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 103.0,
+            "p_raw": 0.18750131130218506,
+            "reference": 1.0,
+            "median_difference": -0.03198052269091883,
+            "direction": "negative",
+            "p_bh": 0.18750131130218506
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "E",
+          "r_squared_descriptive": 0.9621441951317257
+        },
+        "D": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.9268156557879453,
+          "slope_descriptive": 0.5784182725964415,
+          "identity_line": true,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 0.0,
+            "p_raw": 1.1920928955078125e-07,
+            "reference": 1.0,
+            "median_difference": -0.4152152492077564,
+            "direction": "negative",
+            "p_bh": 1.7881393432617188e-07
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "E",
+          "r_squared_descriptive": 0.8589872598136392
+        }
+      },
+      "direct_gain_statistics": {
+        "$\\beta_{RR}^{P}$": {
+          "n": 24,
+          "mean": 0.9555093968968457,
+          "median": 0.9680194773090811,
+          "bootstrap_95_ci_median": [
+            0.9188289588401941,
+            1.021252699048914
+          ],
+          "positive": 24,
+          "negative": 0,
+          "zero": 0
+        },
+        "$\\beta_{TT}^{P}$": {
+          "n": 24,
+          "mean": 0.5784182725964412,
+          "median": 0.5847847507922437,
+          "bootstrap_95_ci_median": [
+            0.47059661878185954,
+            0.6806787876291095
+          ],
+          "positive": 24,
+          "negative": 0,
+          "zero": 0
+        },
+        "tests": {
+          "$\\beta_{RR}^{P}$_vs_1": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 103.0,
+            "p_raw": 0.18750131130218506,
+            "reference": 1.0,
+            "median_difference": -0.03198052269091883,
+            "direction": "negative",
+            "p_bh": 0.18750131130218506
+          },
+          "$\\beta_{TT}^{P}$_vs_1": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 0.0,
+            "p_raw": 1.1920928955078125e-07,
+            "reference": 1.0,
+            "median_difference": -0.4152152492077564,
+            "direction": "negative",
+            "p_bh": 1.7881393432617188e-07
+          },
+          "$\\beta_{RR}^{P}$_vs_$\\beta_{TT}^{P}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 0.0,
+            "p_raw": 1.1920928955078125e-07,
+            "reference": null,
+            "median_difference": 0.366093482999787,
+            "direction": "positive",
+            "p_bh": 1.7881393432617188e-07
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    },
+    "motor_model": {
+      "inputs": "Probe-estimated perceived R and T condition means.",
+      "subject_direct_coefficients": [
+        {
+          "subject": "sub-01_clean.allData_clean",
+          "beta_RR": 0.697659498453083,
+          "beta_TT": 0.907615405296019
+        },
+        {
+          "subject": "sub-02_clean.allData_clean",
+          "beta_RR": 0.733074810588072,
+          "beta_TT": 0.8704428920543102
+        },
+        {
+          "subject": "sub-03_clean.allData_clean",
+          "beta_RR": 0.7401635389514758,
+          "beta_TT": 1.0785368775811006
+        },
+        {
+          "subject": "sub-04_clean.allData_clean",
+          "beta_RR": 1.134361170762908,
+          "beta_TT": 0.9655975032345065
+        },
+        {
+          "subject": "sub-05_clean.allData_clean",
+          "beta_RR": 0.6980618307818303,
+          "beta_TT": 1.0154365542806145
+        },
+        {
+          "subject": "sub-06_clean.allData_clean",
+          "beta_RR": 1.2072114988607303,
+          "beta_TT": 0.8271609151884424
+        },
+        {
+          "subject": "sub-07_clean.allData_clean",
+          "beta_RR": 0.8547567316080507,
+          "beta_TT": 0.9791446140552246
+        },
+        {
+          "subject": "sub-08_clean.allData_clean",
+          "beta_RR": 0.4591532845363924,
+          "beta_TT": 1.0670673026338207
+        },
+        {
+          "subject": "sub-09_clean.allData_clean",
+          "beta_RR": 0.7691723657222469,
+          "beta_TT": 0.9998919987626621
+        },
+        {
+          "subject": "sub-10_clean.allData_clean",
+          "beta_RR": 0.9045242682769843,
+          "beta_TT": 1.3367051751483494
+        },
+        {
+          "subject": "sub-11_clean.allData_clean",
+          "beta_RR": 0.7165037323001047,
+          "beta_TT": 0.8099736479680961
+        },
+        {
+          "subject": "sub-12_clean.allData_clean",
+          "beta_RR": 0.5735107822150111,
+          "beta_TT": 1.0765149998727332
+        },
+        {
+          "subject": "sub-13_clean.allData_clean",
+          "beta_RR": 0.9436973039274821,
+          "beta_TT": 0.9672857349732135
+        },
+        {
+          "subject": "sub-14_clean.allData_clean",
+          "beta_RR": 0.7923132477920759,
+          "beta_TT": 1.1974634435485527
+        },
+        {
+          "subject": "sub-15_clean.allData_clean",
+          "beta_RR": 0.8335327389156256,
+          "beta_TT": 0.9789891976568458
+        },
+        {
+          "subject": "sub-16_clean.allData_clean",
+          "beta_RR": 1.1787648428145503,
+          "beta_TT": 0.7462001952788794
+        },
+        {
+          "subject": "sub-17_clean.allData_clean",
+          "beta_RR": 0.7612620637453869,
+          "beta_TT": 1.1965314497898734
+        },
+        {
+          "subject": "sub-18_clean.allData_clean",
+          "beta_RR": 0.8853911512121008,
+          "beta_TT": 1.32788694681743
+        },
+        {
+          "subject": "sub-19_clean.allData_clean",
+          "beta_RR": 0.48673268454334023,
+          "beta_TT": 1.1751146598886326
+        },
+        {
+          "subject": "sub-20_clean.allData_clean",
+          "beta_RR": 0.7751562172604032,
+          "beta_TT": 0.8976405932489468
+        },
+        {
+          "subject": "sub-21_clean.allData_clean",
+          "beta_RR": 0.47831944214207545,
+          "beta_TT": 0.4842314738473453
+        },
+        {
+          "subject": "sub-22_clean.allData_clean",
+          "beta_RR": 0.8791454419375212,
+          "beta_TT": 1.0011220997171468
+        },
+        {
+          "subject": "sub-23_clean.allData_clean",
+          "beta_RR": 0.5928259469855541,
+          "beta_TT": 1.0110015579732743
+        },
+        {
+          "subject": "sub-24_clean.allData_clean",
+          "beta_RR": 0.7511595697731289,
+          "beta_TT": 1.363385421874234
+        }
+      ],
+      "component_plus_residual_panels": {
+        "F": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.9547776862455659,
+          "slope_descriptive": 0.771913633783424,
+          "identity_line": true,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 22.0,
+            "p_raw": 6.389617919921875e-05,
+            "reference": 1.0,
+            "median_difference": -0.23478278526618312,
+            "direction": "negative",
+            "p_bh": 0.00019168853759765625
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "H",
+          "r_squared_descriptive": 0.9116004301524363
+        },
+        "G": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.9506238248981825,
+          "slope_descriptive": 0.9767192951787818,
+          "identity_line": true,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 142.0,
+            "p_raw": 0.8333734273910522,
+            "reference": 1.0,
+            "median_difference": 0.0005070492399044668,
+            "direction": "positive",
+            "p_bh": 0.8333734273910522
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "H",
+          "r_squared_descriptive": 0.9036856564640504
+        }
+      },
+      "direct_gain_statistics": {
+        "$\\beta_{RR}^{M}$": {
+          "n": 24,
+          "mean": 0.7852689235044222,
+          "median": 0.7652172147338169,
+          "bootstrap_95_ci_median": [
+            0.7165037323001047,
+            0.8547567316080507
+          ],
+          "positive": 24,
+          "negative": 0,
+          "zero": 0
+        },
+        "$\\beta_{TT}^{M}$": {
+          "n": 24,
+          "mean": 1.011705860862094,
+          "median": 1.0005070492399044,
+          "bootstrap_95_ci_median": [
+            0.9655975032345065,
+            1.0765149998727332
+          ],
+          "positive": 24,
+          "negative": 0,
+          "zero": 0
+        },
+        "tests": {
+          "$\\beta_{RR}^{M}$_vs_1": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 22.0,
+            "p_raw": 6.389617919921875e-05,
+            "reference": 1.0,
+            "median_difference": -0.23478278526618312,
+            "direction": "negative",
+            "p_bh": 0.00019168853759765625
+          },
+          "$\\beta_{TT}^{M}$_vs_1": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 142.0,
+            "p_raw": 0.8333734273910522,
+            "reference": 1.0,
+            "median_difference": 0.0005070492399044668,
+            "direction": "positive",
+            "p_bh": 0.8333734273910522
+          },
+          "$\\beta_{RR}^{M}$_vs_$\\beta_{TT}^{M}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 41.0,
+            "p_raw": 0.001092672348022461,
+            "reference": null,
+            "median_difference": -0.22033776994167564,
+            "direction": "negative",
+            "p_bh": 0.0016390085220336914
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    },
+    "double_dissociation": {
+      "formula": "Delta_P = beta_RR_P - beta_TT_P; Delta_M = beta_RR_M - beta_TT_M.",
+      "statistics": {
+        "$\\Delta_{P}$": {
+          "n": 24,
+          "mean": 0.3770911243004044,
+          "median": 0.366093482999787,
+          "bootstrap_95_ci_median": [
+            0.2910901125033619,
+            0.4444293075481892
+          ],
+          "positive": 24,
+          "negative": 0,
+          "zero": 0
+        },
+        "$\\Delta_{M}$": {
+          "n": 24,
+          "mean": -0.22643693735767167,
+          "median": -0.22033776994167564,
+          "bootstrap_95_ci_median": [
+            -0.41817561098772016,
+            -0.12248437598854367
+          ],
+          "positive": 3,
+          "negative": 21,
+          "zero": 0
+        },
+        "tests": {
+          "$\\Delta_{P}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 0.0,
+            "p_raw": 1.1920928955078125e-07,
+            "reference": 0.0,
+            "median_difference": 0.366093482999787,
+            "direction": "positive",
+            "p_bh": 3.5762786865234375e-07
+          },
+          "$\\Delta_{M}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 41.0,
+            "p_raw": 0.001092672348022461,
+            "reference": 0.0,
+            "median_difference": -0.22033776994167564,
+            "direction": "negative",
+            "p_bh": 0.001092672348022461
+          },
+          "$\\Delta_{P}$_vs_$\\Delta_{M}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 5.0,
+            "p_raw": 1.1920928955078125e-06,
+            "reference": null,
+            "median_difference": 0.6462494045453508,
+            "direction": "positive",
+            "p_bh": 1.7881393432617188e-06
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    }
+  },
+  "cross_dimensional_control": {
+    "normalization": {
+      "formula": "X_star = (X - center) / half_range; the designed stimulus range maps to [-1, 1].",
+      "constants": {
+        "R": {
+          "min": 39.0,
+          "max": 136.0,
+          "center": 87.5,
+          "half_range": 48.5
+        },
+        "T": {
+          "min": 0.7,
+          "max": 3.1,
+          "center": 1.9,
+          "half_range": 1.2000000000000002
+        }
+      },
+      "clipping": false
+    },
+    "n_subjects": 24,
+    "inference": "Two-sided exact Wilcoxon signed-rank tests on subject-level coefficients. Multiple comparisons are controlled with Benjamini-Hochberg FDR within each coefficient-comparison panel (3 tests per panel), not pooled across panels; both raw p (p_raw) and BH-adjusted p (p_bh) are reported.",
+    "display_policy": {
+      "relationship_panels": "Pooled Pearson r and fitted lines are descriptive only; no inferential p values are displayed.",
+      "coefficient_panels": "Subject-specific coefficient distributions carry the group inference and display BH-FDR-adjusted significance symbols (* p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001; n.s. otherwise)."
+    },
+    "description": "Cross-dimensional interactions at perceptual and motor stages, with a subject-level comparison of interaction direction.",
+    "model": {
+      "perception_stage": "Perceived R_star and T_star are each modeled from both normalized input dimensions.",
+      "motor_stage": "Produced R_star and T_star are each modeled from both subject- and condition-matched perceived dimensions.",
+      "emphasis": "Cross-dimensional paths are colored; direct paths are shown in gray."
+    },
+    "perception_model": {
+      "subject_coefficients": [
+        {
+          "subject": "sub-01_clean.allData_clean",
+          "beta_RT": -0.021544341558561362,
+          "beta_TR": -0.04650000276046726
+        },
+        {
+          "subject": "sub-02_clean.allData_clean",
+          "beta_RT": 0.046900644588522306,
+          "beta_TR": 0.02771367646991234
+        },
+        {
+          "subject": "sub-03_clean.allData_clean",
+          "beta_RT": -0.025291689942951938,
+          "beta_TR": 0.02022076965469305
+        },
+        {
+          "subject": "sub-04_clean.allData_clean",
+          "beta_RT": -0.04882569024765962,
+          "beta_TR": -0.02696600958040259
+        },
+        {
+          "subject": "sub-05_clean.allData_clean",
+          "beta_RT": 0.003483012543801718,
+          "beta_TR": 0.0063367533981300034
+        },
+        {
+          "subject": "sub-06_clean.allData_clean",
+          "beta_RT": -0.026658541127080115,
+          "beta_TR": -0.10692988159524013
+        },
+        {
+          "subject": "sub-07_clean.allData_clean",
+          "beta_RT": -0.10221874629695471,
+          "beta_TR": -0.006716133938217383
+        },
+        {
+          "subject": "sub-08_clean.allData_clean",
+          "beta_RT": 0.025587865860883942,
+          "beta_TR": -0.030405631889973958
+        },
+        {
+          "subject": "sub-09_clean.allData_clean",
+          "beta_RT": -0.040172396864896,
+          "beta_TR": -0.02204997034713725
+        },
+        {
+          "subject": "sub-10_clean.allData_clean",
+          "beta_RT": 0.04670515012498656,
+          "beta_TR": -0.016353524643168048
+        },
+        {
+          "subject": "sub-11_clean.allData_clean",
+          "beta_RT": 0.007965195605437353,
+          "beta_TR": 0.007507808767406926
+        },
+        {
+          "subject": "sub-12_clean.allData_clean",
+          "beta_RT": -0.018698220845394704,
+          "beta_TR": -0.030506011169147335
+        },
+        {
+          "subject": "sub-13_clean.allData_clean",
+          "beta_RT": -0.042106004435190345,
+          "beta_TR": -0.003411110945078322
+        },
+        {
+          "subject": "sub-14_clean.allData_clean",
+          "beta_RT": -0.015220760753643769,
+          "beta_TR": -0.01702669471827063
+        },
+        {
+          "subject": "sub-15_clean.allData_clean",
+          "beta_RT": -0.015127858751036794,
+          "beta_TR": 0.0004939339810722541
+        },
+        {
+          "subject": "sub-16_clean.allData_clean",
+          "beta_RT": 0.006819223672405452,
+          "beta_TR": 0.009593306007184072
+        },
+        {
+          "subject": "sub-17_clean.allData_clean",
+          "beta_RT": -0.03528705161410462,
+          "beta_TR": -0.0517833963097883
+        },
+        {
+          "subject": "sub-18_clean.allData_clean",
+          "beta_RT": 0.0006309481489005044,
+          "beta_TR": 0.0010671533678777668
+        },
+        {
+          "subject": "sub-19_clean.allData_clean",
+          "beta_RT": -0.03608308364227315,
+          "beta_TR": 0.0026202487973184733
+        },
+        {
+          "subject": "sub-20_clean.allData_clean",
+          "beta_RT": -0.034759704094933445,
+          "beta_TR": -0.0270913597427243
+        },
+        {
+          "subject": "sub-21_clean.allData_clean",
+          "beta_RT": 0.02100492610837436,
+          "beta_TR": 0.00783738384591499
+        },
+        {
+          "subject": "sub-22_clean.allData_clean",
+          "beta_RT": 0.00579174919167815,
+          "beta_TR": 0.022122911535827683
+        },
+        {
+          "subject": "sub-23_clean.allData_clean",
+          "beta_RT": 0.023523166251925586,
+          "beta_TR": 0.007045605816696313
+        },
+        {
+          "subject": "sub-24_clean.allData_clean",
+          "beta_RT": -0.03645374367308247,
+          "beta_TR": -0.0236342061406529
+        }
+      ],
+      "component_plus_residual_panels": {
+        "B": {
+          "n_condition_means": 600,
+          "r_descriptive": -0.0977016145351103,
+          "slope_descriptive": -0.012918164656285293,
+          "identity_line": false,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 91.0,
+            "p_raw": 0.09509599208831787,
+            "reference": 0.0,
+            "median_difference": -0.016959490799519236,
+            "direction": "negative",
+            "p_bh": 0.15164458751678467
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "M",
+          "r_squared_descriptive": 0.009545605482767276
+        },
+        "C": {
+          "n_condition_means": 600,
+          "r_descriptive": -0.11125538601465386,
+          "slope_descriptive": -0.012367265922426544,
+          "identity_line": false,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 92.0,
+            "p_raw": 0.10109639167785645,
+            "reference": 0.0,
+            "median_difference": -0.005063622441647852,
+            "direction": "negative",
+            "p_bh": 0.15164458751678467
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "M",
+          "r_squared_descriptive": 0.012377760917269637
+        }
+      },
+      "interaction_gain_statistics": {
+        "$\\beta_{RT}^{P}$": {
+          "n": 24,
+          "mean": -0.012918164656285295,
+          "median": -0.016959490799519236,
+          "bootstrap_95_ci_median": [
+            -0.034759704094933445,
+            0.00579174919167815
+          ],
+          "positive": 10,
+          "negative": 14,
+          "zero": 0
+        },
+        "$\\beta_{TR}^{P}$": {
+          "n": 24,
+          "mean": -0.012367265922426438,
+          "median": -0.005063622441647852,
+          "bootstrap_95_ci_median": [
+            -0.0236342061406529,
+            0.0063367533981300034
+          ],
+          "positive": 11,
+          "negative": 13,
+          "zero": 0
+        },
+        "tests": {
+          "$\\beta_{RT}^{P}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 91.0,
+            "p_raw": 0.09509599208831787,
+            "reference": 0.0,
+            "median_difference": -0.016959490799519236,
+            "direction": "negative",
+            "p_bh": 0.15164458751678467
+          },
+          "$\\beta_{TR}^{P}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 92.0,
+            "p_raw": 0.10109639167785645,
+            "reference": 0.0,
+            "median_difference": -0.005063622441647852,
+            "direction": "negative",
+            "p_bh": 0.15164458751678467
+          },
+          "$\\beta_{RT}^{P}$_vs_$\\beta_{TR}^{P}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 144.0,
+            "p_raw": 0.8774070739746094,
+            "reference": null,
+            "median_difference": -0.0016051437768779414,
+            "direction": "negative",
+            "p_bh": 0.8774070739746094
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    },
+    "motor_model": {
+      "inputs": "Subject- and condition-matched probe perception means.",
+      "subject_coefficients": [
+        {
+          "subject": "sub-01_clean.allData_clean",
+          "beta_RT": 0.16061066202545898,
+          "beta_TR": -0.06931345170856783
+        },
+        {
+          "subject": "sub-02_clean.allData_clean",
+          "beta_RT": 0.1042924364285131,
+          "beta_TR": 0.12024668240929309
+        },
+        {
+          "subject": "sub-03_clean.allData_clean",
+          "beta_RT": 0.12970769766358922,
+          "beta_TR": -0.05995270038795897
+        },
+        {
+          "subject": "sub-04_clean.allData_clean",
+          "beta_RT": 0.06455403409154152,
+          "beta_TR": -0.06338669937525267
+        },
+        {
+          "subject": "sub-05_clean.allData_clean",
+          "beta_RT": 0.12400250852146621,
+          "beta_TR": 0.026689985699329597
+        },
+        {
+          "subject": "sub-06_clean.allData_clean",
+          "beta_RT": 0.20675698461784783,
+          "beta_TR": 0.0073886897651742
+        },
+        {
+          "subject": "sub-07_clean.allData_clean",
+          "beta_RT": 0.19047265479618397,
+          "beta_TR": 0.010052318154436683
+        },
+        {
+          "subject": "sub-08_clean.allData_clean",
+          "beta_RT": 0.07060673228127128,
+          "beta_TR": 0.03330927296057923
+        },
+        {
+          "subject": "sub-09_clean.allData_clean",
+          "beta_RT": 0.08945557721743898,
+          "beta_TR": 0.1030510493646207
+        },
+        {
+          "subject": "sub-10_clean.allData_clean",
+          "beta_RT": 0.0691705081195066,
+          "beta_TR": 0.014639559358473546
+        },
+        {
+          "subject": "sub-11_clean.allData_clean",
+          "beta_RT": -0.042446385696877253,
+          "beta_TR": 0.015196280302386038
+        },
+        {
+          "subject": "sub-12_clean.allData_clean",
+          "beta_RT": 0.054651226104498477,
+          "beta_TR": -0.10157472740886568
+        },
+        {
+          "subject": "sub-13_clean.allData_clean",
+          "beta_RT": 0.23441839019035252,
+          "beta_TR": -0.002279477331924204
+        },
+        {
+          "subject": "sub-14_clean.allData_clean",
+          "beta_RT": 0.3946323165544456,
+          "beta_TR": 0.623720043998683
+        },
+        {
+          "subject": "sub-15_clean.allData_clean",
+          "beta_RT": 0.020721007509788582,
+          "beta_TR": -0.03133871681551119
+        },
+        {
+          "subject": "sub-16_clean.allData_clean",
+          "beta_RT": -0.0739981568828172,
+          "beta_TR": 0.1165300699016893
+        },
+        {
+          "subject": "sub-17_clean.allData_clean",
+          "beta_RT": 0.37422459645875683,
+          "beta_TR": 0.12409884113312579
+        },
+        {
+          "subject": "sub-18_clean.allData_clean",
+          "beta_RT": -0.08613580411817072,
+          "beta_TR": 0.015426356152245172
+        },
+        {
+          "subject": "sub-19_clean.allData_clean",
+          "beta_RT": 0.524824026871344,
+          "beta_TR": 0.07199541619375484
+        },
+        {
+          "subject": "sub-20_clean.allData_clean",
+          "beta_RT": 0.17943569632680562,
+          "beta_TR": 0.06484038641504707
+        },
+        {
+          "subject": "sub-21_clean.allData_clean",
+          "beta_RT": 0.5436841318113582,
+          "beta_TR": 0.05205688289812357
+        },
+        {
+          "subject": "sub-22_clean.allData_clean",
+          "beta_RT": 0.04420352608912257,
+          "beta_TR": -0.05487139073743499
+        },
+        {
+          "subject": "sub-23_clean.allData_clean",
+          "beta_RT": 0.08675505098711934,
+          "beta_TR": -0.0027813374464907693
+        },
+        {
+          "subject": "sub-24_clean.allData_clean",
+          "beta_RT": 0.32248824063311077,
+          "beta_TR": 0.0048863104634900255
+        }
+      ],
+      "component_plus_residual_panels": {
+        "E": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.4132567846496883,
+          "slope_descriptive": 0.1214401326764594,
+          "identity_line": false,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 19.0,
+            "p_raw": 3.6597251892089844e-05,
+            "reference": 0.0,
+            "median_difference": 0.11414747247498966,
+            "direction": "positive",
+            "p_bh": 0.00010979175567626953
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "P",
+          "r_squared_descriptive": 0.17078117005899884
+        },
+        "F": {
+          "n_condition_means": 600,
+          "r_descriptive": 0.21334828846448642,
+          "slope_descriptive": 0.04558468127190842,
+          "identity_line": false,
+          "display_role": "Pooled condition-level descriptive visualization only.",
+          "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+          "subject_level_test": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 91.0,
+            "p_raw": 0.09509599208831787,
+            "reference": 0.0,
+            "median_difference": 0.014917919830429793,
+            "direction": "positive",
+            "p_bh": 0.09509599208831787
+          },
+          "subject_level_inference_displayed": false,
+          "corresponding_inference_panel": "P",
+          "r_squared_descriptive": 0.045517492190725706
+        }
+      },
+      "interaction_gain_statistics": {
+        "$\\beta_{RT}^{M}$": {
+          "n": 24,
+          "mean": 0.1577953191084023,
+          "median": 0.11414747247498966,
+          "bootstrap_95_ci_median": [
+            0.0691705081195066,
+            0.19047265479618397
+          ],
+          "positive": 21,
+          "negative": 3,
+          "zero": 0
+        },
+        "$\\beta_{TR}^{M}$": {
+          "n": 24,
+          "mean": 0.0424429018316019,
+          "median": 0.014917919830429793,
+          "bootstrap_95_ci_median": [
+            -0.002279477331924204,
+            0.05205688289812357
+          ],
+          "positive": 16,
+          "negative": 8,
+          "zero": 0
+        },
+        "tests": {
+          "$\\beta_{RT}^{M}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 19.0,
+            "p_raw": 3.6597251892089844e-05,
+            "reference": 0.0,
+            "median_difference": 0.11414747247498966,
+            "direction": "positive",
+            "p_bh": 0.00010979175567626953
+          },
+          "$\\beta_{TR}^{M}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 91.0,
+            "p_raw": 0.09509599208831787,
+            "reference": 0.0,
+            "median_difference": 0.014917919830429793,
+            "direction": "positive",
+            "p_bh": 0.09509599208831787
+          },
+          "$\\beta_{RT}^{M}$_vs_$\\beta_{TR}^{M}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 53.0,
+            "p_raw": 0.00433504581451416,
+            "reference": null,
+            "median_difference": 0.10683511336915805,
+            "direction": "positive",
+            "p_bh": 0.00650256872177124
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    },
+    "interaction_direction_comparison": {
+      "formula": "Delta_I_P = beta_RT_P - beta_TR_P; Delta_I_M = beta_RT_M - beta_TR_M.",
+      "statistics": {
+        "$\\Delta_{I}^{P}$": {
+          "n": 24,
+          "mean": -0.0005508987338588581,
+          "median": -0.0016051437768779414,
+          "bootstrap_95_ci_median": [
+            -0.01562179273210905,
+            0.013167542262459371
+          ],
+          "positive": 11,
+          "negative": 13,
+          "zero": 0
+        },
+        "$\\Delta_{I}^{M}$": {
+          "n": 24,
+          "mean": 0.1153524172768004,
+          "median": 0.10683511336915805,
+          "bootstrap_95_ci_median": [
+            0.04591420404086255,
+            0.1896603980515482
+          ],
+          "positive": 18,
+          "negative": 6,
+          "zero": 0
+        },
+        "tests": {
+          "$\\Delta_{I}^{P}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 144.0,
+            "p_raw": 0.8774070739746094,
+            "reference": 0.0,
+            "median_difference": -0.0016051437768779414,
+            "direction": "negative",
+            "p_bh": 0.8774070739746094
+          },
+          "$\\Delta_{I}^{M}$_vs_0": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 53.0,
+            "p_raw": 0.00433504581451416,
+            "reference": 0.0,
+            "median_difference": 0.10683511336915805,
+            "direction": "positive",
+            "p_bh": 0.007995665073394775
+          },
+          "$\\Delta_{I}^{P}$_vs_$\\Delta_{I}^{M}$": {
+            "test": "two-sided exact Wilcoxon signed-rank",
+            "n": 24,
+            "statistic": 55.0,
+            "p_raw": 0.005330443382263184,
+            "reference": null,
+            "median_difference": -0.11725151677761035,
+            "direction": "negative",
+            "p_bh": 0.007995665073394775
+          },
+          "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+        }
+      }
+    }
+  }
+}

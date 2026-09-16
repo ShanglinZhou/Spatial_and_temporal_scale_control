@@ -1,0 +1,1029 @@
+{
+  "normalization": {
+    "formula": "X_star = (X - center) / half_range; the designed stimulus range maps to [-1, 1].",
+    "constants": {
+      "R": {
+        "min": 39.0,
+        "max": 136.0,
+        "center": 87.5,
+        "half_range": 48.5
+      },
+      "T": {
+        "min": 0.7,
+        "max": 3.1,
+        "center": 1.9,
+        "half_range": 1.2000000000000002
+      }
+    },
+    "clipping": false
+  },
+  "n_subjects": 24,
+  "inference": "Two-sided exact Wilcoxon signed-rank tests on subject-level coefficients. Multiple comparisons are controlled with Benjamini-Hochberg FDR within each coefficient-comparison panel (3 tests per panel), not pooled across panels; both raw p (p_raw) and BH-adjusted p (p_bh) are reported.",
+  "display_policy": {
+    "relationship_panels": "Pooled Pearson r and fitted lines are descriptive only; no inferential p values are displayed.",
+    "coefficient_panels": "Subject-specific coefficient distributions carry the group inference and display BH-FDR-adjusted significance symbols (* p < 0.05, ** p < 0.01, *** p < 0.001, **** p < 0.0001; n.s. otherwise)."
+  },
+  "description": "Unified 3 x 3 behavior-variability figure. A-C are former SuppFig1 C-E, D-F are former SuppFig1 H-J, and G-I are former SuppFig2 A-C.",
+  "sd_definition": "Within-subject, within-task, within-condition sample SD with ddof=1, divided by the corresponding fixed stimulus half-range.",
+  "panels": {
+    "A": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.41600363781863325,
+      "slope_descriptive": 0.09577527114232068,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 0.0,
+        "p_raw": 1.1920928955078125e-07,
+        "reference": 0.0,
+        "median_difference": 0.09031139594478449,
+        "direction": "positive",
+        "p_bh": 1.7881393432617188e-07
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "C"
+    },
+    "B": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.5708177354146285,
+      "slope_descriptive": 0.11975026638981075,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 0.0,
+        "p_raw": 1.1920928955078125e-07,
+        "reference": 0.0,
+        "median_difference": 0.10287555975237189,
+        "direction": "positive",
+        "p_bh": 1.7881393432617188e-07
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "C"
+    },
+    "C": {
+      "$\\beta_{RR}^{P,\\sigma}$": {
+        "n": 24,
+        "mean": 0.09577527114232053,
+        "median": 0.09031139594478449,
+        "bootstrap_95_ci_median": [
+          0.06598425331294981,
+          0.1207669492195866
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "$\\beta_{TT}^{P,\\sigma}$": {
+        "n": 24,
+        "mean": 0.11975026638981072,
+        "median": 0.10287555975237189,
+        "bootstrap_95_ci_median": [
+          0.0889697222511561,
+          0.14025744481293054
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RR}^{P,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.09031139594478449,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "$\\beta_{TT}^{P,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.10287555975237189,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "$\\beta_{RR}^{P,\\sigma}$_vs_$\\beta_{TT}^{P,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 115.0,
+          "p_raw": 0.3305051326751709,
+          "reference": null,
+          "median_difference": -0.011667494956732926,
+          "direction": "negative",
+          "p_bh": 0.3305051326751709
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    },
+    "D": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.7109865709486688,
+      "slope_descriptive": 0.1049179878917265,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 1.0,
+        "p_raw": 2.384185791015625e-07,
+        "reference": 0.0,
+        "median_difference": 0.10468819395691718,
+        "direction": "positive",
+        "p_bh": 3.5762786865234375e-07
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "F"
+    },
+    "E": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.6416468075545287,
+      "slope_descriptive": 0.20930142763411191,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 0.0,
+        "p_raw": 1.1920928955078125e-07,
+        "reference": 0.0,
+        "median_difference": 0.21552194123584095,
+        "direction": "positive",
+        "p_bh": 3.5762786865234375e-07
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "F"
+    },
+    "F": {
+      "$\\beta_{RR}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.10583256543684316,
+        "median": 0.10468819395691718,
+        "bootstrap_95_ci_median": [
+          0.07552423599383587,
+          0.1311331903533823
+        ],
+        "positive": 23,
+        "negative": 1,
+        "zero": 0
+      },
+      "$\\beta_{TT}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.23594553500116167,
+        "median": 0.21552194123584095,
+        "bootstrap_95_ci_median": [
+          0.12435124251599083,
+          0.3214109635791011
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RR}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 1.0,
+          "p_raw": 2.384185791015625e-07,
+          "reference": 0.0,
+          "median_difference": 0.10468819395691718,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "$\\beta_{TT}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.21552194123584095,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "$\\beta_{RR}^{M,\\sigma}$_vs_$\\beta_{TT}^{M,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 42.0,
+          "p_raw": 0.0012379884719848633,
+          "reference": null,
+          "median_difference": -0.126462089558078,
+          "direction": "negative",
+          "p_bh": 0.0012379884719848633
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    },
+    "G": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.12367863308132886,
+      "slope_descriptive": 0.016079825830702787,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 104.0,
+        "p_raw": 0.19737839698791504,
+        "reference": 0.0,
+        "median_difference": 0.011397016006599587,
+        "direction": "positive",
+        "p_bh": 0.37837404012680054
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "I",
+      "r_squared_descriptive": 0.015296404280865972
+    },
+    "H": {
+      "n_condition_means": 600,
+      "r_descriptive": 0.020423488033093316,
+      "slope_descriptive": 0.002786451629774395,
+      "identity_line": false,
+      "display_role": "Pooled condition-level descriptive visualization only.",
+      "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+      "subject_level_test": {
+        "test": "two-sided exact Wilcoxon signed-rank",
+        "n": 24,
+        "statistic": 133.0,
+        "p_raw": 0.6431422233581543,
+        "reference": 0.0,
+        "median_difference": -0.006571787960712255,
+        "direction": "negative",
+        "p_bh": 0.6431422233581543
+      },
+      "subject_level_inference_displayed": false,
+      "corresponding_inference_panel": "I",
+      "r_squared_descriptive": 0.0004171188634379059
+    },
+    "I": {
+      "$\\beta_{RT}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.016064426848447364,
+        "median": 0.011397016006599587,
+        "bootstrap_95_ci_median": [
+          -0.007196430908920701,
+          0.026211197958544496
+        ],
+        "positive": 16,
+        "negative": 8,
+        "zero": 0
+      },
+      "$\\beta_{TR}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.0003565281077720396,
+        "median": -0.006571787960712255,
+        "bootstrap_95_ci_median": [
+          -0.02400489611926158,
+          0.019016620788184058
+        ],
+        "positive": 11,
+        "negative": 13,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RT}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 104.0,
+          "p_raw": 0.19737839698791504,
+          "reference": 0.0,
+          "median_difference": 0.011397016006599587,
+          "direction": "positive",
+          "p_bh": 0.37837404012680054
+        },
+        "$\\beta_{TR}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 133.0,
+          "p_raw": 0.6431422233581543,
+          "reference": 0.0,
+          "median_difference": -0.006571787960712255,
+          "direction": "negative",
+          "p_bh": 0.6431422233581543
+        },
+        "$\\beta_{RT}^{M,\\sigma}$_vs_$\\beta_{TR}^{M,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 109.0,
+          "p_raw": 0.2522493600845337,
+          "reference": null,
+          "median_difference": 0.013539715700963037,
+          "direction": "positive",
+          "p_bh": 0.37837404012680054
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    }
+  },
+  "probe_variability_model": {
+    "subject_coefficients": [
+      {
+        "subject": "sub-01_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.05864496573307213,
+        "beta_RT_sd": 0.006514459333728562,
+        "beta_TR_sd": -0.012527298793784957,
+        "beta_TT_sd": 0.18420083440914065
+      },
+      {
+        "subject": "sub-02_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1910819995511312,
+        "beta_RT_sd": 0.011784487357498286,
+        "beta_TR_sd": 0.016175737816583855,
+        "beta_TT_sd": 0.09936322819427476
+      },
+      {
+        "subject": "sub-03_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.10613613371913415,
+        "beta_RT_sd": -0.013240231800954879,
+        "beta_TR_sd": -0.006432020800252996,
+        "beta_TT_sd": 0.06324696918307947
+      },
+      {
+        "subject": "sub-04_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.0552662186334619,
+        "beta_RT_sd": -0.0020409241851228016,
+        "beta_TR_sd": 0.02323281871112628,
+        "beta_TT_sd": 0.17436071250739665
+      },
+      {
+        "subject": "sub-05_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.12112811451602783,
+        "beta_RT_sd": 0.03829466113704574,
+        "beta_TR_sd": -0.011366403254546721,
+        "beta_TT_sd": 0.1246488194849094
+      },
+      {
+        "subject": "sub-06_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1207669492195866,
+        "beta_RT_sd": -0.01881284552460749,
+        "beta_TR_sd": -0.04997083932640893,
+        "beta_TT_sd": 0.3230166165069798
+      },
+      {
+        "subject": "sub-07_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.20717216697321209,
+        "beta_RT_sd": -0.0024418805424899484,
+        "beta_TR_sd": 0.011063184560977912,
+        "beta_TT_sd": 0.018999472237905234
+      },
+      {
+        "subject": "sub-08_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.16430114105171537,
+        "beta_RT_sd": -0.01253461468394187,
+        "beta_TR_sd": -0.01605147676908507,
+        "beta_TT_sd": 0.14025744481293054
+      },
+      {
+        "subject": "sub-09_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.07045856807809342,
+        "beta_RT_sd": 0.030734448494439095,
+        "beta_TR_sd": -0.0009776095512916525,
+        "beta_TT_sd": 0.14319090198285966
+      },
+      {
+        "subject": "sub-10_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.012730812902770405,
+        "beta_RT_sd": 0.06239617930970421,
+        "beta_TR_sd": 0.010803730643733772,
+        "beta_TT_sd": 0.06280335034274002
+      },
+      {
+        "subject": "sub-11_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.08475894475166676,
+        "beta_RT_sd": -0.005527026685298504,
+        "beta_TR_sd": 0.09972158588479996,
+        "beta_TT_sd": 0.04405928540773169
+      },
+      {
+        "subject": "sub-12_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.051894573963802045,
+        "beta_RT_sd": -0.0036388976787365373,
+        "beta_TR_sd": -0.00764670570828271,
+        "beta_TT_sd": 0.3058116366246166
+      },
+      {
+        "subject": "sub-13_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.040677505131989256,
+        "beta_RT_sd": -0.015048054040266844,
+        "beta_TR_sd": 0.018538090245610286,
+        "beta_TT_sd": 0.08205708479139658
+      },
+      {
+        "subject": "sub-14_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.0786815361704003,
+        "beta_RT_sd": 0.019432207728081383,
+        "beta_TR_sd": 0.004048680877102591,
+        "beta_TT_sd": 0.09424133392416285
+      },
+      {
+        "subject": "sub-15_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.05015472778079479,
+        "beta_RT_sd": -0.0007047070700513639,
+        "beta_TR_sd": -0.0005481909058978251,
+        "beta_TT_sd": 0.06340255909050611
+      },
+      {
+        "subject": "sub-16_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1166245882964492,
+        "beta_RT_sd": 0.019842121839924624,
+        "beta_TR_sd": 0.03720097749713114,
+        "beta_TT_sd": 0.09889850948280549
+      },
+      {
+        "subject": "sub-17_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.10611488353830645,
+        "beta_RT_sd": -0.03885602735981689,
+        "beta_TR_sd": -0.022076831809578354,
+        "beta_TT_sd": 0.09588235971091565
+      },
+      {
+        "subject": "sub-18_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.07428310070974281,
+        "beta_RT_sd": 0.007332878510788494,
+        "beta_TR_sd": -0.011310819445078713,
+        "beta_TT_sd": 0.14462454985702147
+      },
+      {
+        "subject": "sub-19_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1322086433092711,
+        "beta_RT_sd": -0.0374872608383655,
+        "beta_TR_sd": -0.008973632340269145,
+        "beta_TT_sd": 0.03800426845300975
+      },
+      {
+        "subject": "sub-20_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.0958638471379022,
+        "beta_RT_sd": -0.007681200828347631,
+        "beta_TR_sd": -0.004118805744365076,
+        "beta_TT_sd": 0.10595100574165674
+      },
+      {
+        "subject": "sub-21_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1272383508688765,
+        "beta_RT_sd": -0.009519029305415445,
+        "beta_TR_sd": -0.008372452606117933,
+        "beta_TT_sd": 0.09980011376308705
+      },
+      {
+        "subject": "sub-22_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.004686887459963657,
+        "beta_RT_sd": 0.006644481841811547,
+        "beta_TR_sd": -0.014916335289894707,
+        "beta_TT_sd": 0.1453216350503099
+      },
+      {
+        "subject": "sub-23_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.07332354089282749,
+        "beta_RT_sd": 0.017676213260621042,
+        "beta_TR_sd": -0.002555689740641954,
+        "beta_TT_sd": 0.11543090757263717
+      },
+      {
+        "subject": "sub-24_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1544083070254952,
+        "beta_RT_sd": -0.0005320089948177496,
+        "beta_TR_sd": 0.012668261937091866,
+        "beta_TT_sd": 0.10643279422338418
+      }
+    ],
+    "component_panels": {
+      "A": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.41600363781863325,
+        "slope_descriptive": 0.09577527114232068,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.09031139594478449,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "C"
+      },
+      "B": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.5708177354146285,
+        "slope_descriptive": 0.11975026638981075,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.10287555975237189,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "C"
+      }
+    },
+    "direct_variability_statistics": {
+      "$\\beta_{RR}^{P,\\sigma}$": {
+        "n": 24,
+        "mean": 0.09577527114232053,
+        "median": 0.09031139594478449,
+        "bootstrap_95_ci_median": [
+          0.06598425331294981,
+          0.1207669492195866
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "$\\beta_{TT}^{P,\\sigma}$": {
+        "n": 24,
+        "mean": 0.11975026638981072,
+        "median": 0.10287555975237189,
+        "bootstrap_95_ci_median": [
+          0.0889697222511561,
+          0.14025744481293054
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RR}^{P,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.09031139594478449,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "$\\beta_{TT}^{P,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.10287555975237189,
+          "direction": "positive",
+          "p_bh": 1.7881393432617188e-07
+        },
+        "$\\beta_{RR}^{P,\\sigma}$_vs_$\\beta_{TT}^{P,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 115.0,
+          "p_raw": 0.3305051326751709,
+          "reference": null,
+          "median_difference": -0.011667494956732926,
+          "direction": "negative",
+          "p_bh": 0.3305051326751709
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    }
+  },
+  "motor_variability_model": {
+    "R_output_sd": "intercept_R + beta_RR_sd * R_perceived + beta_RT_sd * T_perceived",
+    "T_output_sd": "intercept_T + beta_TR_sd * R_perceived + beta_TT_sd * T_perceived",
+    "inputs": "Subject- and condition-matched probe perception means.",
+    "subject_coefficients": [
+      {
+        "subject": "sub-01_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.03123297938352385,
+        "beta_RT_sd": 0.002545075893104999,
+        "beta_TR_sd": -0.009992597788991938,
+        "beta_TT_sd": 0.30487377967105406
+      },
+      {
+        "subject": "sub-02_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.18099859694555942,
+        "beta_RT_sd": -0.03859285334642858,
+        "beta_TR_sd": -0.02400489611926158,
+        "beta_TT_sd": 0.05861824087186389
+      },
+      {
+        "subject": "sub-03_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.10138988083624977,
+        "beta_RT_sd": -0.025944077183421184,
+        "beta_TR_sd": 0.0038028060872697562,
+        "beta_TT_sd": 0.22486625488599757
+      },
+      {
+        "subject": "sub-04_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1311331903533823,
+        "beta_RT_sd": 0.01458718864086395,
+        "beta_TR_sd": -0.028170767972125695,
+        "beta_TT_sd": 0.15934344605200546
+      },
+      {
+        "subject": "sub-05_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.08637304225615504,
+        "beta_RT_sd": 0.03245594239373871,
+        "beta_TR_sd": -0.03660432434327381,
+        "beta_TT_sd": 0.21582084732256324
+      },
+      {
+        "subject": "sub-06_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.233996060883532,
+        "beta_RT_sd": 0.06860354799944736,
+        "beta_TR_sd": -0.024756441822345772,
+        "beta_TT_sd": 0.3728549309567402
+      },
+      {
+        "subject": "sub-07_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.22681731132609464,
+        "beta_RT_sd": 0.10192601210169075,
+        "beta_TR_sd": 0.02265954252544896,
+        "beta_TT_sd": 0.08761002159408682
+      },
+      {
+        "subject": "sub-08_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.019187983303404973,
+        "beta_RT_sd": 0.05678265625459334,
+        "beta_TR_sd": -0.048506760990295425,
+        "beta_TT_sd": 0.5681559522710092
+      },
+      {
+        "subject": "sub-09_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.07551964295348997,
+        "beta_RT_sd": -0.052183233533269514,
+        "beta_TR_sd": 0.03849575152529391,
+        "beta_TT_sd": 0.34781524056918467
+      },
+      {
+        "subject": "sub-10_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.029804589594386904,
+        "beta_RT_sd": -0.01836343326209968,
+        "beta_TR_sd": -0.06075414607254651,
+        "beta_TT_sd": 0.33284084483744186
+      },
+      {
+        "subject": "sub-11_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.08291380855101065,
+        "beta_RT_sd": 0.013756977337779409,
+        "beta_TR_sd": 0.03248580818871442,
+        "beta_TT_sd": 0.046996656288621166
+      },
+      {
+        "subject": "sub-12_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.18370160030729785,
+        "beta_RT_sd": 0.031058470330485876,
+        "beta_TR_sd": -0.10822558305747386,
+        "beta_TT_sd": 0.5514727575274881
+      },
+      {
+        "subject": "sub-13_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.15423751427043017,
+        "beta_RT_sd": 0.009037054675419764,
+        "beta_TR_sd": 0.019016620788184058,
+        "beta_TT_sd": 0.05131277381925765
+      },
+      {
+        "subject": "sub-14_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.1079865070775846,
+        "beta_RT_sd": 0.06306243531904705,
+        "beta_TR_sd": 0.2524695831369941,
+        "beta_TT_sd": 0.15282749371546542
+      },
+      {
+        "subject": "sub-15_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.10947763245574749,
+        "beta_RT_sd": -0.007196430908920701,
+        "beta_TR_sd": 0.0040813296969185175,
+        "beta_TT_sd": 0.09696692566981872
+      },
+      {
+        "subject": "sub-16_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.10121081777667319,
+        "beta_RT_sd": 0.023221594785309517,
+        "beta_TR_sd": 0.025021730896971704,
+        "beta_TT_sd": 0.07619158026229048
+      },
+      {
+        "subject": "sub-17_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.051591165206049484,
+        "beta_RT_sd": 0.1513924435895654,
+        "beta_TR_sd": 0.04458240731802746,
+        "beta_TT_sd": 0.273377138469285
+      },
+      {
+        "subject": "sub-18_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.14514262888782334,
+        "beta_RT_sd": -0.03954003424799553,
+        "beta_TR_sd": -0.021985091934835197,
+        "beta_TT_sd": 0.4776568614961015
+      },
+      {
+        "subject": "sub-19_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": -0.004871910666460202,
+        "beta_RT_sd": -0.038167220936309705,
+        "beta_TR_sd": 0.04261733523859257,
+        "beta_TT_sd": 0.10290815923218839
+      },
+      {
+        "subject": "sub-20_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.13489708357226274,
+        "beta_RT_sd": 0.026211197958544496,
+        "beta_TR_sd": 0.01069942259284191,
+        "beta_TT_sd": 0.3214109635791011
+      },
+      {
+        "subject": "sub-21_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.11338408625829106,
+        "beta_RT_sd": 0.005627841141266302,
+        "beta_TR_sd": -0.008913916578562834,
+        "beta_TT_sd": 0.12435124251599083
+      },
+      {
+        "subject": "sub-22_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.07552423599383587,
+        "beta_RT_sd": -0.015344862389340151,
+        "beta_TR_sd": -0.004229659342861677,
+        "beta_TT_sd": 0.15335072316211434
+      },
+      {
+        "subject": "sub-23_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.04392247114965799,
+        "beta_RT_sd": 0.004773240334214206,
+        "beta_TR_sd": -0.011873479945696713,
+        "beta_TT_sd": 0.21522303514911867
+      },
+      {
+        "subject": "sub-24_clean.allData_clean",
+        "n_conditions": 25,
+        "beta_RR_sd": 0.12441065180825309,
+        "beta_RT_sd": 0.015836711415450618,
+        "beta_TR_sd": -0.09935799744045738,
+        "beta_TT_sd": 0.3458469701090919
+      }
+    ],
+    "direct_component_panels": {
+      "D": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.7109865709486688,
+        "slope_descriptive": 0.1049179878917265,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 1.0,
+          "p_raw": 2.384185791015625e-07,
+          "reference": 0.0,
+          "median_difference": 0.10468819395691718,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "F"
+      },
+      "E": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.6416468075545287,
+        "slope_descriptive": 0.20930142763411191,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.21552194123584095,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "F"
+      }
+    },
+    "direct_variability_statistics": {
+      "$\\beta_{RR}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.10583256543684316,
+        "median": 0.10468819395691718,
+        "bootstrap_95_ci_median": [
+          0.07552423599383587,
+          0.1311331903533823
+        ],
+        "positive": 23,
+        "negative": 1,
+        "zero": 0
+      },
+      "$\\beta_{TT}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.23594553500116167,
+        "median": 0.21552194123584095,
+        "bootstrap_95_ci_median": [
+          0.12435124251599083,
+          0.3214109635791011
+        ],
+        "positive": 24,
+        "negative": 0,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RR}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 1.0,
+          "p_raw": 2.384185791015625e-07,
+          "reference": 0.0,
+          "median_difference": 0.10468819395691718,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "$\\beta_{TT}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 0.0,
+          "p_raw": 1.1920928955078125e-07,
+          "reference": 0.0,
+          "median_difference": 0.21552194123584095,
+          "direction": "positive",
+          "p_bh": 3.5762786865234375e-07
+        },
+        "$\\beta_{RR}^{M,\\sigma}$_vs_$\\beta_{TT}^{M,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 42.0,
+          "p_raw": 0.0012379884719848633,
+          "reference": null,
+          "median_difference": -0.126462089558078,
+          "direction": "negative",
+          "p_bh": 0.0012379884719848633
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    },
+    "cross_component_panels": {
+      "G": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.12367863308132886,
+        "slope_descriptive": 0.016079825830702787,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 104.0,
+          "p_raw": 0.19737839698791504,
+          "reference": 0.0,
+          "median_difference": 0.011397016006599587,
+          "direction": "positive",
+          "p_bh": 0.37837404012680054
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "I",
+        "r_squared_descriptive": 0.015296404280865972
+      },
+      "H": {
+        "n_condition_means": 600,
+        "r_descriptive": 0.020423488033093316,
+        "slope_descriptive": 0.002786451629774395,
+        "identity_line": false,
+        "display_role": "Pooled condition-level descriptive visualization only.",
+        "inference": "No inferential p value is displayed in this relationship panel; group inference uses subject-specific coefficients in the corresponding coefficient panel.",
+        "subject_level_test": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 133.0,
+          "p_raw": 0.6431422233581543,
+          "reference": 0.0,
+          "median_difference": -0.006571787960712255,
+          "direction": "negative",
+          "p_bh": 0.6431422233581543
+        },
+        "subject_level_inference_displayed": false,
+        "corresponding_inference_panel": "I",
+        "r_squared_descriptive": 0.0004171188634379059
+      }
+    },
+    "interaction_variability_statistics": {
+      "$\\beta_{RT}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.016064426848447364,
+        "median": 0.011397016006599587,
+        "bootstrap_95_ci_median": [
+          -0.007196430908920701,
+          0.026211197958544496
+        ],
+        "positive": 16,
+        "negative": 8,
+        "zero": 0
+      },
+      "$\\beta_{TR}^{M,\\sigma}$": {
+        "n": 24,
+        "mean": 0.0003565281077720396,
+        "median": -0.006571787960712255,
+        "bootstrap_95_ci_median": [
+          -0.02400489611926158,
+          0.019016620788184058
+        ],
+        "positive": 11,
+        "negative": 13,
+        "zero": 0
+      },
+      "tests": {
+        "$\\beta_{RT}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 104.0,
+          "p_raw": 0.19737839698791504,
+          "reference": 0.0,
+          "median_difference": 0.011397016006599587,
+          "direction": "positive",
+          "p_bh": 0.37837404012680054
+        },
+        "$\\beta_{TR}^{M,\\sigma}$_vs_0": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 133.0,
+          "p_raw": 0.6431422233581543,
+          "reference": 0.0,
+          "median_difference": -0.006571787960712255,
+          "direction": "negative",
+          "p_bh": 0.6431422233581543
+        },
+        "$\\beta_{RT}^{M,\\sigma}$_vs_$\\beta_{TR}^{M,\\sigma}$": {
+          "test": "two-sided exact Wilcoxon signed-rank",
+          "n": 24,
+          "statistic": 109.0,
+          "p_raw": 0.2522493600845337,
+          "reference": null,
+          "median_difference": 0.013539715700963037,
+          "direction": "positive",
+          "p_bh": 0.37837404012680054
+        },
+        "multiple_comparison": "Benjamini-Hochberg FDR across the 3 tests in this panel; raw p (p_raw) and adjusted p (p_bh) are stored, while the figure displays significance symbols derived from p_bh."
+      }
+    }
+  }
+}

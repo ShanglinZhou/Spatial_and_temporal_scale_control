@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "errors": [],
+  "python_files": 25,
+  "json_files": 21,
+  "reference_stats_json": 10,
+  "participant_files": 24,
+  "total_files": 87,
+  "total_bytes": 16077330,
+  "runtime_seconds": 0.22522544860839844
+}

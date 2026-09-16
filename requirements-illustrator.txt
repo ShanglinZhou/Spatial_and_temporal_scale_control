@@ -1,0 +1,2 @@
+# Optional: Illustrator-specific SVG formula-text optimization.
+lxml==4.4.1

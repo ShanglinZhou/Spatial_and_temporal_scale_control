@@ -1,0 +1,4449 @@
+{
+  "description": "Constrained three-dimensional rotated Hopf model. A planar supercritical Hopf normal form supplies a stable limit cycle whose condition-dependent amplitude and angular frequency are evaluated analytically at steady state; the cycle is embedded and rotated in three-dimensional latent space before a fixed full linear readout. One model is fitted independently to each RNN repetition's behavior and mechanism matrices, with radius- and duration-dependent readout-plane angle slopes constrained only by their expected signs and a one-degree minimum magnitude. A same-side constraint keeps every fitted condition plane at least five degrees beyond the closest readout orientation, preventing unsigned-angle foldbacks. A shared-axis constraint keeps the common condition-plane rotation axis within one degree of the readout row-space so readout-plane angles remain visually interpretable, and output circularity is regularized. Exact RNN angle-slope values and human motor-stage behavior are reported only as external references. Panels A-C use the repetition whose radius/duration angle-slope pair is closest to the across-repetition mean pair, panel D summarizes the constrained readout-plane angle trends across all repetitions, panels E-F compare RNN and rotated-Hopf mechanism coefficients across repetitions, and panel G compares coefficient patterns across human motor-stage, RNN, and rotated-Hopf results without claiming numerical equality.",
+  "fit_cache": {
+    "path": "code/results/hopf_model_3d/Fig8_Hopf_model_3D_per_rep_fits_v1.json",
+    "signature": "cd73342365f835bb5903a6ef3b93f6489ef163d7ee728c96ebb46faae643cc9f",
+    "cache_version": "fig8_hopf_per_rep_fit_v1",
+    "valid": true,
+    "complete": true,
+    "completed_reps": 20,
+    "total_reps": 20,
+    "reason": "complete",
+    "signature_match": "exact",
+    "cached_signature": "cd73342365f835bb5903a6ef3b93f6489ef163d7ee728c96ebb46faae643cc9f",
+    "loaded_from_cache": true,
+    "cache_written": false
+  },
+  "claim_scope": {
+    "supported": "The fitted construction provides a low-dimensional sufficiency example that reproduces the dominant directional and geometric patterns under explicit matrix and geometry constraints.",
+    "not_supported": "The fits are not independent predictions of the RNN mechanism, do not reproduce every weak matrix entry or the RNN angle magnitudes, and do not test transient convergence or stability outside the embedded Hopf plane.",
+    "minimality": "Three dimensions provide the plane-rotation construction used here; parameter minimality is not claimed because no exhaustive lower-parameter comparison is performed."
+  },
+  "behavior_comparison_scope": {
+    "human": "Subject-level perceived-input to produced-output motor-stage coefficients from Figures 1 and 2.",
+    "rnn": "Target-input to RNN-output coefficients.",
+    "hopf": "Abstract control-input to reduced rotated-Hopf-output coefficients.",
+    "claim": "Qualitative directional comparison only; the three input semantics are not treated as numerically interchangeable."
+  },
+  "rnn_source": {
+    "figure4_stats_file": "code/figures/manuscript/Fig4_pca_rnn_mechanism_stats.json",
+    "figure6_stats_file": "code/figures/manuscript/Fig6_main_PCA_radial_axis_alignment_stats.json",
+    "figure6_angle_target_panel": "D",
+    "figure6_angle_slope_definition": {
+      "input": "Each radius or duration sweep is fixed-range normalized to [-1, 1].",
+      "angle": "Condition-PCA-to-readout-plane angle in raw degrees; no y normalization.",
+      "unit": "degrees per normalized input unit"
+    },
+    "recurrent_timing_method": "scale_invariant_continuous_template_progress",
+    "recurrent_time_metric": "scale_invariant_continuous_template_progress_duration_scaled_as_2pi_over_progress_speed"
+  },
+  "matrix_normalization": {
+    "version": "positive_target_range_v2",
+    "target_level_range": [
+      -1.0,
+      1.0
+    ],
+    "positive_target_mapping": {
+      "radius": "R_target = target_center + target_half_range * R_level",
+      "duration": "T_target = target_center + target_half_range * T_level",
+      "target_center": 1.0,
+      "target_half_range": 0.5,
+      "target_range": [
+        0.5,
+        1.5
+      ]
+    },
+    "input_to_recurrent": {
+      "input_radius": "positive_target_radius_range",
+      "input_duration": "positive_target_duration_range",
+      "recurrent_excursion": "self_range",
+      "progress_duration": "self_range"
+    },
+    "recurrent_to_output": {
+      "recurrent_excursion": "self_range",
+      "progress_duration": "self_range",
+      "output_radius": "positive_target_radius_range",
+      "output_duration": "positive_target_duration_range"
+    },
+    "behavior": {
+      "input_radius": "positive_target_radius_range",
+      "input_duration": "positive_target_duration_range",
+      "output_radius": "positive_target_radius_range",
+      "output_duration": "positive_target_duration_range"
+    }
+  },
+  "model_equations": {
+    "positive_target_radius": "R_target = target_center + target_half_range * R_level",
+    "positive_target_duration": "T_target = target_center + target_half_range * T_level",
+    "alpha": "alpha0 + amp_R * R + amp_T * T",
+    "rho": "sqrt(alpha)",
+    "progress_speed": "omega0 + omega_R * R + omega_T * T",
+    "progress_duration": "D_p = 2pi / progress_speed",
+    "latent_base": "u(t) = [rho cos(phi), rho sin(phi), 0]",
+    "plane_angle": "theta = theta0 + theta_R * R + theta_T * T",
+    "embedding": "x(t) = Q_y(theta) u(t)",
+    "recurrent_metrics": "For mechanism matrices, all condition trajectories x(t) are projected into one common rotated-Hopf PCA plane. E_rec = max_t ||PC12(t) - PC12(onset)||. D_p = 2pi / shared-template progress speed.",
+    "fixed_readout": "y(t) = W_out x(t), with fixed full 2x3 readout matrix",
+    "readout_matrix": "W_out = [[wXX, wXY, wXZ], [wYX, wYY, wYZ]]",
+    "plane_readout_angle": "Acute principal angle between the condition-specific orbit plane and the row-space plane of W_out.",
+    "output_metrics": "Output radius is obtained by least-squares circle fitting of the generated readout trace; output duration is 2pi / progress_speed; circularity is the standard deviation of distances from the fitted center divided by the fitted radius."
+  },
+  "representative_fit": {
+    "rep": 10,
+    "success": true,
+    "cost": 0.01886524076765916,
+    "message": "`xtol` termination condition is satisfied.",
+    "selection_rule": "Choose the repetition whose radius/duration angle-slope pair has the smallest Euclidean distance to the across-repetition mean slope pair."
+  },
+  "visualization_fit": {
+    "rep": 10,
+    "panels": [
+      "A",
+      "B",
+      "C"
+    ],
+    "selection_rule": "Smallest Euclidean distance from the across-repetition mean radius/duration angle-slope pair.",
+    "population_mean_radius_angle_slope": -14.751397572654108,
+    "population_mean_duration_angle_slope": 10.234094185363862,
+    "distance_to_population_mean_slope_pair": 1.4248879510298862,
+    "radius_angle_slope": -15.85351261789982,
+    "duration_angle_slope": 11.137226567705005,
+    "cost": 0.01886524076765916,
+    "parameters": {
+      "alpha0": 2.449638972684491,
+      "amp_R": 0.27087307766297175,
+      "amp_T": 0.4440826172519124,
+      "omega0": 6.035936609294013,
+      "omega_R": -0.05389639467927826,
+      "omega_T": -2.0719587366599588,
+      "plane_angle0": 0.4924176921850523,
+      "plane_angle_R": -0.27670298677058286,
+      "plane_angle_T": 0.19438562840107218,
+      "readout_xx": 2.23592670028625,
+      "readout_xy": -0.3782348926691835,
+      "readout_xz": 0.14635811444923025,
+      "readout_yx": 0.37040187382237955,
+      "readout_yy": 1.8754513013952414,
+      "readout_yz": 0.03079676996224488
+    },
+    "readout_matrix": [
+      [
+        2.23592670028625,
+        -0.3782348926691835,
+        0.14635811444923025
+      ],
+      [
+        0.37040187382237955,
+        1.8754513013952414,
+        0.03079676996224488
+      ]
+    ]
+  },
+  "rep_fit_summary": {
+    "n_reps": 20,
+    "success_count": 20,
+    "cost_values": [
+      0.051621700194856734,
+      0.041063279115557016,
+      0.07483128864383563,
+      0.04342768416286315,
+      0.046333960814728486,
+      0.053764375653530073,
+      0.04559727649079966,
+      0.052691090212409725,
+      0.02819888652046954,
+      0.04588245466471554,
+      0.01886524076765916,
+      0.037724986712618924,
+      0.07405756867601564,
+      0.03546630730797856,
+      0.08875857063292754,
+      0.10537010537000165,
+      0.04928561518311744,
+      0.1618887706325013,
+      0.02443898579999088,
+      0.09240987813536305
+    ],
+    "nfev_values": [
+      57.0,
+      38.0,
+      17.0,
+      39.0,
+      69.0,
+      58.0,
+      21.0,
+      103.0,
+      41.0,
+      71.0,
+      125.0,
+      27.0,
+      49.0,
+      36.0,
+      16.0,
+      55.0,
+      185.0,
+      63.0,
+      46.0,
+      24.0
+    ],
+    "selected_candidates": [
+      "default",
+      "fallback-angle-b",
+      "fallback-angle-b",
+      "warm-start",
+      "warm-start",
+      "fallback-angle-a",
+      "warm-start",
+      "default",
+      "seed-5-start",
+      "seed-5-start",
+      "seed-5-start",
+      "seed-5-start",
+      "fallback-angle-b",
+      "seed-5-start",
+      "warm-start",
+      "fallback-angle-b",
+      "seed-5-start",
+      "warm-start",
+      "warm-start",
+      "warm-start"
+    ],
+    "rep_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "initialization": "Each repetition first uses its own seed-controlled random point within the parameter bounds. Difficult fits then try the previous repetition's solution as a warm-start followed by fixed fallback initializations.",
+    "random_seed": 5,
+    "random_seed_scope": "Python random and NumPy global RNG are reset immediately before loading targets and fitting; a dedicated NumPy RandomState generates one bounded candidate initialization per repetition.",
+    "optimizer": "SciPy least_squares with an independent seed-controlled primary initialization per repetition, sequential warm-start fallback, and fixed deterministic fallbacks.",
+    "plane_angle_sign_mode": "free_theta_R_theta_T",
+    "acceptable_cost_for_fallback": 0.06,
+    "primary_max_nfev": 800,
+    "fallback_max_nfev": 1600,
+    "fit_tolerance": 1e-05,
+    "recurrent_feature_mode": "main_pca_scale_invariant_continuous_template_progress",
+    "parameter_count": 15,
+    "parameter_names": [
+      "alpha0",
+      "amp_R",
+      "amp_T",
+      "omega0",
+      "omega_R",
+      "omega_T",
+      "plane_angle0",
+      "plane_angle_R",
+      "plane_angle_T",
+      "readout_xx",
+      "readout_xy",
+      "readout_xz",
+      "readout_yx",
+      "readout_yy",
+      "readout_yz"
+    ]
+  },
+  "loss_config": {
+    "matrix_normalization_version": "positive_target_range_v2",
+    "fit_targets": [
+      "rnn_rep_behavior_matrix",
+      "rnn_rep_input_to_recurrent_matrix",
+      "rnn_rep_recurrent_to_output_matrix",
+      "radius_angle_slope_sign_and_minimum_magnitude",
+      "duration_angle_slope_sign_and_minimum_magnitude",
+      "condition_planes_same_side_of_readout_orientation",
+      "shared_condition_axis_in_readout_plane",
+      "output_circularity_regularizer"
+    ],
+    "human_behavior_in_fit": false,
+    "matrix_loss_weight": 1.0,
+    "angle_slope_constraint_weight": 25.0,
+    "angle_slope_definition": {
+      "input": "Radius or duration input is fixed-range normalized to [-1, 1].",
+      "angle": "Readout-plane angle remains in raw degrees; no y normalization.",
+      "unit": "degrees per normalized input unit",
+      "constraint": "radius slope <= -1; duration slope >= 1",
+      "penalty": "Squared hinge through least-squares residuals; zero penalty once sign and minimum magnitude are satisfied.",
+      "minimum_magnitude_deg": 1.0,
+      "residual_scale_deg": 5.0
+    },
+    "same_side_plane_constraint": {
+      "definition": "All 25 fitted condition-plane angles must remain on the positive signed side of the closest readout orientation.",
+      "constraint": "minimum signed condition-readout offset >= 5 deg",
+      "minimum_offset_deg": 5.0,
+      "weight": 25.0,
+      "penalty": "One squared-hinge least-squares residual based on the minimum signed offset across conditions."
+    },
+    "readout_shared_axis_constraint": {
+      "definition": "The native y axis shared by all condition planes must lie in the fixed readout row-space within tolerance.",
+      "constraint": "shared-axis-to-readout-plane error <= 1 deg",
+      "maximum_error_deg": 1.0,
+      "weight": 25.0,
+      "penalty": "One squared-hinge least-squares residual on the shared-axis-to-readout-plane error."
+    },
+    "circularity_loss_weight": 2.0,
+    "reported_but_not_fitted": [
+      "human_motor_stage_reference_matrix",
+      "rnn_composed_matrix",
+      "model_composed_matrix",
+      "exact_rnn_angle_radius_slope",
+      "exact_rnn_angle_duration_slope"
+    ],
+    "parameter_direction_constraints": {
+      "amp_R": "bounded >= 0",
+      "amp_T": "bounded >= 0",
+      "omega_R": "bounded <= 0",
+      "omega_T": "bounded <= 0",
+      "plane_angle_R": "free parameter sign; measured radius angle slope constrained to <= -1 deg per normalized input",
+      "plane_angle_T": "free parameter sign; measured duration angle slope constrained to >= 1 deg per normalized input"
+    }
+  },
+  "parameters": {
+    "alpha0": 2.449638972684491,
+    "amp_R": 0.27087307766297175,
+    "amp_T": 0.4440826172519124,
+    "omega0": 6.035936609294013,
+    "omega_R": -0.05389639467927826,
+    "omega_T": -2.0719587366599588,
+    "plane_angle0": 0.4924176921850523,
+    "plane_angle_R": -0.27670298677058286,
+    "plane_angle_T": 0.19438562840107218,
+    "readout_xx": 2.23592670028625,
+    "readout_xy": -0.3782348926691835,
+    "readout_xz": 0.14635811444923025,
+    "readout_yx": 0.37040187382237955,
+    "readout_yy": 1.8754513013952414,
+    "readout_yz": 0.03079676996224488
+  },
+  "readout_matrix": [
+    [
+      2.23592670028625,
+      -0.3782348926691835,
+      0.14635811444923025
+    ],
+    [
+      0.37040187382237955,
+      1.8754513013952414,
+      0.03079676996224488
+    ]
+  ],
+  "recurrent_dynamics": {
+    "feature_mode": "main_pca_scale_invariant_continuous_template_progress",
+    "state_space": "three_dimensional_hopf_latent_state",
+    "pca_metric": "common PCA fit to all 25 rotated Hopf latent trajectories",
+    "excursion_metric": "max_t ||PC12(t) - PC12(onset)|| in the common rotated-Hopf PCA plane",
+    "duration_metric": "shared-template progress duration, D_p = 2pi / progress_speed_estimate",
+    "recurrent_excursion": [
+      2.625673618066763,
+      2.753739799168346,
+      2.8415085320547737,
+      2.8871617267494942,
+      2.8892865315900185,
+      2.7304286164319724,
+      2.890652823467712,
+      3.0142965741314045,
+      3.098711163957736,
+      3.141687181228814,
+      2.7778638773715456,
+      2.97032966827995,
+      3.1302577082064467,
+      3.254280916200895,
+      3.339476005126733,
+      2.7639189758562965,
+      2.988037855722242,
+      3.18397634311276,
+      3.3477579901187684,
+      3.475830883469216,
+      2.6860183051759403,
+      2.9404869917130156,
+      3.1714279966928585,
+      3.3743621415141476,
+      3.5451965666924172
+    ],
+    "progress_duration": [
+      0.7605409682719071,
+      0.8733606941622774,
+      1.0251961208602918,
+      1.2308318293777198,
+      1.5443949358873557,
+      0.763070436602448,
+      0.8744298328972412,
+      1.0251243574212507,
+      1.2417934751405613,
+      1.5613598008826728,
+      0.7690410923902257,
+      0.8793199386835773,
+      1.0284168002552476,
+      1.242592197707959,
+      1.572991801208681,
+      0.770780985445355,
+      0.8860762132800188,
+      1.0343190010409653,
+      1.248229906646134,
+      1.5766857570890564,
+      0.7702937302138206,
+      0.8858470421064512,
+      1.0436695422253162,
+      1.2582547270156714,
+      1.5875313668659727
+    ],
+    "native_recurrent_excursion": [
+      1.317073755630112,
+      1.398829720300353,
+      1.4760643261801025,
+      1.5494538404378093,
+      1.619521074970447,
+      1.3675232417041743,
+      1.446430477149541,
+      1.52125028639373,
+      1.5925588662523473,
+      1.660808553417557,
+      1.416176668157112,
+      1.4925138739919757,
+      1.5651322540553854,
+      1.634527540701119,
+      1.7010942331147925,
+      1.4632132087512282,
+      1.5372163812846977,
+      1.6078170018742735,
+      1.675445260264248,
+      1.7404476805603466,
+      1.5087840909472603,
+      1.5806551621784894,
+      1.649397481005553,
+      1.715387232951621,
+      1.7789307652630486
+    ],
+    "native_progress_duration": [
+      0.7698291633562426,
+      0.8817500347891811,
+      1.0317500172960643,
+      1.2432463937748743,
+      1.5638083446998998,
+      0.7723793670696301,
+      0.8850972708196345,
+      1.0363359205348739,
+      1.2499111798092317,
+      1.574367752500362,
+      0.7749465229981096,
+      0.8884700167620767,
+      1.0409627724560369,
+      1.2566478080456815,
+      1.5850707317405948,
+      0.7775308007375082,
+      0.8918685653557354,
+      1.0456311239808218,
+      1.263457446399558,
+      1.5959202305757887,
+      0.7801323721534825,
+      0.8952932138361467,
+      1.0503415359577697,
+      1.27034128823935,
+      1.6069192784356239
+    ],
+    "pca_mean": [
+      -1.4951003398285442e-16,
+      0.0,
+      7.475501699142721e-17
+    ],
+    "pca_basis": [
+      [
+        0.0,
+        -0.8802051343498425
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.474593427540011
+      ]
+    ],
+    "explained_variance_ratio": [
+      0.5000000000000002,
+      0.4726263916634439,
+      0.02737360833655591
+    ],
+    "cumulative_explained_variance": [
+      0.5000000000000002,
+      0.9726263916634441,
+      1.0
+    ],
+    "shared_template": {
+      "condition_index": 12,
+      "target_radius": 1.0,
+      "target_duration": 1.0,
+      "source": "condition_mean_average",
+      "template": [
+        [
+          0.0,
+          -1.5164473758420058
+        ],
+        [
+          0.09696783135150143,
+          -1.5133628871175242
+        ],
+        [
+          0.19354228583294236,
+          -1.5044466170506907
+        ],
+        [
+          0.28935343176162936,
+          -1.4897339687705058
+        ],
+        [
+          0.38403432570999074,
+          -1.4692824005736513
+        ],
+        [
+          0.47722239824822027,
+          -1.443171203617457
+        ],
+        [
+          0.5685608229519115,
+          -1.4115011978631906
+        ],
+        [
+          0.6576998635984538,
+          -1.3743943474197635
+        ],
+        [
+          0.7442981945574588,
+          -1.3319932967334436
+        ],
+        [
+          0.8280241894800432,
+          -1.2844608293593518
+        ],
+        [
+          0.9085571735090704,
+          -1.2319792513343488
+        ],
+        [
+          0.985588634367017,
+          -1.1747497014473474
+        ],
+        [
+          1.0588233878294993,
+          -1.1129913909712037
+        ],
+        [
+          1.1279806932601266,
+          -1.0469407756790954
+        ],
+        [
+          1.1927953150656416,
+          -0.9768506632168663
+        ],
+        [
+          1.2530185261286222,
+          -0.9029892591402047
+        ],
+        [
+          1.3084190494876118,
+          -0.8256391551510067
+        ],
+        [
+          1.3587839347607178,
+          -0.7450962632799327
+        ],
+        [
+          1.4039193660476024,
+          -0.6616686999613076
+        ],
+        [
+          1.443651398295579,
+          -0.5756756241313914
+        ],
+        [
+          1.4778266193773286,
+          -0.487446033651037
+        ],
+        [
+          1.505989974018046,
+          -0.39723349035802086
+        ],
+        [
+          1.5283436237909875,
+          -0.3055083323625419
+        ],
+        [
+          1.5448031595389042,
+          -0.21262231745116414
+        ],
+        [
+          1.5553066261161712,
+          -0.11893154328847466
+        ],
+        [
+          1.5598147511758227,
+          -0.024795100923226877
+        ],
+        [
+          1.5583110889096172,
+          0.06942628258503401
+        ],
+        [
+          1.5508020782302248,
+          0.16337160737850195
+        ],
+        [
+          1.5373170151988156,
+          0.2566809647924159
+        ],
+        [
+          1.517907939816115,
+          0.34899689706309595
+        ],
+        [
+          1.4926494376092854,
+          0.43996574770734354
+        ],
+        [
+          1.4616383567596578,
+          0.5292389975627831
+        ],
+        [
+          1.4249934418262518,
+          0.6164745815318315
+        ],
+        [
+          1.3828548854261031,
+          0.7013381811430318
+        ],
+        [
+          1.3353837995335434,
+          0.7835044881322539
+        ],
+        [
+          1.2827616083557,
+          0.8626584343524063
+        ],
+        [
+          1.225189365029529,
+          0.9384963834434638
+        ],
+        [
+          1.1628869946656524,
+          1.0107272798343347
+        ],
+        [
+          1.096092466535132,
+          1.0790737508038895
+        ],
+        [
+          1.025060898456086,
+          1.1432731574998076
+        ],
+        [
+          0.9500635966868548,
+          1.2030785910001327
+        ],
+        [
+          0.8712013926490648,
+          1.2579898456351424
+        ],
+        [
+          0.7889976286288009,
+          1.3080417470501384
+        ],
+        [
+          0.703767971440011,
+          1.3530435607044629
+        ],
+        [
+          0.6158395348525021,
+          1.392823817208997
+        ],
+        [
+          0.5255496409316607,
+          1.4272309556516571
+        ],
+        [
+          0.43324454343827845,
+          1.4561338921674294
+        ],
+        [
+          0.3392781180362568,
+          1.4794225116626911
+        ],
+        [
+          0.2440105241764611,
+          1.4970080808861905
+        ],
+        [
+          0.14780684362778845,
+          1.5088235813281998
+        ],
+        [
+          0.05103570071131703,
+          1.5148239607238574
+        ],
+        [
+          -0.04593213064018492,
+          1.5149863022356718
+        ],
+        [
+          -0.1427251278272153,
+          1.5093099106923673
+        ],
+        [
+          -0.23897242333366375,
+          1.4978163155657114
+        ],
+        [
+          -0.33430520607250813,
+          1.4805491906725845
+        ],
+        [
+          -0.4283581151260622,
+          1.457574190895205
+        ],
+        [
+          -0.5207706207071887,
+          1.4289787065170418
+        ],
+        [
+          -0.6111883872140627,
+          1.394871536074468
+        ],
+        [
+          -0.6992646133158488,
+          1.3553824789234659
+        ],
+        [
+          -0.784661344089773,
+          1.310661849015782
+        ],
+        [
+          -0.8670507503312856,
+          1.260879911668564
+        ],
+        [
+          -0.9459129543690757,
+          1.2059686570335548
+        ],
+        [
+          -1.0211136720471792,
+          1.1464208118945616
+        ],
+        [
+          -1.0923655586645686,
+          1.0824655148206213
+        ],
+        [
+          -1.159396364525099,
+          1.0143486294188115
+        ],
+        [
+          -1.2219499600331394,
+          0.9423318114208047
+        ],
+        [
+          -1.279787300132992,
+          0.8666915168311868
+        ],
+        [
+          -1.3326873245289503,
+          0.7877179548341295
+        ],
+        [
+          -1.3804477903595642,
+          0.705713989356722
+        ],
+        [
+          -1.4228860342483867,
+          0.6209939933747792
+        ],
+        [
+          -1.4598396609132502,
+          0.5338826602196438
+        ],
+        [
+          -1.4911671557860893,
+          0.44471377630171394
+        ],
+        [
+          -1.5167484193744616,
+          0.35382895980760376
+        ],
+        [
+          -1.5364852213832498,
+          0.26157637005255635
+        ],
+        [
+          -1.550301572909564,
+          0.1683093922773951
+        ],
+        [
+          -1.5581440153244832,
+          0.07438530276968003
+        ],
+        [
+          -1.5599818247609567,
+          -0.01983608073858093
+        ],
+        [
+          -1.5558071314368318,
+          -0.1139937583895819
+        ],
+        [
+          -1.5456349533544698,
+          -0.20772691219102474
+        ],
+        [
+          -1.5295031442326408,
+          -0.3006762696180348
+        ],
+        [
+          -1.5074722558412423,
+          -0.3924854617636517
+        ],
+        [
+          -1.4793089012005236,
+          -0.4826980050566682
+        ],
+        [
+          -1.4454500941419868,
+          -0.5710319614745303
+        ],
+        [
+          -1.4060267736254672,
+          -0.6571492881183597
+        ],
+        [
+          -1.3611910298272571,
+          -0.740720455066242
+        ],
+        [
+          -1.3111155244922057,
+          -0.8214256884491304
+        ],
+        [
+          -1.2559928343513307,
+          -0.8989561766614237
+        ],
+        [
+          -1.1960347200620307,
+          -0.9730152352395257
+        ],
+        [
+          -1.131471323400679,
+          -1.0433194260946193
+        ],
+        [
+          -1.0625502957000632,
+          -1.1095996269544717
+        ],
+        [
+          -0.9895358607759241,
+          -1.1716020470525934
+        ],
+        [
+          -0.9127078158268492,
+          -1.2290891853009271
+        ],
+        [
+          -0.8323604740190709,
+          -1.2818407273937087
+        ],
+        [
+          -0.7488015526816202,
+          -1.3296543785144408
+        ],
+        [
+          -0.6623510112368937,
+          -1.3723466285542927
+        ],
+        [
+          -0.5733398431763839,
+          -1.4097534469978052
+        ],
+        [
+          -0.48210882656043696,
+          -1.4417309048896823
+        ],
+        [
+          -0.3890072376737404,
+          -1.4681557215637582
+        ],
+        [
+          -0.29439153260442635,
+          -1.4889257340909854
+        ],
+        [
+          -0.19862400163351634,
+          -1.5039602876865228
+        ],
+        [
+          -0.10207140142263406,
+          -1.5132005456057096
+        ]
+      ],
+      "progress": [
+        0.0,
+        0.06376040080627242,
+        0.12749997013437994,
+        0.19120603012599063,
+        0.2548663110708845,
+        0.31846914319501435,
+        0.38200364066184506,
+        0.4454598753280847,
+        0.5088290378538406,
+        0.5721035838473981,
+        0.6352773628306287,
+        0.6983457279472229,
+        0.761305624507247,
+        0.8241556556724151,
+        0.8868961238405676,
+        0.949529046587656,
+        1.0120581463716984,
+        1.0744888135943784,
+        1.1368280430481421,
+        1.1990843442431447,
+        1.261267626599445,
+        1.3233781806477816,
+        1.3854251162807958,
+        1.4474216940462856,
+        1.509381879579201,
+        1.5713201339630627,
+        1.6332511952816426,
+        1.695189855238008,
+        1.7571507348432935,
+        1.8191480632011983,
+        1.881195463335034,
+        1.9433057488258587,
+        2.0054907347609565,
+        2.067761066143631,
+        2.130126066502936,
+        2.1925936089824343,
+        2.255170011697842,
+        2.3178599586518054,
+        2.3806664469958814,
+        2.443590760948987,
+        2.5066324722293123,
+        2.569787841616657,
+        2.6330394268736295,
+        2.6963817889231776,
+        2.759808039527232,
+        2.8233099616648585,
+        2.886878148065306,
+        2.9505021557301556,
+        3.014170674160705,
+        3.077871704916846,
+        3.141592750067245,
+        3.205321007043589,
+        3.2690435673804905,
+        3.332747616804852,
+        3.396420634132425,
+        3.4600505864344133,
+        3.523626117953817,
+        3.5871367302812462,
+        3.6505729513457457,
+        3.7139264908411347,
+        3.7771903797965924,
+        3.8403457491839377,
+        3.9033868049569036,
+        3.966311338173941,
+        4.029118823440011,
+        4.091810446806289,
+        4.154389107762052,
+        4.216859394736228,
+        4.279227533938913,
+        4.341501311823556,
+        4.403689971929976,
+        4.465804087366041,
+        4.527855410687812,
+        4.589856703428485,
+        4.6518215479884875,
+        4.713764145014789,
+        4.775699099750213,
+        4.8376412011079335,
+        4.899605197410487,
+        4.961605572817857,
+        5.023656328451825,
+        5.085766882500162,
+        5.147939398687672,
+        5.210185114170903,
+        5.2725140135573865,
+        5.334934689135658,
+        5.397454224640457,
+        5.460078104071948,
+        5.522810146584477,
+        5.585652467968446,
+        5.648605468780847,
+        5.711667848745708,
+        5.7748366466520915,
+        5.838107304628375,
+        5.901473755369106,
+        5.96492853063388,
+        6.028462889124296,
+        6.092066961671393,
+        6.155729911527677,
+        6.2194401074502315,
+        6.283185307179586
+      ],
+      "arc_length": 9.560401240723625,
+      "n_conditions": 25,
+      "n_trials": 25,
+      "condition_weighting": "equal_weight_per_condition_mean"
+    }
+  },
+  "output_circularity": {
+    "mean_cv": 0.04843230077609493,
+    "max_cv": 0.16514227395916584,
+    "values": [
+      0.02175021978972247,
+      0.04747083412021435,
+      0.0804270834001453,
+      0.11969389453545058,
+      0.16514227395916584,
+      0.019009959010818128,
+      0.014738001386873346,
+      0.03553054530345374,
+      0.06569014103954154,
+      0.10230148974739962,
+      0.038733928444268984,
+      0.02511996132299862,
+      0.013107189701594739,
+      0.025059518760451937,
+      0.05209535025529218,
+      0.05281797924340498,
+      0.04362677705636578,
+      0.031180890222418017,
+      0.016970092718905316,
+      0.016811153820333907,
+      0.06019017873568906,
+      0.055705649752073504,
+      0.04792718711081822,
+      0.03682431711697909,
+      0.022882902847994022
+    ]
+  },
+  "targets": {
+    "human_motor_stage_reference_matrix": [
+      [
+        0.7852689235044222,
+        0.1577953191084023
+      ],
+      [
+        0.042442901831601904,
+        1.011705860862094
+      ]
+    ],
+    "human_motor_stage_reference_subject_matrices": [
+      [
+        [
+          0.697659498453083,
+          0.16061066202545898
+        ],
+        [
+          -0.06931345170856783,
+          0.907615405296019
+        ]
+      ],
+      [
+        [
+          0.733074810588072,
+          0.1042924364285131
+        ],
+        [
+          0.12024668240929309,
+          0.8704428920543102
+        ]
+      ],
+      [
+        [
+          0.7401635389514758,
+          0.12970769766358922
+        ],
+        [
+          -0.05995270038795897,
+          1.0785368775811006
+        ]
+      ],
+      [
+        [
+          1.134361170762908,
+          0.06455403409154152
+        ],
+        [
+          -0.06338669937525267,
+          0.9655975032345065
+        ]
+      ],
+      [
+        [
+          0.6980618307818303,
+          0.12400250852146621
+        ],
+        [
+          0.026689985699329597,
+          1.0154365542806145
+        ]
+      ],
+      [
+        [
+          1.2072114988607303,
+          0.20675698461784783
+        ],
+        [
+          0.0073886897651742,
+          0.8271609151884424
+        ]
+      ],
+      [
+        [
+          0.8547567316080507,
+          0.19047265479618397
+        ],
+        [
+          0.010052318154436683,
+          0.9791446140552246
+        ]
+      ],
+      [
+        [
+          0.4591532845363924,
+          0.07060673228127128
+        ],
+        [
+          0.03330927296057923,
+          1.0670673026338207
+        ]
+      ],
+      [
+        [
+          0.7691723657222469,
+          0.08945557721743898
+        ],
+        [
+          0.1030510493646207,
+          0.9998919987626621
+        ]
+      ],
+      [
+        [
+          0.9045242682769843,
+          0.0691705081195066
+        ],
+        [
+          0.014639559358473546,
+          1.3367051751483494
+        ]
+      ],
+      [
+        [
+          0.7165037323001047,
+          -0.042446385696877253
+        ],
+        [
+          0.015196280302386038,
+          0.8099736479680961
+        ]
+      ],
+      [
+        [
+          0.5735107822150111,
+          0.054651226104498477
+        ],
+        [
+          -0.10157472740886568,
+          1.0765149998727332
+        ]
+      ],
+      [
+        [
+          0.9436973039274821,
+          0.23441839019035252
+        ],
+        [
+          -0.002279477331924204,
+          0.9672857349732135
+        ]
+      ],
+      [
+        [
+          0.7923132477920759,
+          0.3946323165544456
+        ],
+        [
+          0.623720043998683,
+          1.1974634435485527
+        ]
+      ],
+      [
+        [
+          0.8335327389156256,
+          0.020721007509788582
+        ],
+        [
+          -0.03133871681551119,
+          0.9789891976568458
+        ]
+      ],
+      [
+        [
+          1.1787648428145503,
+          -0.0739981568828172
+        ],
+        [
+          0.1165300699016893,
+          0.7462001952788794
+        ]
+      ],
+      [
+        [
+          0.7612620637453869,
+          0.37422459645875683
+        ],
+        [
+          0.12409884113312579,
+          1.1965314497898734
+        ]
+      ],
+      [
+        [
+          0.8853911512121008,
+          -0.08613580411817072
+        ],
+        [
+          0.015426356152245172,
+          1.32788694681743
+        ]
+      ],
+      [
+        [
+          0.48673268454334023,
+          0.524824026871344
+        ],
+        [
+          0.07199541619375484,
+          1.1751146598886326
+        ]
+      ],
+      [
+        [
+          0.7751562172604032,
+          0.17943569632680562
+        ],
+        [
+          0.06484038641504707,
+          0.8976405932489468
+        ]
+      ],
+      [
+        [
+          0.47831944214207545,
+          0.5436841318113582
+        ],
+        [
+          0.05205688289812357,
+          0.4842314738473453
+        ]
+      ],
+      [
+        [
+          0.8791454419375212,
+          0.04420352608912257
+        ],
+        [
+          -0.05487139073743499,
+          1.0011220997171468
+        ]
+      ],
+      [
+        [
+          0.5928259469855541,
+          0.08675505098711934
+        ],
+        [
+          -0.0027813374464907693,
+          1.0110015579732743
+        ]
+      ],
+      [
+        [
+          0.7511595697731289,
+          0.32248824063311077
+        ],
+        [
+          0.0048863104634900255,
+          1.363385421874234
+        ]
+      ]
+    ],
+    "human_subjects": [
+      "sub-01_clean.allData_clean",
+      "sub-02_clean.allData_clean",
+      "sub-03_clean.allData_clean",
+      "sub-04_clean.allData_clean",
+      "sub-05_clean.allData_clean",
+      "sub-06_clean.allData_clean",
+      "sub-07_clean.allData_clean",
+      "sub-08_clean.allData_clean",
+      "sub-09_clean.allData_clean",
+      "sub-10_clean.allData_clean",
+      "sub-11_clean.allData_clean",
+      "sub-12_clean.allData_clean",
+      "sub-13_clean.allData_clean",
+      "sub-14_clean.allData_clean",
+      "sub-15_clean.allData_clean",
+      "sub-16_clean.allData_clean",
+      "sub-17_clean.allData_clean",
+      "sub-18_clean.allData_clean",
+      "sub-19_clean.allData_clean",
+      "sub-20_clean.allData_clean",
+      "sub-21_clean.allData_clean",
+      "sub-22_clean.allData_clean",
+      "sub-23_clean.allData_clean",
+      "sub-24_clean.allData_clean"
+    ],
+    "rnn_behavior_matrix": [
+      [
+        0.8256223131789756,
+        0.2577744769069075
+      ],
+      [
+        0.021127368673711254,
+        0.9827137202624909
+      ]
+    ],
+    "rnn_behavior_rep_matrices": [
+      [
+        [
+          0.8147297747108062,
+          0.260175465240969
+        ],
+        [
+          0.06381484561251827,
+          0.9640872630716999
+        ]
+      ],
+      [
+        [
+          0.8136946761554087,
+          0.2762830305863633
+        ],
+        [
+          0.06457504660392166,
+          1.0803911299132394
+        ]
+      ],
+      [
+        [
+          0.8439091935249792,
+          0.25500305045654537
+        ],
+        [
+          -0.03739837225099418,
+          0.9321909167686926
+        ]
+      ],
+      [
+        [
+          0.8369825680634968,
+          0.291678308218297
+        ],
+        [
+          0.01939745912988622,
+          1.0290957496338136
+        ]
+      ],
+      [
+        [
+          0.787744036108743,
+          0.2398897348490603
+        ],
+        [
+          -0.04287113512405705,
+          1.0715798774648395
+        ]
+      ],
+      [
+        [
+          0.8745432814125474,
+          0.1130414057535597
+        ],
+        [
+          -0.023019505515276872,
+          0.9722602169487853
+        ]
+      ],
+      [
+        [
+          0.8130285848140255,
+          0.26644853440046445
+        ],
+        [
+          0.02946089526346518,
+          1.1061535742066986
+        ]
+      ],
+      [
+        [
+          0.7749625395846625,
+          0.34209852484789327
+        ],
+        [
+          0.1297248155305959,
+          0.8640550158726609
+        ]
+      ],
+      [
+        [
+          0.8385036442570702,
+          0.2970439641906494
+        ],
+        [
+          -0.004245667169551881,
+          1.0571961736163422
+        ]
+      ],
+      [
+        [
+          0.842485132195245,
+          0.2939756092148731
+        ],
+        [
+          -0.004165844851817813,
+          0.8423157116072262
+        ]
+      ],
+      [
+        [
+          0.8620888469148972,
+          0.19551385364796514
+        ],
+        [
+          0.018199315064539867,
+          0.7997520957976414
+        ]
+      ],
+      [
+        [
+          0.8874783004404722,
+          0.18310495567967444
+        ],
+        [
+          0.041252589605416445,
+          0.9502302867055816
+        ]
+      ],
+      [
+        [
+          0.758524017920819,
+          0.256779519834223
+        ],
+        [
+          0.06364640444281,
+          1.0614113095039512
+        ]
+      ],
+      [
+        [
+          0.9026673321844818,
+          0.25913567219236533
+        ],
+        [
+          -0.007359987000788992,
+          0.8566009836367179
+        ]
+      ],
+      [
+        [
+          0.8097814429240924,
+          0.22847351023879714
+        ],
+        [
+          0.04798236194252947,
+          1.0557512104613154
+        ]
+      ],
+      [
+        [
+          0.8070471373081227,
+          0.2931167346876232
+        ],
+        [
+          0.011882068460191797,
+          0.9956462928938867
+        ]
+      ],
+      [
+        [
+          0.7861020638821516,
+          0.3741359149166468
+        ],
+        [
+          0.04394649713723808,
+          0.9750410269961419
+        ]
+      ],
+      [
+        [
+          0.8147256657759987,
+          0.2813534226461816
+        ],
+        [
+          0.03220276474717543,
+          1.049828543472752
+        ]
+      ],
+      [
+        [
+          0.7866896989071039,
+          0.2554311722752226
+        ],
+        [
+          -0.00016269267331880943,
+          1.0050422977719733
+        ]
+      ],
+      [
+        [
+          0.8567583264943861,
+          0.1928071542607761
+        ],
+        [
+          -0.024314485480257164,
+          0.985644728905873
+        ]
+      ]
+    ],
+    "rnn_input_to_recurrent_matrix": [
+      [
+        0.41039280524346566,
+        0.4478812505592666
+      ],
+      [
+        -0.0769844025511072,
+        0.8320529288986857
+      ]
+    ],
+    "rnn_input_to_recurrent_rep_matrices": [
+      [
+        [
+          0.3580439400581413,
+          0.41770617228651274
+        ],
+        [
+          -0.0564261637544653,
+          0.900898875427839
+        ]
+      ],
+      [
+        [
+          0.20317924208310179,
+          0.285210843808087
+        ],
+        [
+          0.0022309774344222233,
+          0.9318593726044988
+        ]
+      ],
+      [
+        [
+          0.41518301342364894,
+          0.37092312099437275
+        ],
+        [
+          -0.12069597495268386,
+          0.7385916618775287
+        ]
+      ],
+      [
+        [
+          0.3899184466700709,
+          0.5302568640733254
+        ],
+        [
+          -0.07133947641961393,
+          0.8072490940801212
+        ]
+      ],
+      [
+        [
+          0.509615973762307,
+          0.4358699016068755
+        ],
+        [
+          -0.07471167391016756,
+          0.7489702460777019
+        ]
+      ],
+      [
+        [
+          0.3745063435767824,
+          0.6100948778671542
+        ],
+        [
+          -0.09325670428786881,
+          0.8067256396543876
+        ]
+      ],
+      [
+        [
+          0.45904300051319413,
+          0.5569771712921223
+        ],
+        [
+          -0.0926736733457265,
+          0.864820276958331
+        ]
+      ],
+      [
+        [
+          0.4602415035439,
+          0.3874930113901829
+        ],
+        [
+          -0.039529417620713506,
+          0.8857558978892125
+        ]
+      ],
+      [
+        [
+          0.445927157458329,
+          0.3447826329866078
+        ],
+        [
+          -0.053169212707472206,
+          0.8145890937554374
+        ]
+      ],
+      [
+        [
+          0.35853585665034027,
+          0.5407798801147577
+        ],
+        [
+          -0.07584160107994355,
+          0.8704240831399985
+        ]
+      ],
+      [
+        [
+          0.29465490965789504,
+          0.5568367961133427
+        ],
+        [
+          -0.05542852534357612,
+          0.9156169286735585
+        ]
+      ],
+      [
+        [
+          0.4236377009002334,
+          0.4878744776772118
+        ],
+        [
+          -0.07378125219238608,
+          0.8693867523863879
+        ]
+      ],
+      [
+        [
+          0.4990335154456785,
+          0.44758742406647567
+        ],
+        [
+          -0.09521467834140347,
+          0.7935251024990282
+        ]
+      ],
+      [
+        [
+          0.29516670103982123,
+          0.571922710216372
+        ],
+        [
+          -0.10080482820086488,
+          0.8910183907843061
+        ]
+      ],
+      [
+        [
+          0.5031341313255541,
+          0.47651596966954934
+        ],
+        [
+          -0.08994336954541401,
+          0.6991358319443634
+        ]
+      ],
+      [
+        [
+          0.5180990668098913,
+          0.31733711406460813
+        ],
+        [
+          -0.12982602486058528,
+          0.7363370442060387
+        ]
+      ],
+      [
+        [
+          0.4194788748517945,
+          0.51061767054884
+        ],
+        [
+          -0.04524325508223239,
+          0.8399574744206431
+        ]
+      ],
+      [
+        [
+          0.30614121699668045,
+          0.029696330519373728
+        ],
+        [
+          -0.095701517256744,
+          0.8352212391049989
+        ]
+      ],
+      [
+        [
+          0.548700693545046,
+          0.6016020932233922
+        ],
+        [
+          -0.012146471541357385,
+          0.9406872126772342
+        ]
+      ],
+      [
+        [
+          0.4256148165569027,
+          0.47753994866616783
+        ],
+        [
+          -0.16618520801334768,
+          0.750288359812098
+        ]
+      ]
+    ],
+    "rnn_recurrent_to_output_matrix": [
+      [
+        1.169230718338207,
+        -0.3360378261347263
+      ],
+      [
+        0.1810560949800752,
+        1.0842944170086675
+      ]
+    ],
+    "rnn_recurrent_to_output_rep_matrices": [
+      [
+        [
+          1.141571181465988,
+          -0.25251946279447496
+        ],
+        [
+          0.1782351245049531,
+          0.9782047667512879
+        ]
+      ],
+      [
+        [
+          0.7152207115470265,
+          0.09196735154959472
+        ],
+        [
+          0.07321434838367379,
+          1.128860917125141
+        ]
+      ],
+      [
+        [
+          1.1428472180398999,
+          -0.24479506701191286
+        ],
+        [
+          0.14539526052481408,
+          1.1756392480022422
+        ]
+      ],
+      [
+        [
+          1.1545658630011433,
+          -0.4139512196313684
+        ],
+        [
+          0.21057987204121814,
+          1.129962813493597
+        ]
+      ],
+      [
+        [
+          1.0546428670276224,
+          -0.283164901581523
+        ],
+        [
+          0.09646522202934511,
+          1.3578161586623303
+        ]
+      ],
+      [
+        [
+          1.4103140023657186,
+          -0.933702020920814
+        ],
+        [
+          0.13785539734513105,
+          1.0922089776234045
+        ]
+      ],
+      [
+        [
+          1.1316846677854397,
+          -0.43447176118981934
+        ],
+        [
+          0.2189415061464284,
+          1.1266219963088036
+        ]
+      ],
+      [
+        [
+          1.0593021962107954,
+          -0.09075504585401684
+        ],
+        [
+          0.22813493347829777,
+          0.8646296616775263
+        ]
+      ],
+      [
+        [
+          1.1417966987775454,
+          -0.1288386310063517
+        ],
+        [
+          0.11889476144579673,
+          1.2356447489836375
+        ]
+      ],
+      [
+        [
+          1.400956351085008,
+          -0.5419700681549309
+        ],
+        [
+          0.1315303033733142,
+          0.8816468809620147
+        ]
+      ],
+      [
+        [
+          1.3497257454068758,
+          -0.6354456838012865
+        ],
+        [
+          0.061076952400524555,
+          0.8319303487058731
+        ]
+      ],
+      [
+        [
+          1.1621747105536322,
+          -0.45690142725806404
+        ],
+        [
+          0.17467698740509988,
+          0.9905487095016199
+        ]
+      ],
+      [
+        [
+          0.9987771566287125,
+          -0.23668716237026155
+        ],
+        [
+          0.3118565598950466,
+          1.153110532346018
+        ]
+      ],
+      [
+        [
+          1.7414267823645866,
+          -0.8502392030821211
+        ],
+        [
+          0.14343640976305927,
+          0.8598782836299014
+        ]
+      ],
+      [
+        [
+          1.0704024842812623,
+          -0.3749247240398417
+        ],
+        [
+          0.3309552487140413,
+          1.261530682375483
+        ]
+      ],
+      [
+        [
+          1.182474311384294,
+          -0.08716372030692927
+        ],
+        [
+          0.35847850175873985,
+          1.182419376918138
+        ]
+      ],
+      [
+        [
+          1.1393032869209656,
+          -0.24060431420986952
+        ],
+        [
+          0.18938271189905648,
+          1.0378115203470988
+        ]
+      ],
+      [
+        [
+          1.2372948549194605,
+          0.24476493848106984
+        ],
+        [
+          0.19824130691354422,
+          1.23124725788153
+        ]
+      ],
+      [
+        [
+          1.1102686068079186,
+          -0.42659489311918736
+        ],
+        [
+          0.008168918294544102,
+          1.0617976799939415
+        ]
+      ],
+      [
+        [
+          1.0398646701902368,
+          -0.4247595063924187
+        ],
+        [
+          0.30560157328487575,
+          1.1043777788837612
+        ]
+      ]
+    ],
+    "rnn_composed_matrix": [
+      [
+        0.5042007212100812,
+        0.2517864572667473
+      ],
+      [
+        -0.0074488102562580705,
+        0.9742705874550255
+      ]
+    ],
+    "hopf_behavior_rep_matrices": [
+      [
+        [
+          0.6796542899610585,
+          0.26295172350229495
+        ],
+        [
+          0.014123602447862413,
+          0.9546154167727317
+        ]
+      ],
+      [
+        [
+          0.7496324173720165,
+          0.21537284012417832
+        ],
+        [
+          0.06658297264430728,
+          1.0661287709473237
+        ]
+      ],
+      [
+        [
+          0.7410301820398077,
+          0.250744002248056
+        ],
+        [
+          0.06119939167737416,
+          1.0101175612409186
+        ]
+      ],
+      [
+        [
+          0.8006939057317629,
+          0.25148039229588426
+        ],
+        [
+          0.045282152229413994,
+          1.0366287901386688
+        ]
+      ],
+      [
+        [
+          0.7465303495141609,
+          0.19347495928441957
+        ],
+        [
+          0.07669776391770258,
+          1.1546491060681856
+        ]
+      ],
+      [
+        [
+          0.8403418523865215,
+          0.06867785413452047
+        ],
+        [
+          0.05192584680972683,
+          0.9975062716848401
+        ]
+      ],
+      [
+        [
+          0.7554080889855389,
+          0.23168298467121634
+        ],
+        [
+          0.022771375358684218,
+          1.0907268891051523
+        ]
+      ],
+      [
+        [
+          0.6575233005287321,
+          0.3400773747794586
+        ],
+        [
+          0.04091595589204532,
+          0.8333107600319389
+        ]
+      ],
+      [
+        [
+          0.797448470121207,
+          0.275104291513605
+        ],
+        [
+          0.06109728670587912,
+          1.0971959164669811
+        ]
+      ],
+      [
+        [
+          0.7157439941138711,
+          0.283217330659371
+        ],
+        [
+          0.07495902714143597,
+          0.8080888545135023
+        ]
+      ],
+      [
+        [
+          0.8271351008928989,
+          0.2022836395973353
+        ],
+        [
+          0.022528331658232103,
+          0.7954928990384414
+        ]
+      ],
+      [
+        [
+          0.7802126937946938,
+          0.18150685860481408
+        ],
+        [
+          0.0318182759518669,
+          0.9480336950953134
+        ]
+      ],
+      [
+        [
+          0.7029973898859213,
+          0.22353861529325317
+        ],
+        [
+          0.057009438415003,
+          1.058280079503161
+        ]
+      ],
+      [
+        [
+          0.8786795478515947,
+          0.2519821862823942
+        ],
+        [
+          0.006132227803207709,
+          0.8465981550555468
+        ]
+      ],
+      [
+        [
+          0.7742853531400068,
+          0.20081877425690142
+        ],
+        [
+          0.10606338976780955,
+          1.081813116441777
+        ]
+      ],
+      [
+        [
+          0.7390030511886241,
+          0.3033505028179446
+        ],
+        [
+          0.06741687416530924,
+          1.0344912076010264
+        ]
+      ],
+      [
+        [
+          0.6426686583233477,
+          0.36671509325387436
+        ],
+        [
+          0.04295102008947018,
+          0.9702911715710777
+        ]
+      ],
+      [
+        [
+          0.7709570362242415,
+          0.3812684502625759
+        ],
+        [
+          0.05153233330024565,
+          1.0938981073806864
+        ]
+      ],
+      [
+        [
+          0.7141382196652414,
+          0.2741297667071975
+        ],
+        [
+          0.03194791006129677,
+          1.0021324525129849
+        ]
+      ],
+      [
+        [
+          0.84170850845414,
+          0.16241565522531376
+        ],
+        [
+          0.034164280479146214,
+          1.009845807905834
+        ]
+      ]
+    ],
+    "hopf_input_to_recurrent_rep_matrices": [
+      [
+        [
+          0.5368383542552112,
+          0.4425621833702116
+        ],
+        [
+          0.013935669933455803,
+          0.9626237153069612
+        ]
+      ],
+      [
+        [
+          0.25241191552832987,
+          0.3487477965562563
+        ],
+        [
+          0.04909508166990022,
+          0.9210276431585606
+        ]
+      ],
+      [
+        [
+          0.5589026954538306,
+          0.41383589663975295
+        ],
+        [
+          0.05341259976517974,
+          0.910204360230173
+        ]
+      ],
+      [
+        [
+          0.3926359327909144,
+          0.5554356630058134
+        ],
+        [
+          0.04067033560665623,
+          0.9188537435876727
+        ]
+      ],
+      [
+        [
+          0.5406533681237728,
+          0.4549057197767783
+        ],
+        [
+          0.060362804682173955,
+          0.8982414600621434
+        ]
+      ],
+      [
+        [
+          0.34333549456834195,
+          0.6338057084216469
+        ],
+        [
+          0.051367184818965454,
+          0.9300886506357398
+        ]
+      ],
+      [
+        [
+          0.44737109143643555,
+          0.5463253643474583
+        ],
+        [
+          0.019760303613207464,
+          0.9495528507063894
+        ]
+      ],
+      [
+        [
+          0.5822720110505623,
+          0.38085780000236147
+        ],
+        [
+          0.045497634896484195,
+          0.927912979480426
+        ]
+      ],
+      [
+        [
+          0.47812076491367117,
+          0.3664668265376574
+        ],
+        [
+          0.045846909491590315,
+          0.9068171727804679
+        ]
+      ],
+      [
+        [
+          0.4612372681227627,
+          0.5212217899805114
+        ],
+        [
+          0.08214830223416228,
+          0.8924724403773814
+        ]
+      ],
+      [
+        [
+          0.37619413708748606,
+          0.6119846697562141
+        ],
+        [
+          0.026395245290062964,
+          0.9519957019582321
+        ]
+      ],
+      [
+        [
+          0.46606581052008167,
+          0.49502721369430697
+        ],
+        [
+          0.02644648766238717,
+          0.9442704341057025
+        ]
+      ],
+      [
+        [
+          0.49648295276332366,
+          0.43462035677340505
+        ],
+        [
+          0.05006938253497422,
+          0.9110372947599101
+        ]
+      ],
+      [
+        [
+          0.35798750260865503,
+          0.6183811134460127
+        ],
+        [
+          0.005474914419955104,
+          0.9704910033120515
+        ]
+      ],
+      [
+        [
+          0.5186835965881688,
+          0.49752838541148325
+        ],
+        [
+          0.08341375490471424,
+          0.8629470821377867
+        ]
+      ],
+      [
+        [
+          0.6047707071321078,
+          0.3119569330571397
+        ],
+        [
+          0.058356529745749036,
+          0.8986576694125005
+        ]
+      ],
+      [
+        [
+          0.5184352991865528,
+          0.4711507606033088
+        ],
+        [
+          0.04120506128423316,
+          0.9281671396137172
+        ]
+      ],
+      [
+        [
+          0.6046556544351327,
+          0.31391321719865184
+        ],
+        [
+          0.04319147037803412,
+          0.9168431676912792
+        ]
+      ],
+      [
+        [
+          0.5871495681124389,
+          0.5496698423183484
+        ],
+        [
+          0.03022341451423484,
+          0.9326993162957451
+        ]
+      ],
+      [
+        [
+          0.4418087367757199,
+          0.5249757633406709
+        ],
+        [
+          0.03255484474385126,
+          0.9303134809631362
+        ]
+      ]
+    ],
+    "hopf_recurrent_to_output_rep_matrices": [
+      [
+        [
+          1.2114926136715358,
+          -0.2630361144204748
+        ],
+        [
+          0.00037694264122074226,
+          0.9914756381391819
+        ]
+      ],
+      [
+        [
+          0.7210915044556266,
+          -0.000678116452969687
+        ],
+        [
+          0.0476018726079561,
+          1.1403076464879103
+        ]
+      ],
+      [
+        [
+          1.2008950954984294,
+          -0.2454675044981478
+        ],
+        [
+          0.011204504638612252,
+          1.1043002434584896
+        ]
+      ],
+      [
+        [
+          1.1810717577983838,
+          -0.3929289952720788
+        ],
+        [
+          0.0032508802595330316,
+          1.1258716686272314
+        ]
+      ],
+      [
+        [
+          1.0887656726198751,
+          -0.3029411866803277
+        ],
+        [
+          0.0014359344908198976,
+          1.2844673585727184
+        ]
+      ],
+      [
+        [
+          1.455498816100518,
+          -0.8555176701276905
+        ],
+        [
+          0.008891546006121475,
+          1.0659928707756932
+        ]
+      ],
+      [
+        [
+          1.1727233706719165,
+          -0.40000280128028265
+        ],
+        [
+          0.005117290551664007,
+          1.1456003439445983
+        ]
+      ],
+      [
+        [
+          1.1276608429669603,
+          -0.09115218471197399
+        ],
+        [
+          -5.834128403925078e-05,
+          0.8981385165987872
+        ]
+      ],
+      [
+        [
+          1.158838605362087,
+          -0.13300351514294842
+        ],
+        [
+          0.02327323257961396,
+          1.2015239944382436
+        ]
+      ],
+      [
+        [
+          1.4603195336391914,
+          -0.4984378918576115
+        ],
+        [
+          0.002325210352793111,
+          0.9037649712003405
+        ]
+      ],
+      [
+        [
+          1.361110830100186,
+          -0.6140232066352862
+        ],
+        [
+          0.00039604084776643665,
+          0.835641369105839
+        ]
+      ],
+      [
+        [
+          1.2015597370518691,
+          -0.40912500472335833
+        ],
+        [
+          0.01630680320495209,
+          0.9950447685661137
+        ]
+      ],
+      [
+        [
+          1.034345901022391,
+          -0.22120039255298776
+        ],
+        [
+          0.0027129887629203596,
+          1.1600971794001678
+        ]
+      ],
+      [
+        [
+          1.7604987290569745,
+          -0.8063241521736894
+        ],
+        [
+          0.007320000068833951,
+          0.8672834441399426
+        ]
+      ],
+      [
+        [
+          1.0995711934028691,
+          -0.3505204462949452
+        ],
+        [
+          0.011836882925642944,
+          1.2468115920226184
+        ]
+      ],
+      [
+        [
+          1.221542768265697,
+          -0.08071099237012257
+        ],
+        [
+          0.0003260884218590938,
+          1.1510354528072289
+        ]
+      ],
+      [
+        [
+          1.2140320735649366,
+          -0.2070957821787881
+        ],
+        [
+          -0.00034624225379015824,
+          1.0457113471569812
+        ]
+      ],
+      [
+        [
+          1.2740703194027785,
+          -0.019064794861880577
+        ],
+        [
+          -1.201008272407381e-15,
+          1.193113659924252
+        ]
+      ],
+      [
+        [
+          1.1769295581242825,
+          -0.37089969784730653
+        ],
+        [
+          0.011045996974607281,
+          1.063259992448487
+        ]
+      ],
+      [
+        [
+          1.0652782206293168,
+          -0.3858077873590698
+        ],
+        [
+          0.0005687195473579756,
+          1.0851300920431703
+        ]
+      ]
+    ],
+    "rnn_angle_radius_slope": -3.930350501243958,
+    "rnn_angle_duration_slope": 3.067247357115485
+  },
+  "model_matrices": {
+    "input_to_recurrent": {
+      "matrix": [
+        [
+          0.37619413708748606,
+          0.6119846697562141
+        ],
+        [
+          0.026395245290062964,
+          0.9519957019582321
+        ]
+      ],
+      "row_labels": [
+        "$R_{\\mathrm{rec}}$",
+        "$T_{\\mathrm{rec}}$"
+      ],
+      "col_labels": [
+        "$R_{\\mathrm{in}}$",
+        "$T_{\\mathrm{in}}$"
+      ]
+    },
+    "recurrent_to_output": {
+      "matrix": [
+        [
+          1.361110830100186,
+          -0.6140232066352862
+        ],
+        [
+          0.00039604084776643665,
+          0.835641369105839
+        ]
+      ],
+      "row_labels": [
+        "$R_{\\mathrm{out}}$",
+        "$T_{\\mathrm{out}}$"
+      ],
+      "col_labels": [
+        "$R_{\\mathrm{rec}}$",
+        "$T_{\\mathrm{rec}}$"
+      ]
+    },
+    "behavior": {
+      "matrix": [
+        [
+          0.8271351008928989,
+          0.2022836395973353
+        ],
+        [
+          0.022528331658232103,
+          0.7954928990384414
+        ]
+      ],
+      "row_labels": [
+        "$R_{\\mathrm{out}}$",
+        "$T_{\\mathrm{out}}$"
+      ],
+      "col_labels": [
+        "$R_{\\mathrm{in}}$",
+        "$T_{\\mathrm{in}}$"
+      ]
+    },
+    "composed": {
+      "matrix": [
+        [
+          0.49583462105704185,
+          0.24843150824106497
+        ],
+        [
+          0.022205947157049554,
+          0.7957693626946816
+        ]
+      ],
+      "row_labels": [
+        "$R_{\\mathrm{out}}$",
+        "$T_{\\mathrm{out}}$"
+      ],
+      "col_labels": [
+        "$R_{\\mathrm{in}}$",
+        "$T_{\\mathrm{in}}$"
+      ]
+    }
+  },
+  "angle_trends": {
+    "angle_radius_slope": -15.85351261789982,
+    "angle_duration_slope": 11.137226567705005,
+    "minimum_signed_plane_readout_offset_deg": 4.99978127094534,
+    "signed_plane_readout_offset_deg": [
+      36.70760791218263,
+      42.27634596487255,
+      47.84508401756244,
+      53.41382207025233,
+      58.98256012294222,
+      28.780651251873312,
+      34.3493893045632,
+      39.91812735725309,
+      45.48686540994298,
+      51.055603462632895,
+      20.853694591563986,
+      26.422432644253877,
+      31.99117069694377,
+      37.559908749633685,
+      43.12864680232357,
+      12.926737931254664,
+      18.495475983944555,
+      24.064214036634443,
+      29.632952089324334,
+      35.20169014201422,
+      4.99978127094534,
+      10.56851932363523,
+      16.13725737632512,
+      21.70599542901501,
+      27.274733481704924
+    ],
+    "readout_shared_axis_error_deg": 0.19324968896193595
+  },
+  "panels": {
+    "A": {
+      "model": "condition_dependent_rotated_3d_hopf_embedding",
+      "displayed_parameters": null,
+      "equation_row": [
+        "input",
+        "rho-omega-theta controls",
+        "Hopf normal form and rotated limit cycle",
+        "readout y"
+      ],
+      "geometric_row": {
+        "example_input": {
+          "R_in": 0.55,
+          "T_in": 0.35
+        },
+        "latent_controls": {
+          "rho": 1.6595324888164422,
+          "progress_speed": 5.281108034389424,
+          "plane_angle_deg": 23.391919830318265
+        },
+        "input_to_latent_control_local_jacobian": [
+          [
+            0.08161126084857641,
+            0.13379750629908624
+          ],
+          [
+            -0.05389639467927826,
+            -2.0719587366599588
+          ],
+          [
+            -0.27670298677058286,
+            0.19438562840107218
+          ]
+        ],
+        "dynamics_schematic": {
+          "plane_tilt_deg": 60.0,
+          "attractor": "stable Hopf limit cycle embedded and rotated in three dimensions",
+          "n_displayed_flow_arrows": 6
+        },
+        "readout_matrix": [
+          [
+            2.23592670028625,
+            -0.3782348926691835,
+            0.14635811444923025
+          ],
+          [
+            0.37040187382237955,
+            1.8754513013952414,
+            0.03079676996224488
+          ]
+        ],
+        "schematic_output_radius": 1.5259681897704738
+      },
+      "visualization_rep": 10
+    },
+    "B": {
+      "sweep": "radius",
+      "levels": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "trajectories": [
+        {
+          "level": -1.0,
+          "target_radius": 0.5,
+          "target_duration": 1.0,
+          "rho": 1.4760643261801023,
+          "recurrent_excursion": 1.4760643261801025,
+          "progress_duration": 1.0317500172960643,
+          "plane_angle_deg": 44.06736884039425,
+          "plane_readout_angle_deg": 47.845379161883976,
+          "plane_readout_signed_offset_deg": 47.84508401756244,
+          "output_radius_fit": 2.553336258366582,
+          "output_circularity_cv": 0.08042708340014533,
+          "output_duration": 1.0317500172960643
+        },
+        {
+          "level": -0.5,
+          "target_radius": 0.75,
+          "target_duration": 1.0,
+          "rho": 1.5212502863937298,
+          "recurrent_excursion": 1.52125028639373,
+          "progress_duration": 1.0363359205348739,
+          "plane_angle_deg": 36.14041218008492,
+          "plane_readout_angle_deg": 39.91851701434424,
+          "plane_readout_signed_offset_deg": 39.91812735725309,
+          "output_radius_fit": 2.78341352007006,
+          "output_circularity_cv": 0.03553054530345375,
+          "output_duration": 1.0363359205348739
+        },
+        {
+          "level": 0.0,
+          "target_radius": 1.0,
+          "target_duration": 1.0,
+          "rho": 1.5651322540553851,
+          "recurrent_excursion": 1.5651322540553854,
+          "progress_duration": 1.0409627724560369,
+          "plane_angle_deg": 28.2134555197756,
+          "plane_readout_angle_deg": 31.991692604743537,
+          "plane_readout_signed_offset_deg": 31.99117069694377,
+          "output_radius_fit": 3.004842648935434,
+          "output_circularity_cv": 0.013107189701594739,
+          "output_duration": 1.0409627724560369
+        },
+        {
+          "level": 0.5,
+          "target_radius": 1.25,
+          "target_duration": 1.0,
+          "rho": 1.6078170018742732,
+          "recurrent_excursion": 1.6078170018742735,
+          "progress_duration": 1.0456311239808218,
+          "plane_angle_deg": 20.28649885946627,
+          "plane_readout_angle_deg": 24.06494406427032,
+          "plane_readout_signed_offset_deg": 24.064214036634443,
+          "output_radius_fit": 3.207966934185423,
+          "output_circularity_cv": 0.031180890222418028,
+          "output_duration": 1.0456311239808218
+        },
+        {
+          "level": 1.0,
+          "target_radius": 1.5,
+          "target_duration": 1.0,
+          "rho": 1.6493974810055527,
+          "recurrent_excursion": 1.649397481005553,
+          "progress_duration": 1.0503415359577697,
+          "plane_angle_deg": 12.359542199156948,
+          "plane_readout_angle_deg": 16.138384092171393,
+          "plane_readout_signed_offset_deg": 16.13725737632512,
+          "output_radius_fit": 3.384485833914627,
+          "output_circularity_cv": 0.04792718711081821,
+          "output_duration": 1.0503415359577697
+        }
+      ],
+      "plane_visualization": {
+        "readout_plane": "fitted_readout_row_space_rigidly_aligned_to_display_xy_plane",
+        "condition_planes": "true_hopf_Qy_theta_planes_transformed_by_the_same_rigid_rotation",
+        "shared_axis": "latent_y_axis_transformed_by_the_same_rigid_rotation",
+        "readout_plane_max_abs_display_z": 0.0,
+        "plane_extent": {
+          "common_axis_half_width": 1.8473251787262193,
+          "side_axis_half_width": 1.847325178726219,
+          "margin_factor": 1.12
+        },
+        "shared_axis_to_readout_plane_error_deg": 0.19324968896193595,
+        "coordinate_frame": "readout_aligned_orthonormal",
+        "transform_native_to_display": [
+          [
+            0.9978271686262093,
+            0.0,
+            0.06588580690408644
+          ],
+          [
+            -0.00022222208461713809,
+            0.9999943109692521,
+            0.0033655083533018076
+          ],
+          [
+            -0.06588543214359052,
+            -0.0033728369558927436,
+            0.9978214929545872
+          ]
+        ],
+        "display_x_axis_in_native_coordinates": [
+          0.9978271686262093,
+          0.0,
+          0.06588580690408644
+        ],
+        "display_y_axis_in_native_coordinates": [
+          -0.00022222208461713809,
+          0.9999943109692521,
+          0.0033655083533018076
+        ],
+        "display_z_axis_in_native_coordinates": [
+          -0.06588543214359052,
+          -0.0033728369558927436,
+          0.9978214929545872
+        ],
+        "readout_normal_in_display_coordinates": [
+          1.3877787807814457e-17,
+          0.0,
+          0.9999999980000001
+        ],
+        "readout_plane_display_equation": "Aligned Latent Z = 0"
+      },
+      "visualization_rep": 10
+    },
+    "C": {
+      "sweep": "duration",
+      "levels": [
+        -1.0,
+        -0.5,
+        0.0,
+        0.5,
+        1.0
+      ],
+      "trajectories": [
+        {
+          "level": -1.0,
+          "target_radius": 1.0,
+          "target_duration": 0.5,
+          "rho": 1.4161766681571117,
+          "recurrent_excursion": 1.416176668157112,
+          "progress_duration": 0.7749465229981096,
+          "plane_angle_deg": 17.075979414395814,
+          "plane_readout_angle_deg": 20.854550397774695,
+          "plane_readout_signed_offset_deg": 20.853694591563986,
+          "output_radius_fit": 2.8615637689260476,
+          "output_circularity_cv": 0.03873392844426898,
+          "output_duration": 0.7749465229981096
+        },
+        {
+          "level": -0.5,
+          "target_radius": 1.0,
+          "target_duration": 0.75,
+          "rho": 1.4925138739919754,
+          "recurrent_excursion": 1.4925138739919757,
+          "progress_duration": 0.8884700167620767,
+          "plane_angle_deg": 22.644717467085705,
+          "plane_readout_angle_deg": 26.423088744015892,
+          "plane_readout_signed_offset_deg": 26.422432644253877,
+          "output_radius_fit": 2.947131177507476,
+          "output_circularity_cv": 0.025119961322998628,
+          "output_duration": 0.8884700167620767
+        },
+        {
+          "level": 0.0,
+          "target_radius": 1.0,
+          "target_duration": 1.0,
+          "rho": 1.5651322540553851,
+          "recurrent_excursion": 1.5651322540553854,
+          "progress_duration": 1.0409627724560369,
+          "plane_angle_deg": 28.2134555197756,
+          "plane_readout_angle_deg": 31.991692604743537,
+          "plane_readout_signed_offset_deg": 31.99117069694377,
+          "output_radius_fit": 3.004842648935434,
+          "output_circularity_cv": 0.013107189701594739,
+          "output_duration": 1.0409627724560369
+        },
+        {
+          "level": 0.5,
+          "target_radius": 1.0,
+          "target_duration": 1.25,
+          "rho": 1.6345275407011186,
+          "recurrent_excursion": 1.634527540701119,
+          "progress_duration": 1.2566478080456815,
+          "plane_angle_deg": 33.782193572465495,
+          "plane_readout_angle_deg": 37.560332699698954,
+          "plane_readout_signed_offset_deg": 37.559908749633685,
+          "output_radius_fit": 3.0366007364972947,
+          "output_circularity_cv": 0.02505951876045196,
+          "output_duration": 1.2566478080456815
+        },
+        {
+          "level": 1.0,
+          "target_radius": 1.0,
+          "target_duration": 1.5,
+          "rho": 1.7010942331147922,
+          "recurrent_excursion": 1.7010942331147925,
+          "progress_duration": 1.5850707317405948,
+          "plane_angle_deg": 39.35093162515538,
+          "plane_readout_angle_deg": 43.12899483919565,
+          "plane_readout_signed_offset_deg": 43.12864680232357,
+          "output_radius_fit": 3.045084172728194,
+          "output_circularity_cv": 0.05209535025529219,
+          "output_duration": 1.5850707317405948
+        }
+      ],
+      "plane_visualization": {
+        "readout_plane": "fitted_readout_row_space_rigidly_aligned_to_display_xy_plane",
+        "condition_planes": "true_hopf_Qy_theta_planes_transformed_by_the_same_rigid_rotation",
+        "shared_axis": "latent_y_axis_transformed_by_the_same_rigid_rotation",
+        "readout_plane_max_abs_display_z": 0.0,
+        "plane_extent": {
+          "common_axis_half_width": 1.9052255410885675,
+          "side_axis_half_width": 1.9052255410885675,
+          "margin_factor": 1.12
+        },
+        "shared_axis_to_readout_plane_error_deg": 0.19324968896193595,
+        "coordinate_frame": "readout_aligned_orthonormal",
+        "transform_native_to_display": [
+          [
+            0.9978271686262093,
+            0.0,
+            0.06588580690408644
+          ],
+          [
+            -0.00022222208461713809,
+            0.9999943109692521,
+            0.0033655083533018076
+          ],
+          [
+            -0.06588543214359052,
+            -0.0033728369558927436,
+            0.9978214929545872
+          ]
+        ],
+        "display_x_axis_in_native_coordinates": [
+          0.9978271686262093,
+          0.0,
+          0.06588580690408644
+        ],
+        "display_y_axis_in_native_coordinates": [
+          -0.00022222208461713809,
+          0.9999943109692521,
+          0.0033655083533018076
+        ],
+        "display_z_axis_in_native_coordinates": [
+          -0.06588543214359052,
+          -0.0033728369558927436,
+          0.9978214929545872
+        ],
+        "readout_normal_in_display_coordinates": [
+          1.3877787807814457e-17,
+          0.0,
+          0.9999999980000001
+        ],
+        "readout_plane_display_equation": "Aligned Latent Z = 0"
+      },
+      "visualization_rep": 10
+    },
+    "D": {
+      "$R_{\\mathrm{in}}$": {
+        "x": [
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "values": [
+          [
+            33.54964510036899,
+            29.517471439910853,
+            25.485850227792824,
+            21.45509490339443,
+            17.425808385501345
+          ],
+          [
+            65.15660365538933,
+            45.79205734296204,
+            26.430503859207295,
+            7.097236027398269,
+            5.06395552598006
+          ],
+          [
+            39.264637208416794,
+            29.295670193038283,
+            19.331157309672104,
+            9.38536644806029,
+            5.098754283383109
+          ],
+          [
+            50.69513783001569,
+            40.45463143758461,
+            30.214145737828137,
+            19.973713271547645,
+            9.733503005355214
+          ],
+          [
+            46.86206112127206,
+            37.42543500991688,
+            27.990549247893913,
+            18.56010026810661,
+            9.14787617323676
+          ],
+          [
+            56.87440644142769,
+            48.58207166399364,
+            40.28973729523877,
+            31.99740367124546,
+            23.705071591784165
+          ],
+          [
+            52.54889146713964,
+            41.83945551600933,
+            31.131241664247504,
+            20.42622199584686,
+            9.735006644389014
+          ],
+          [
+            25.77108159924549,
+            22.527976389343827,
+            19.284918851079123,
+            16.041937956209487,
+            12.799092025657279
+          ],
+          [
+            48.86879047149803,
+            32.79022973400738,
+            16.71174454574683,
+            5.000821661953326,
+            5.000821661953326
+          ],
+          [
+            35.9173033007674,
+            32.16432925055984,
+            28.411781596869215,
+            24.659856840450253,
+            20.908892149511527
+          ],
+          [
+            47.845379161883976,
+            39.91851701434424,
+            31.991692604743537,
+            24.06494406427032,
+            16.138384092171393
+          ],
+          [
+            49.29264834490256,
+            49.29264834490256,
+            43.15563149275976,
+            27.481617876531278,
+            11.81102581511408
+          ],
+          [
+            49.360972170208285,
+            38.56496086110889,
+            27.770629497328006,
+            16.98123813409644,
+            6.2226311432680905
+          ],
+          [
+            39.88945776361311,
+            35.12130665748947,
+            30.353685154892002,
+            25.586893334936445,
+            20.821505093436922
+          ],
+          [
+            44.431184588579136,
+            33.949796383613,
+            23.470316458131155,
+            12.997406071632657,
+            5.0615049337905775
+          ],
+          [
+            35.13375951048497,
+            33.09547690548525,
+            31.05728687089977,
+            29.019209130735636,
+            26.981269348229887
+          ],
+          [
+            31.711012300669207,
+            26.241080898244014,
+            20.772139405178724,
+            15.30525289549489,
+            9.843850212708292
+          ],
+          [
+            32.49934365909874,
+            31.999363772562237,
+            31.49939073368899,
+            30.999424877125964,
+            30.49946655938927
+          ],
+          [
+            33.568939294716046,
+            33.068944523128856,
+            32.56894979829743,
+            32.068955122434026,
+            31.568960497890487
+          ],
+          [
+            45.47183273437492,
+            35.538722470367084,
+            25.606936779353223,
+            15.679023817323042,
+            5.775043668505408
+          ]
+        ],
+        "mean": [
+          43.235654386203606,
+          35.859007290428615,
+          28.176414456542414,
+          20.239085918439674,
+          14.167121140562813
+        ],
+        "sem": [
+          2.2018049520592964,
+          1.5688893650068227,
+          1.473249573914012,
+          1.805868139277349,
+          1.9769504055617906
+        ]
+      },
+      "$T_{\\mathrm{in}}$": {
+        "x": [
+          -1.0,
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "values": [
+          [
+            13.100468720910735,
+            19.290590536427565,
+            25.485850227792824,
+            31.6832301201704,
+            37.88168530488667
+          ],
+          [
+            17.189014715850487,
+            21.809061617938227,
+            26.430503859207295,
+            31.05271711678252,
+            35.67540026263984
+          ],
+          [
+            5.098754283383109,
+            9.40283096284015,
+            19.331157309672104,
+            29.278116163898954,
+            39.22952015449506
+          ],
+          [
+            25.48132274333645,
+            27.847732620406525,
+            30.214145737828137,
+            32.580561385414235,
+            34.94697904493442
+          ],
+          [
+            23.898605600535657,
+            25.944460431625636,
+            27.990549247893913,
+            30.036824026581513,
+            32.083248974459934
+          ],
+          [
+            24.475294549296457,
+            32.382515250524435,
+            40.28973729523877,
+            48.1969600143917,
+            56.104183113819396
+          ],
+          [
+            23.9910313336608,
+            27.560906533471886,
+            31.131241664247504,
+            34.701893958213425,
+            38.27277379811745
+          ],
+          [
+            12.068439675393913,
+            15.676588592641973,
+            19.284918851079123,
+            22.893344657445766,
+            26.501826932778002
+          ],
+          [
+            5.000821661953326,
+            10.046735798677227,
+            16.71174454574683,
+            23.376842378561165,
+            30.041969962586688
+          ],
+          [
+            12.549320052736265,
+            20.47623301849834,
+            28.411781596869215,
+            36.35030141039653,
+            44.29018415218412
+          ],
+          [
+            20.854550397774695,
+            26.423088744015892,
+            31.991692604743537,
+            37.560332699698954,
+            43.12899483919565
+          ],
+          [
+            36.38051180736761,
+            39.768054001889766,
+            43.15563149275976,
+            46.54323635640937,
+            49.29264834490256
+          ],
+          [
+            25.861654428698635,
+            26.816123723163017,
+            27.770629497328006,
+            28.725168097006144,
+            29.679736337248944
+          ],
+          [
+            7.689644443651436,
+            19.00710403095009,
+            30.353685154892002,
+            41.705602064535505,
+            53.05939983371399
+          ],
+          [
+            13.195858668349072,
+            18.331644753380264,
+            23.470316458131155,
+            28.610317346936537,
+            33.75103837249411
+          ],
+          [
+            25.70472870743917,
+            28.380880060619244,
+            31.05728687089977,
+            33.7338879489289,
+            36.41064005193038
+          ],
+          [
+            15.961462023536901,
+            18.366528136087037,
+            20.772139405178724,
+            23.17812591265825,
+            25.584381612711844
+          ],
+          [
+            30.499500497211496,
+            30.999441846299277,
+            31.49939073368899,
+            31.999346802901268,
+            32.49930971932291
+          ],
+          [
+            6.003816288907869,
+            19.286223627041114,
+            32.56894979829743,
+            45.851717464456414,
+            59.13449832673486
+          ],
+          [
+            17.99996429042036,
+            21.80304672598573,
+            25.606936779353223,
+            29.411320423876212,
+            33.21602735106027
+          ]
+        ],
+        "mean": [
+          18.15023824452072,
+          22.98098955062417,
+          28.176414456542414,
+          33.373492317463196,
+          38.539222324510845
+        ],
+        "sem": [
+          1.9827919653818036,
+          1.657256787453316,
+          1.473249573914012,
+          1.6693554463262197,
+          2.135393945297544
+        ]
+      },
+      "angle_radius_slope": {
+        "values": [
+          -8.062009993250342,
+          -31.77602351487646,
+          -17.648413919009073,
+          -20.480837563071585,
+          -18.858740927576175,
+          -16.584667538407047,
+          -21.408200633132747,
+          -6.48600351606215,
+          -23.105069138228693,
+          -7.504258942524265,
+          -15.85351261789982,
+          -19.354855105589653,
+          -21.572080956178574,
+          -9.534063732581082,
+          -19.938349924311495,
+          -4.076249619851951,
+          -10.934030435734186,
+          -0.9999386189710425,
+          -0.9999893988691797,
+          -19.85065535695662
+        ],
+        "n": 20,
+        "mean": -14.751397572654108,
+        "median": -17.11654072870806,
+        "sem": 1.8401668585025486,
+        "iqr": [
+          -20.07397183400152,
+          -7.922572230568823
+        ],
+        "range": [
+          -31.77602351487646,
+          -0.9999386189710425
+        ]
+      },
+      "angle_duration_slope": {
+        "values": [
+          12.391014550338951,
+          9.243285318484608,
+          17.627363388656544,
+          4.732828273640736,
+          4.092330068560889,
+          15.81444437858264,
+          7.140894470730973,
+          7.216706115914399,
+          12.682480636230139,
+          15.871159318158789,
+          11.137226567705005,
+          6.519891085917906,
+          1.9090416381887532,
+          22.687601762742116,
+          10.277806400369277,
+          5.352966115458425,
+          4.811487390984224,
+          0.9999046801649714,
+          26.565371582613867,
+          7.6080799638340695
+        ],
+        "n": 20,
+        "mean": 10.234094185363862,
+        "median": 8.425682641159339,
+        "sem": 1.5104719298710239,
+        "iqr": [
+          5.217596434339875,
+          13.465471571818265
+        ],
+        "range": [
+          0.9999046801649714,
+          26.565371582613867
+        ]
+      },
+      "target_radius_slope": -3.930350501243958,
+      "target_duration_slope": 3.067247357115485
+    },
+    "E": {
+      "$R_{\\mathrm{in}}\\rightarrow R_{\\mathrm{rec}}$_RNN": {
+        "values": [
+          0.3580439400581413,
+          0.20317924208310179,
+          0.41518301342364894,
+          0.3899184466700709,
+          0.509615973762307,
+          0.3745063435767824,
+          0.45904300051319413,
+          0.4602415035439,
+          0.445927157458329,
+          0.35853585665034027,
+          0.29465490965789504,
+          0.4236377009002334,
+          0.4990335154456785,
+          0.29516670103982123,
+          0.5031341313255541,
+          0.5180990668098913,
+          0.4194788748517945,
+          0.30614121699668045,
+          0.548700693545046,
+          0.4256148165569027
+        ],
+        "n": 20,
+        "mean": 0.41039280524346566,
+        "median": 0.42155828787601396,
+        "sem": 0.019952238715460893,
+        "iqr": [
+          0.3584128775022905,
+          0.4699395065193446
+        ],
+        "range": [
+          0.20317924208310179,
+          0.548700693545046
+        ]
+      },
+      "$R_{\\mathrm{in}}\\rightarrow R_{\\mathrm{rec}}$_3D Hopf": {
+        "values": [
+          0.5368383542552112,
+          0.25241191552832987,
+          0.5589026954538306,
+          0.3926359327909144,
+          0.5406533681237728,
+          0.34333549456834195,
+          0.44737109143643555,
+          0.5822720110505623,
+          0.47812076491367117,
+          0.4612372681227627,
+          0.37619413708748606,
+          0.46606581052008167,
+          0.49648295276332366,
+          0.35798750260865503,
+          0.5186835965881688,
+          0.6047707071321078,
+          0.5184352991865528,
+          0.6046556544351327,
+          0.5871495681124389,
+          0.4418087367757199
+        ],
+        "n": 20,
+        "mean": 0.47830064307267506,
+        "median": 0.4873018588384974,
+        "sem": 0.02153404322435307,
+        "iqr": [
+          0.4295155357795185,
+          0.5452156999562873
+        ],
+        "range": [
+          0.25241191552832987,
+          0.6047707071321078
+        ]
+      },
+      "$T_{\\mathrm{in}}\\rightarrow R_{\\mathrm{rec}}$_RNN": {
+        "values": [
+          0.41770617228651274,
+          0.285210843808087,
+          0.37092312099437275,
+          0.5302568640733254,
+          0.4358699016068755,
+          0.6100948778671542,
+          0.5569771712921223,
+          0.3874930113901829,
+          0.3447826329866078,
+          0.5407798801147577,
+          0.5568367961133427,
+          0.4878744776772118,
+          0.44758742406647567,
+          0.571922710216372,
+          0.47651596966954934,
+          0.31733711406460813,
+          0.51061767054884,
+          0.029696330519373728,
+          0.6016020932233922,
+          0.47753994866616783
+        ],
+        "n": 20,
+        "mean": 0.4478812505592666,
+        "median": 0.47702795916785856,
+        "sem": 0.030409020671374472,
+        "iqr": [
+          0.3833505387912304,
+          0.544794109114404
+        ],
+        "range": [
+          0.029696330519373728,
+          0.6100948778671542
+        ]
+      },
+      "$T_{\\mathrm{in}}\\rightarrow R_{\\mathrm{rec}}$_3D Hopf": {
+        "values": [
+          0.4425621833702116,
+          0.3487477965562563,
+          0.41383589663975295,
+          0.5554356630058134,
+          0.4549057197767783,
+          0.6338057084216469,
+          0.5463253643474583,
+          0.38085780000236147,
+          0.3664668265376574,
+          0.5212217899805114,
+          0.6119846697562141,
+          0.49502721369430697,
+          0.43462035677340505,
+          0.6183811134460127,
+          0.49752838541148325,
+          0.3119569330571397,
+          0.4711507606033088,
+          0.31391321719865184,
+          0.5496698423183484,
+          0.5249757633406709
+        ],
+        "n": 20,
+        "mean": 0.4746686502118994,
+        "median": 0.4830889871488079,
+        "sem": 0.021955195117235995,
+        "iqr": [
+          0.4055913724804051,
+          0.5471614838401808
+        ],
+        "range": [
+          0.3119569330571397,
+          0.6338057084216469
+        ]
+      },
+      "$R_{\\mathrm{in}}\\rightarrow T_{\\mathrm{rec}}$_RNN": {
+        "values": [
+          -0.0564261637544653,
+          0.0022309774344222233,
+          -0.12069597495268386,
+          -0.07133947641961393,
+          -0.07471167391016756,
+          -0.09325670428786881,
+          -0.0926736733457265,
+          -0.039529417620713506,
+          -0.053169212707472206,
+          -0.07584160107994355,
+          -0.05542852534357612,
+          -0.07378125219238608,
+          -0.09521467834140347,
+          -0.10080482820086488,
+          -0.08994336954541401,
+          -0.12982602486058528,
+          -0.04524325508223239,
+          -0.095701517256744,
+          -0.012146471541357385,
+          -0.16618520801334768
+        ],
+        "n": 20,
+        "mean": -0.0769844025511072,
+        "median": -0.07527663749505556,
+        "sem": 0.008733051431739271,
+        "iqr": [
+          -0.09533638807023861,
+          -0.05486369718455014
+        ],
+        "range": [
+          -0.16618520801334768,
+          0.0022309774344222233
+        ]
+      },
+      "$R_{\\mathrm{in}}\\rightarrow T_{\\mathrm{rec}}$_3D Hopf": {
+        "values": [
+          0.013935669933455803,
+          0.04909508166990022,
+          0.05341259976517974,
+          0.04067033560665623,
+          0.060362804682173955,
+          0.051367184818965454,
+          0.019760303613207464,
+          0.045497634896484195,
+          0.045846909491590315,
+          0.08214830223416228,
+          0.026395245290062964,
+          0.02644648766238717,
+          0.05006938253497422,
+          0.005474914419955104,
+          0.08341375490471424,
+          0.058356529745749036,
+          0.04120506128423316,
+          0.04319147037803412,
+          0.03022341451423484,
+          0.03255484474385126
+        ],
+        "n": 20,
+        "mean": 0.04297139660949859,
+        "median": 0.04434455263725916,
+        "sem": 0.00447412200643382,
+        "iqr": [
+          0.029279182801272924,
+          0.05187853855551902
+        ],
+        "range": [
+          0.005474914419955104,
+          0.08341375490471424
+        ]
+      },
+      "$T_{\\mathrm{in}}\\rightarrow T_{\\mathrm{rec}}$_RNN": {
+        "values": [
+          0.900898875427839,
+          0.9318593726044988,
+          0.7385916618775287,
+          0.8072490940801212,
+          0.7489702460777019,
+          0.8067256396543876,
+          0.864820276958331,
+          0.8857558978892125,
+          0.8145890937554374,
+          0.8704240831399985,
+          0.9156169286735585,
+          0.8693867523863879,
+          0.7935251024990282,
+          0.8910183907843061,
+          0.6991358319443634,
+          0.7363370442060387,
+          0.8399574744206431,
+          0.8352212391049989,
+          0.9406872126772342,
+          0.750288359812098
+        ],
+        "n": 20,
+        "mean": 0.8320529288986858,
+        "median": 0.837589356762821,
+        "sem": 0.01589906527818203,
+        "iqr": [
+          0.7827159168272957,
+          0.8870715211129859
+        ],
+        "range": [
+          0.6991358319443634,
+          0.9406872126772342
+        ]
+      },
+      "$T_{\\mathrm{in}}\\rightarrow T_{\\mathrm{rec}}$_3D Hopf": {
+        "values": [
+          0.9626237153069612,
+          0.9210276431585606,
+          0.910204360230173,
+          0.9188537435876727,
+          0.8982414600621434,
+          0.9300886506357398,
+          0.9495528507063894,
+          0.927912979480426,
+          0.9068171727804679,
+          0.8924724403773814,
+          0.9519957019582321,
+          0.9442704341057025,
+          0.9110372947599101,
+          0.9704910033120515,
+          0.8629470821377867,
+          0.8986576694125005,
+          0.9281671396137172,
+          0.9168431676912792,
+          0.9326993162957451,
+          0.9303134809631362
+        ],
+        "n": 20,
+        "mean": 0.9232608653287988,
+        "median": 0.9244703113194932,
+        "sem": 0.005722183198109423,
+        "iqr": [
+          0.9093575633677468,
+          0.9355920957482344
+        ],
+        "range": [
+          0.8629470821377867,
+          0.9704910033120515
+        ]
+      }
+    },
+    "F": {
+      "$R_{\\mathrm{rec}}\\rightarrow R_{\\mathrm{out}}$_RNN": {
+        "values": [
+          1.141571181465988,
+          0.7152207115470265,
+          1.1428472180398999,
+          1.1545658630011433,
+          1.0546428670276224,
+          1.4103140023657186,
+          1.1316846677854397,
+          1.0593021962107954,
+          1.1417966987775454,
+          1.400956351085008,
+          1.3497257454068758,
+          1.1621747105536322,
+          0.9987771566287125,
+          1.7414267823645866,
+          1.0704024842812623,
+          1.182474311384294,
+          1.1393032869209656,
+          1.2372948549194605,
+          1.1102686068079186,
+          1.0398646701902368
+        ],
+        "n": 20,
+        "mean": 1.1692307183382067,
+        "median": 1.1416839401217667,
+        "sem": 0.04506632769404935,
+        "iqr": [
+          1.0676274122636455,
+          1.1961794472680856
+        ],
+        "range": [
+          0.7152207115470265,
+          1.7414267823645866
+        ]
+      },
+      "$R_{\\mathrm{rec}}\\rightarrow R_{\\mathrm{out}}$_3D Hopf": {
+        "values": [
+          1.2114926136715358,
+          0.7210915044556266,
+          1.2008950954984294,
+          1.1810717577983838,
+          1.0887656726198751,
+          1.455498816100518,
+          1.1727233706719165,
+          1.1276608429669603,
+          1.158838605362087,
+          1.4603195336391914,
+          1.361110830100186,
+          1.2015597370518691,
+          1.034345901022391,
+          1.7604987290569745,
+          1.0995711934028691,
+          1.221542768265697,
+          1.2140320735649366,
+          1.2740703194027785,
+          1.1769295581242825,
+          1.0652782206293168
+        ],
+        "n": 20,
+        "mean": 1.2093648571702913,
+        "median": 1.1909834266484065,
+        "sem": 0.04541201710942799,
+        "iqr": [
+          1.1206384305759376,
+          1.2346746560499673
+        ],
+        "range": [
+          0.7210915044556266,
+          1.7604987290569745
+        ]
+      },
+      "$T_{\\mathrm{rec}}\\rightarrow R_{\\mathrm{out}}$_RNN": {
+        "values": [
+          -0.25251946279447496,
+          0.09196735154959472,
+          -0.24479506701191286,
+          -0.4139512196313684,
+          -0.283164901581523,
+          -0.933702020920814,
+          -0.43447176118981934,
+          -0.09075504585401684,
+          -0.1288386310063517,
+          -0.5419700681549309,
+          -0.6354456838012865,
+          -0.45690142725806404,
+          -0.23668716237026155,
+          -0.8502392030821211,
+          -0.3749247240398417,
+          -0.08716372030692927,
+          -0.24060431420986952,
+          0.24476493848106984,
+          -0.42659489311918736,
+          -0.4247595063924187
+        ],
+        "n": 20,
+        "mean": -0.3360378261347264,
+        "median": -0.3290448128106823,
+        "sem": 0.06333367613144693,
+        "iqr": [
+          -0.4400791777068805,
+          -0.2097250295292841
+        ],
+        "range": [
+          -0.933702020920814,
+          0.24476493848106984
+        ]
+      },
+      "$T_{\\mathrm{rec}}\\rightarrow R_{\\mathrm{out}}$_3D Hopf": {
+        "values": [
+          -0.2630361144204748,
+          -0.000678116452969687,
+          -0.2454675044981478,
+          -0.3929289952720788,
+          -0.3029411866803277,
+          -0.8555176701276905,
+          -0.40000280128028265,
+          -0.09115218471197399,
+          -0.13300351514294842,
+          -0.4984378918576115,
+          -0.6140232066352862,
+          -0.40912500472335833,
+          -0.22120039255298776,
+          -0.8063241521736894,
+          -0.3505204462949452,
+          -0.08071099237012257,
+          -0.2070957821787881,
+          -0.019064794861880577,
+          -0.37089969784730653,
+          -0.3858077873590698
+        ],
+        "n": 20,
+        "mean": -0.332396911872097,
+        "median": -0.32673081648763647,
+        "sem": 0.052182577118265516,
+        "iqr": [
+          -0.40228335214105154,
+          -0.18857271541982817
+        ],
+        "range": [
+          -0.8555176701276905,
+          -0.000678116452969687
+        ]
+      },
+      "$R_{\\mathrm{rec}}\\rightarrow T_{\\mathrm{out}}$_RNN": {
+        "values": [
+          0.1782351245049531,
+          0.07321434838367379,
+          0.14539526052481408,
+          0.21057987204121814,
+          0.09646522202934511,
+          0.13785539734513105,
+          0.2189415061464284,
+          0.22813493347829777,
+          0.11889476144579673,
+          0.1315303033733142,
+          0.061076952400524555,
+          0.17467698740509988,
+          0.3118565598950466,
+          0.14343640976305927,
+          0.3309552487140413,
+          0.35847850175873985,
+          0.18938271189905648,
+          0.19824130691354422,
+          0.008168918294544102,
+          0.30560157328487575
+        ],
+        "n": 20,
+        "mean": 0.18105609498007522,
+        "median": 0.1764560559550265,
+        "sem": 0.020865861971951952,
+        "iqr": [
+          0.12837141789143483,
+          0.22123986297939574
+        ],
+        "range": [
+          0.008168918294544102,
+          0.35847850175873985
+        ]
+      },
+      "$R_{\\mathrm{rec}}\\rightarrow T_{\\mathrm{out}}$_3D Hopf": {
+        "values": [
+          0.00037694264122074226,
+          0.0476018726079561,
+          0.011204504638612252,
+          0.0032508802595330316,
+          0.0014359344908198976,
+          0.008891546006121475,
+          0.005117290551664007,
+          -5.834128403925078e-05,
+          0.02327323257961396,
+          0.002325210352793111,
+          0.00039604084776643665,
+          0.01630680320495209,
+          0.0027129887629203596,
+          0.007320000068833951,
+          0.011836882925642944,
+          0.0003260884218590938,
+          -0.00034624225379015824,
+          -1.201008272407381e-15,
+          0.011045996974607281,
+          0.0005687195473579756
+        ],
+        "n": 20,
+        "mean": 0.0076793175672222064,
+        "median": 0.002981934511226696,
+        "sem": 0.0025478574893278653,
+        "iqr": [
+          0.000391266296130013,
+          0.011085623890608524
+        ],
+        "range": [
+          -0.00034624225379015824,
+          0.0476018726079561
+        ]
+      },
+      "$T_{\\mathrm{rec}}\\rightarrow T_{\\mathrm{out}}$_RNN": {
+        "values": [
+          0.9782047667512879,
+          1.128860917125141,
+          1.1756392480022422,
+          1.129962813493597,
+          1.3578161586623303,
+          1.0922089776234045,
+          1.1266219963088036,
+          0.8646296616775263,
+          1.2356447489836375,
+          0.8816468809620147,
+          0.8319303487058731,
+          0.9905487095016199,
+          1.153110532346018,
+          0.8598782836299014,
+          1.261530682375483,
+          1.182419376918138,
+          1.0378115203470988,
+          1.23124725788153,
+          1.0617976799939415,
+          1.1043777788837612
+        ],
+        "n": 20,
+        "mean": 1.0842944170086675,
+        "median": 1.1154998875962825,
+        "sem": 0.03268047900085488,
+        "iqr": [
+          0.987462723814037,
+          1.1773342802312161
+        ],
+        "range": [
+          0.8319303487058731,
+          1.3578161586623303
+        ]
+      },
+      "$T_{\\mathrm{rec}}\\rightarrow T_{\\mathrm{out}}$_3D Hopf": {
+        "values": [
+          0.9914756381391819,
+          1.1403076464879103,
+          1.1043002434584896,
+          1.1258716686272314,
+          1.2844673585727184,
+          1.0659928707756932,
+          1.1456003439445983,
+          0.8981385165987872,
+          1.2015239944382436,
+          0.9037649712003405,
+          0.835641369105839,
+          0.9950447685661137,
+          1.1600971794001678,
+          0.8672834441399426,
+          1.2468115920226184,
+          1.1510354528072289,
+          1.0457113471569812,
+          1.193113659924252,
+          1.063259992448487,
+          1.0851300920431703
+        ],
+        "n": 20,
+        "mean": 1.0752286074928996,
+        "median": 1.09471516775083,
+        "sem": 0.028315025655973016,
+        "iqr": [
+          0.9941524859593807,
+          1.1533008844554635
+        ],
+        "range": [
+          0.835641369105839,
+          1.2844673585727184
+        ]
+      }
+    },
+    "G": {
+      "$\\beta_{RR}$_Human motor": {
+        "values": [
+          0.697659498453083,
+          0.733074810588072,
+          0.7401635389514758,
+          1.134361170762908,
+          0.6980618307818303,
+          1.2072114988607303,
+          0.8547567316080507,
+          0.4591532845363924,
+          0.7691723657222469,
+          0.9045242682769843,
+          0.7165037323001047,
+          0.5735107822150111,
+          0.9436973039274821,
+          0.7923132477920759,
+          0.8335327389156256,
+          1.1787648428145503,
+          0.7612620637453869,
+          0.8853911512121008,
+          0.48673268454334023,
+          0.7751562172604032,
+          0.47831944214207545,
+          0.8791454419375212,
+          0.5928259469855541,
+          0.7511595697731289
+        ],
+        "n": 24,
+        "mean": 0.7852689235044222,
+        "median": 0.7652172147338169,
+        "sem": 0.040792517842414444,
+        "iqr": [
+          0.6979612476996435,
+          0.8807068692561661
+        ],
+        "range": [
+          0.4591532845363924,
+          1.2072114988607303
+        ]
+      },
+      "$\\beta_{RR}$_RNN": {
+        "values": [
+          0.8147297747108062,
+          0.8136946761554087,
+          0.8439091935249792,
+          0.8369825680634968,
+          0.787744036108743,
+          0.8745432814125474,
+          0.8130285848140255,
+          0.7749625395846625,
+          0.8385036442570702,
+          0.842485132195245,
+          0.8620888469148972,
+          0.8874783004404722,
+          0.758524017920819,
+          0.9026673321844818,
+          0.8097814429240924,
+          0.8070471373081227,
+          0.7861020638821516,
+          0.8147256657759987,
+          0.7866896989071039,
+          0.8567583264943861
+        ],
+        "n": 20,
+        "mean": 0.8256223131789755,
+        "median": 0.8147277202434025,
+        "sem": 0.008596747989850948,
+        "iqr": [
+          0.8022213620082778,
+          0.847121476767331
+        ],
+        "range": [
+          0.758524017920819,
+          0.9026673321844818
+        ]
+      },
+      "$\\beta_{RR}$_3D Hopf": {
+        "values": [
+          0.6796542899610585,
+          0.7496324173720165,
+          0.7410301820398077,
+          0.8006939057317629,
+          0.7465303495141609,
+          0.8403418523865215,
+          0.7554080889855389,
+          0.6575233005287321,
+          0.797448470121207,
+          0.7157439941138711,
+          0.8271351008928989,
+          0.7802126937946938,
+          0.7029973898859213,
+          0.8786795478515947,
+          0.7742853531400068,
+          0.7390030511886241,
+          0.6426686583233477,
+          0.7709570362242415,
+          0.7141382196652414,
+          0.84170850845414
+        ],
+        "n": 20,
+        "mean": 0.7577896205087693,
+        "median": 0.7525202531787777,
+        "sem": 0.014007692697241671,
+        "iqr": [
+          0.7153425505017137,
+          0.798259829023846
+        ],
+        "range": [
+          0.6426686583233477,
+          0.8786795478515947
+        ]
+      },
+      "$\\beta_{RT}$_Human motor": {
+        "values": [
+          0.16061066202545898,
+          0.1042924364285131,
+          0.12970769766358922,
+          0.06455403409154152,
+          0.12400250852146621,
+          0.20675698461784783,
+          0.19047265479618397,
+          0.07060673228127128,
+          0.08945557721743898,
+          0.0691705081195066,
+          -0.042446385696877253,
+          0.054651226104498477,
+          0.23441839019035252,
+          0.3946323165544456,
+          0.020721007509788582,
+          -0.0739981568828172,
+          0.37422459645875683,
+          -0.08613580411817072,
+          0.524824026871344,
+          0.17943569632680562,
+          0.5436841318113582,
+          0.04420352608912257,
+          0.08675505098711934,
+          0.32248824063311077
+        ],
+        "n": 24,
+        "mean": 0.1577953191084023,
+        "median": 0.11414747247498966,
+        "sem": 0.034520759035673546,
+        "iqr": [
+          0.06207833209478075,
+          0.213672336010974
+        ],
+        "range": [
+          -0.08613580411817072,
+          0.5436841318113582
+        ]
+      },
+      "$\\beta_{RT}$_RNN": {
+        "values": [
+          0.260175465240969,
+          0.2762830305863633,
+          0.25500305045654537,
+          0.291678308218297,
+          0.2398897348490603,
+          0.1130414057535597,
+          0.26644853440046445,
+          0.34209852484789327,
+          0.2970439641906494,
+          0.2939756092148731,
+          0.19551385364796514,
+          0.18310495567967444,
+          0.256779519834223,
+          0.25913567219236533,
+          0.22847351023879714,
+          0.2931167346876232,
+          0.3741359149166468,
+          0.2813534226461816,
+          0.2554311722752226,
+          0.1928071542607761
+        ],
+        "n": 20,
+        "mean": 0.25777447690690747,
+        "median": 0.2596555687166672,
+        "sem": 0.012844821706670643,
+        "iqr": [
+          0.2370356786964945,
+          0.2920379148356286
+        ],
+        "range": [
+          0.1130414057535597,
+          0.3741359149166468
+        ]
+      },
+      "$\\beta_{RT}$_3D Hopf": {
+        "values": [
+          0.26295172350229495,
+          0.21537284012417832,
+          0.250744002248056,
+          0.25148039229588426,
+          0.19347495928441957,
+          0.06867785413452047,
+          0.23168298467121634,
+          0.3400773747794586,
+          0.275104291513605,
+          0.283217330659371,
+          0.2022836395973353,
+          0.18150685860481408,
+          0.22353861529325317,
+          0.2519821862823942,
+          0.20081877425690142,
+          0.3033505028179446,
+          0.36671509325387436,
+          0.3812684502625759,
+          0.2741297667071975,
+          0.16241565522531376
+        ],
+        "n": 20,
+        "mean": 0.24603966477573042,
+        "median": 0.2511121972719701,
+        "sem": 0.016169835285710754,
+        "iqr": [
+          0.20191742326222684,
+          0.2771325513000465
+        ],
+        "range": [
+          0.06867785413452047,
+          0.3812684502625759
+        ]
+      },
+      "$\\beta_{TR}$_Human motor": {
+        "values": [
+          -0.06931345170856783,
+          0.12024668240929309,
+          -0.05995270038795897,
+          -0.06338669937525267,
+          0.026689985699329597,
+          0.0073886897651742,
+          0.010052318154436683,
+          0.03330927296057923,
+          0.1030510493646207,
+          0.014639559358473546,
+          0.015196280302386038,
+          -0.10157472740886568,
+          -0.002279477331924204,
+          0.623720043998683,
+          -0.03133871681551119,
+          0.1165300699016893,
+          0.12409884113312579,
+          0.015426356152245172,
+          0.07199541619375484,
+          0.06484038641504707,
+          0.05205688289812357,
+          -0.05487139073743499,
+          -0.0027813374464907693,
+          0.0048863104634900255
+        ],
+        "n": 24,
+        "mean": 0.0424429018316019,
+        "median": 0.014917919830429793,
+        "sem": 0.028277022675369325,
+        "iqr": [
+          -0.009920682288745875,
+          0.066629143859724
+        ],
+        "range": [
+          -0.10157472740886568,
+          0.623720043998683
+        ]
+      },
+      "$\\beta_{TR}$_RNN": {
+        "values": [
+          0.06381484561251827,
+          0.06457504660392166,
+          -0.03739837225099418,
+          0.01939745912988622,
+          -0.04287113512405705,
+          -0.023019505515276872,
+          0.02946089526346518,
+          0.1297248155305959,
+          -0.004245667169551881,
+          -0.004165844851817813,
+          0.018199315064539867,
+          0.041252589605416445,
+          0.06364640444281,
+          -0.007359987000788992,
+          0.04798236194252947,
+          0.011882068460191797,
+          0.04394649713723808,
+          0.03220276474717543,
+          -0.00016269267331880943,
+          -0.024314485480257164
+        ],
+        "n": 20,
+        "mean": 0.02112736867371128,
+        "median": 0.018798387097213043,
+        "sem": 0.009365472701918783,
+        "iqr": [
+          -0.005024247127361159,
+          0.04495546333856093
+        ],
+        "range": [
+          -0.04287113512405705,
+          0.1297248155305959
+        ]
+      },
+      "$\\beta_{TR}$_3D Hopf": {
+        "values": [
+          0.014123602447862413,
+          0.06658297264430728,
+          0.06119939167737416,
+          0.045282152229413994,
+          0.07669776391770258,
+          0.05192584680972683,
+          0.022771375358684218,
+          0.04091595589204532,
+          0.06109728670587912,
+          0.07495902714143597,
+          0.022528331658232103,
+          0.0318182759518669,
+          0.057009438415003,
+          0.006132227803207709,
+          0.10606338976780955,
+          0.06741687416530924,
+          0.04295102008947018,
+          0.05153233330024565,
+          0.03194791006129677,
+          0.034164280479146214
+        ],
+        "n": 20,
+        "mean": 0.04835597282580095,
+        "median": 0.04840724276482982,
+        "sem": 0.005398868206740542,
+        "iqr": [
+          0.0319155015339393,
+          0.06254528691910745
+        ],
+        "range": [
+          0.006132227803207709,
+          0.10606338976780955
+        ]
+      },
+      "$\\beta_{TT}$_Human motor": {
+        "values": [
+          0.907615405296019,
+          0.8704428920543102,
+          1.0785368775811006,
+          0.9655975032345065,
+          1.0154365542806145,
+          0.8271609151884424,
+          0.9791446140552246,
+          1.0670673026338207,
+          0.9998919987626621,
+          1.3367051751483494,
+          0.8099736479680961,
+          1.0765149998727332,
+          0.9672857349732135,
+          1.1974634435485527,
+          0.9789891976568458,
+          0.7462001952788794,
+          1.1965314497898734,
+          1.32788694681743,
+          1.1751146598886326,
+          0.8976405932489468,
+          0.4842314738473453,
+          1.0011220997171468,
+          1.0110015579732743,
+          1.363385421874234
+        ],
+        "n": 24,
+        "mean": 1.011705860862094,
+        "median": 1.0005070492399044,
+        "sem": 0.040605600032714614,
+        "iqr": [
+          0.905121702284251,
+          1.1026813231579835
+        ],
+        "range": [
+          0.4842314738473453,
+          1.363385421874234
+        ]
+      },
+      "$\\beta_{TT}$_RNN": {
+        "values": [
+          0.9640872630716999,
+          1.0803911299132394,
+          0.9321909167686926,
+          1.0290957496338136,
+          1.0715798774648395,
+          0.9722602169487853,
+          1.1061535742066986,
+          0.8640550158726609,
+          1.0571961736163422,
+          0.8423157116072262,
+          0.7997520957976414,
+          0.9502302867055816,
+          1.0614113095039512,
+          0.8566009836367179,
+          1.0557512104613154,
+          0.9956462928938867,
+          0.9750410269961419,
+          1.049828543472752,
+          1.0050422977719733,
+          0.985644728905873
+        ],
+        "n": 20,
+        "mean": 0.9827137202624915,
+        "median": 0.9906455108998798,
+        "sem": 0.01949187916320882,
+        "iqr": [
+          0.9457204442213594,
+          1.0561124512500721
+        ],
+        "range": [
+          0.7997520957976414,
+          1.1061535742066986
+        ]
+      },
+      "$\\beta_{TT}$_3D Hopf": {
+        "values": [
+          0.9546154167727317,
+          1.0661287709473237,
+          1.0101175612409186,
+          1.0366287901386688,
+          1.1546491060681856,
+          0.9975062716848401,
+          1.0907268891051523,
+          0.8333107600319389,
+          1.0971959164669811,
+          0.8080888545135023,
+          0.7954928990384414,
+          0.9480336950953134,
+          1.058280079503161,
+          0.8465981550555468,
+          1.081813116441777,
+          1.0344912076010264,
+          0.9702911715710777,
+          1.0938981073806864,
+          1.0021324525129849,
+          1.009845807905834
+        ],
+        "n": 20,
+        "mean": 0.9944922514538044,
+        "median": 1.0099816845733762,
+        "sem": 0.023091500064383118,
+        "iqr": [
+          0.9529699863533772,
+          1.070049857320937
+        ],
+        "range": [
+          0.7954928990384414,
+          1.1546491060681856
+        ]
+      }
+    }
+  }
+}
